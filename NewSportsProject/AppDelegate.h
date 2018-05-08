@@ -12,6 +12,10 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (strong, readwrite) NSString *Currentmatchcode;
+@property (strong, readwrite) NSMutableArray *Scorearray;
+
+@property (strong, readwrite) NSString *backkey;
 
 @end
 

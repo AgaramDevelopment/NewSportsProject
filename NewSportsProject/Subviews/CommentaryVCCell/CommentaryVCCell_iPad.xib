@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommentaryVC">
+            <connections>
+                <outlet property="objlistCell" destination="3ra-My-QN7" id="3ip-kk-6Bi"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3ra-My-QN7" customClass="CommentaryVCCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3ra-My-QN7" id="Z7K-Gy-LNm">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDw-Td-1l7">
+                        <rect key="frame" x="20" y="10" width="40" height="40"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="pIf-vP-4lq"/>
+                            <constraint firstAttribute="height" constant="40" id="xXC-vJ-rvh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18.4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ft5-rF-OxB">
+                        <rect key="frame" x="20" y="55" width="40" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="5wO-7O-PO3"/>
+                            <constraint firstAttribute="height" constant="21" id="t5a-rI-bJx"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cC6-FS-ohx">
+                        <rect key="frame" x="70" y="0.0" width="305" height="79.5"/>
+                        <string key="text">Gamage to Rohit, FOUR, Rohit is so good at this. Even when the length isn't all that short, we've seen him smash those front foot pulls quite frequently. By comparison, this is considerably short and it sits up for Rohit to slap away to the long leg boundary</string>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="cC6-FS-ohx" firstAttribute="top" secondItem="Z7K-Gy-LNm" secondAttribute="top" id="7sj-WW-aNY"/>
+                    <constraint firstItem="PDw-Td-1l7" firstAttribute="top" secondItem="Z7K-Gy-LNm" secondAttribute="top" constant="10" id="8N0-Fl-kCJ"/>
+                    <constraint firstItem="Ft5-rF-OxB" firstAttribute="top" secondItem="PDw-Td-1l7" secondAttribute="bottom" constant="5" id="HT9-BP-e5q"/>
+                    <constraint firstItem="PDw-Td-1l7" firstAttribute="leading" secondItem="Z7K-Gy-LNm" secondAttribute="leading" constant="20" id="JHd-s0-pWd"/>
+                    <constraint firstAttribute="bottom" secondItem="cC6-FS-ohx" secondAttribute="bottom" id="Myz-Gg-vqR"/>
+                    <constraint firstItem="Ft5-rF-OxB" firstAttribute="leading" secondItem="Z7K-Gy-LNm" secondAttribute="leading" constant="20" id="VaU-oK-Y9h"/>
+                    <constraint firstItem="cC6-FS-ohx" firstAttribute="leading" secondItem="Ft5-rF-OxB" secondAttribute="trailing" constant="10" id="e6C-YK-Wbk"/>
+                    <constraint firstAttribute="trailing" secondItem="cC6-FS-ohx" secondAttribute="trailing" id="gfE-F8-0Ss"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="Ball" destination="PDw-Td-1l7" id="RHt-g5-AqQ"/>
+                <outlet property="cmtText" destination="cC6-FS-ohx" id="pgH-lk-res"/>
+                <outlet property="overs" destination="Ft5-rF-OxB" id="ndB-1Z-afe"/>
+            </connections>
+            <point key="canvasLocation" x="-105.5" y="-44"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -7,8 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "UITabBarController+Swipe.h"
+#import "tabViewController.h"
+
 
 @interface AppDelegate ()
+
 
 @end
 
@@ -16,8 +20,46 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    
+    
+    
+    
+    UIViewController *initViewController;
+    UIStoryboard *storyBoard;
+    
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        // iPad
+        
+        storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+    } else {
+        // iPhone
+        
+        storyBoard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+    }
+    
+    //if(![[NSUserDefaults standardUserDefaults] boolForKey:@"Skip"]) {
+        //initViewController = [storyBoard instantiateViewControllerWithIdentifier:@"tabViewController"];
+//    } else {
+        initViewController = [storyBoard instantiateViewControllerWithIdentifier:@"tabViewController"];
+//    }
+    
+    UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:initViewController];
+    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    navigationController.navigationBarHidden = YES;
+    _window.rootViewController = navigationController;
+    [self.window makeKeyAndVisible];
+    
+    
+    tabViewController *tab = [[tabViewController alloc]init];
+    
+   // tabViewController = (UITabBarController *)self.window.rootViewController;
+    [tab setupSwipeGestureRecognizersAllowCyclingThroughTabs:YES];
+
+    
     return YES;
+
 }
 
 
