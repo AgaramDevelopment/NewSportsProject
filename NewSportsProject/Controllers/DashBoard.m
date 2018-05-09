@@ -21,6 +21,7 @@
 #import "WebService.h"
 #import "ScoreCardVC.h"
 #import "AppDelegate.h"
+@import SDWebImage;
 
 
 
@@ -52,6 +53,7 @@
     NSMutableArray *scoreArray;
     
     AppDelegate* Appobj;
+    
 }
 
 @property (nonatomic, weak) IBOutlet SwipeView *swipeView;
@@ -61,6 +63,7 @@
 
 
 @property (nonatomic,strong) NSMutableArray * resultsArray;
+@property (nonatomic,strong) NSMutableArray * pointsTableArray;
 
 
 @end
@@ -104,6 +107,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.resultsArray = [[NSMutableArray alloc]init];
+    self.pointsTableArray = [[NSMutableArray alloc]init];
     [self customnavigationmethod];
     
     //[self FixturesWebservice];
@@ -120,14 +124,14 @@
 //
     
     _swipeView.pagingEnabled = YES;
-       [self.page_control addTarget:self action:@selector(pageChanged) forControlEvents:UIControlEventValueChanged];
-    NSUInteger pageCount =self.items.count;
-    self.page_control.numberOfPages =pageCount;
-    [NSTimer scheduledTimerWithTimeInterval:3.5
-                                     target:self
-                                   selector:@selector(pageChanged)
-                                   userInfo:nil
-                                    repeats:YES];
+//       [self.page_control addTarget:self action:@selector(pageChanged) forControlEvents:UIControlEventValueChanged];
+//    NSUInteger pageCount =self.items.count;
+//    self.page_control.numberOfPages =pageCount;
+//    [NSTimer scheduledTimerWithTimeInterval:3.5
+//                                     target:self
+//                                   selector:@selector(pageChanged)
+//                                   userInfo:nil
+//                                    repeats:YES];
     
     self.img1.layer.masksToBounds = true;
     self.img1.clipsToBounds = true;
@@ -162,6 +166,7 @@
 {
     PointsTableVC * objFix = [[PointsTableVC alloc]init];
     objFix = (PointsTableVC *)[self.storyboard instantiateViewControllerWithIdentifier:@"PointsTableVC"];
+    objFix.PointsArray = self.pointsTableArray;
     objFix.backKey = @"yes";
     [self.navigationController pushViewController:objFix animated:YES];
 }
@@ -227,7 +232,15 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    //return self.pointsTableArray.count;
+    if(self.pointsTableArray.count==0)
+    {
+        return 0;
+    }
+    else
+    {
+    return 4;
+    }
     
 }
 
@@ -240,7 +253,7 @@
     
     
     
-    PointsTableCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    PointsTableCell *cell = [self.PointsTable dequeueReusableCellWithIdentifier:nil];
     if (cell == nil)
     {
         // cell = [[PointsTableCell alloc] initWithStyle:UITableViewCellStyleDefaultreuseIdentifier:MyIdentifier];
@@ -254,14 +267,42 @@
             [[NSBundle mainBundle] loadNibNamed:@"PointsTableCell_iPad" owner:self options:nil];
         }
     }
-
-    
     cell = self.objCell;
+
+    cell.TeamName.text = [[self.pointsTableArray valueForKey:@"TEAMSHORTNAME"] objectAtIndex:indexPath.row];
+    cell.Played.text = [[self.pointsTableArray valueForKey:@"MATCHPLAYED"] objectAtIndex:indexPath.row];
+    cell.Won.text = [[self.pointsTableArray valueForKey:@"WON"] objectAtIndex:indexPath.row];
+    cell.Lost.text = [[self.pointsTableArray valueForKey:@"LOST"] objectAtIndex:indexPath.row];
+    cell.Tied.text = [[self.pointsTableArray valueForKey:@"TIED"] objectAtIndex:indexPath.row];
+    cell.NoResult.text = [[self.pointsTableArray valueForKey:@"NORESULT"] objectAtIndex:indexPath.row];
+    cell.NetRR.text = [[self.pointsTableArray valueForKey:@"NETRUNRATE"] objectAtIndex:indexPath.row];
+    cell.Points.text = [[self.pointsTableArray valueForKey:@"POINTS"] objectAtIndex:indexPath.row];
+    
+    if([cell.TeamName.text isEqualToString:@" CSK"])
+    {
+        cell.contentView.backgroundColor = [UIColor yellowColor];
+        
+        cell.TeamName.textColor = [UIColor redColor];
+        cell.Played.textColor = [UIColor redColor];
+        cell.Won.textColor = [UIColor redColor];
+        cell.Lost.textColor = [UIColor redColor];
+        cell.Tied.textColor = [UIColor redColor];
+        cell.NoResult.textColor = [UIColor redColor];
+        cell.NetRR.textColor = [UIColor redColor];
+        cell.Points.textColor = [UIColor redColor];
+        
+    }
+    
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
     
     
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50;
 }
 
 
@@ -272,7 +313,7 @@
 - (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
 {
     //return the total number of items in the carousel
-    return [_items count];
+    return [objarray count];
 }
 
 - (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
@@ -280,8 +321,8 @@
     UILabel *label = nil;
     
     //create new view if no view is available for recycling
-    if (view == nil)
-    {
+//    if (view == nil)
+//    {
         view = [[UIView alloc] initWithFrame:self.swipeView.bounds];
         view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
@@ -300,97 +341,140 @@
         }
         else
         {
-
-            if(index ==1)
-            {
                 Fix = [[FixtureView alloc] initWithNibName:@"FixtureView" bundle:nil];
                 Fix.view.frame = CGRectMake(-5, 0, self.swipeView.bounds.size.width, self.swipeView.bounds.size.height);
-                //[self.header_scroll addSubview:Fix.view];
+                
                 Fix.datelbl.text = [[objarray valueForKey:@"date"] objectAtIndex:index];
                 Fix.timelbl.text = [[objarray valueForKey:@"time"] objectAtIndex:index];
                 Fix.groundname.text = [[objarray valueForKey:@"ground"] objectAtIndex:index];
                 Fix.team1.text = [[objarray valueForKey:@"team1"] objectAtIndex:index];
                 Fix.team2.text = [[objarray valueForKey:@"team2"] objectAtIndex:index];
                 
-                NSString *key = [[objarray valueForKey:@"team1"] objectAtIndex:index];
                 
-                if([ key isEqualToString:@"India"])
-                {
-                    Fix.team1img.image = [UIImage imageNamed:@"Indimage"];
-                    Fix.team2img.image = [UIImage imageNamed:@"Slimage"];
-                    
-                    Fix.team1logo.image = [UIImage imageNamed:@"Indialogo"];
-                    Fix.team2logo.image = [UIImage imageNamed:@"Srilankalogo"];
-                    
-                }
-                else
-                {
-                    Fix.team1img.image = [UIImage imageNamed:@"Slimage"];
-                    Fix.team2img.image = [UIImage imageNamed:@"Indimage"];
-                    
-                    Fix.team1logo.image = [UIImage imageNamed:@"Srilankalogo"];
-                    Fix.team2logo.image = [UIImage imageNamed:@"Indialogo"];
-                }
-
-                
-                
-                [Fix.btn addTarget:self action:@selector(didClickBtn:) forControlEvents:UIControlEventTouchUpInside];
-//                Fix.Rimg.image = [UIImage imageNamed:@"MI-left"];
-//                 Fix.Limg.image = [UIImage imageNamed:@"DD-right"];
-                //[view addSubview:Fix.view];
+                [Fix.team1logo sd_setImageWithURL:[NSURL URLWithString: [self checkNull:[[objarray valueForKey:@"TeamALogo"] objectAtIndex:index]]] placeholderImage:[UIImage imageNamed:@"no-image"]];
+                [Fix.team2logo sd_setImageWithURL:[NSURL URLWithString: [self checkNull:[[objarray valueForKey:@"TeamBLogo"] objectAtIndex:index]]] placeholderImage:[UIImage imageNamed:@"no-image"]];
+            
+            
+            
+            //NSString *key1 = [[objarray valueForKey:@"team1"] objectAtIndex:index];
+            
+            if([ Fix.team1.text isEqualToString:@"KKR"])
+            {
+        
+                Fix.team1img.image = [UIImage imageNamed:@"KKR-right"];
                 
             }
-            else
+            else if([ Fix.team1.text isEqualToString:@"MI"])
             {
-
-                Fix = [[FixtureView alloc] initWithNibName:@"FixtureView" bundle:nil];
-                Fix.view.frame = CGRectMake(-5, 0, self.swipeView.bounds.size.width, self.swipeView.bounds.size.height);
+            
+                Fix.team1img.image = [UIImage imageNamed:@"MI-right"];
                 
-                Fix.datelbl.text = [[objarray valueForKey:@"date"] objectAtIndex:index];
-                Fix.timelbl.text = [[objarray valueForKey:@"time"] objectAtIndex:index];
-                Fix.groundname.text = [[objarray valueForKey:@"ground"] objectAtIndex:index];
-                Fix.team1.text = [[objarray valueForKey:@"team1"] objectAtIndex:index];
-                Fix.team2.text = [[objarray valueForKey:@"team2"] objectAtIndex:index];
+            } else if([ Fix.team1.text isEqualToString:@"RR"])
+            {
+                Fix.team1img.image = [UIImage imageNamed:@"RR-left"];
                 
+            } else if([ Fix.team1.text isEqualToString:@"DD"])
+            {
                 
-                NSString *key = [[objarray valueForKey:@"team1"] objectAtIndex:index];
+                Fix.team1img.image = [UIImage imageNamed:@"DD-right"];
                 
-                if([ key isEqualToString:@"India"])
-                {
-                    Fix.team1img.image = [UIImage imageNamed:@"Indimage"];
-                    Fix.team2img.image = [UIImage imageNamed:@"Slimage"];
-                    
-                    
-                    Fix.team1logo.image = [UIImage imageNamed:@"Indialogo"];
-                    Fix.team2logo.image = [UIImage imageNamed:@"Srilankalogo"];
-                    
-                }
-                else
-                {
-                    Fix.team1img.image = [UIImage imageNamed:@"Slimage"];
-                    Fix.team2img.image = [UIImage imageNamed:@"Indimage"];
-                    
-                    Fix.team1logo.image = [UIImage imageNamed:@"Srilankalogo"];
-                    Fix.team2logo.image = [UIImage imageNamed:@"Indialogo"];
-                    
-                }
-
+            } else if([ Fix.team1.text isEqualToString:@"SRH"])
+            {
                 
-                //[self.header_scroll addSubview:Fix.view];
-                [Fix.btn addTarget:self action:@selector(didClickBtn:) forControlEvents:UIControlEventTouchUpInside];
-                //[view addSubview:Fix.view];
+                Fix.team1img.image = [UIImage imageNamed:@"SRH-right"];
+                
+            }
+            else if([ Fix.team1.text isEqualToString:@"CSK"])
+            {
+                Fix.team1img.image = [UIImage imageNamed:@"CSK-left"];
+                
+            } else if([ Fix.team1.text isEqualToString:@"RCB"])
+            {
+                Fix.team1img.image = [UIImage imageNamed:@"RCB-left"];
+                
+            } else if([ Fix.team1.text isEqualToString:@"KXIP"])
+            {
+                
+                Fix.team1img.image = [UIImage imageNamed:@"KXIP-right"];
+                
             }
             
-        }
+            
+            
+            if([ Fix.team2.text isEqualToString:@"KKR"])
+            {
+                
+                Fix.team2img.image = [UIImage imageNamed:@"KKR-left"];
+                
+            }
+            else if([ Fix.team2.text isEqualToString:@"MI"])
+            {
+                
+                Fix.team2img.image = [UIImage imageNamed:@"MI-left"];
+                
+            } else if([ Fix.team2.text isEqualToString:@"RR"])
+            {
+                Fix.team2img.image = [UIImage imageNamed:@"RR-right"];
+                
+            } else if([ Fix.team2.text isEqualToString:@"DD"])
+            {
+                
+                Fix.team2img.image = [UIImage imageNamed:@"DD-left"];
+                
+            } else if([ Fix.team2.text isEqualToString:@"SRH"])
+            {
+                
+                Fix.team2img.image = [UIImage imageNamed:@"SRH-left"];
+                
+            }
+            else if([ Fix.team2.text isEqualToString:@"CSK"])
+            {
+                Fix.team2img.image = [UIImage imageNamed:@"CSK-right"];
+                
+            } else if([ Fix.team2.text isEqualToString:@"RCB"])
+            {
+                Fix.team2img.image = [UIImage imageNamed:@"RCB-right"];
+                
+            } else if([ Fix.team2.text isEqualToString:@"KXIP"])
+            {
+                
+                Fix.team2img.image = [UIImage imageNamed:@"KXIP-left"];
+                
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            //NSString *key2 = [[objarray valueForKey:@"team2"] objectAtIndex:index];
+
+            //if([ key2 isEqualToString:@"MI"])
+            //{
+            //   Fix.team2img.image = [UIImage imageNamed:@"MI-left"];
+
+           // }
+
+
+                
+                //[self.header_scroll addSubview:Fix.view];
+                [Fix.btn addTarget:self action:@selector(didClickBtn:) forControlEvents:UIControlEventTouchUpInside];
+                //[view addSubview:Fix.view];
+           // }
+            
+       // }
         
         [view addSubview:Fix.view];
-    }
-    else
-    {
-        //get a reference to the label in the recycled view
-        label = (UILabel *)[view viewWithTag:1];
-    }
-    
+//    }
+//    else
+//    {
+//        //get a reference to the label in the recycled view
+//        label = (UILabel *)[view viewWithTag:1];
+//    }
+        }
     
     return view;
 }
@@ -410,6 +494,13 @@
 }
 
 
+-(NSString *)checkNull:(NSString *)_value
+{
+    if ([_value isEqual:[NSNull null]] || _value == nil || [_value isEqual:@"<null>"]) {
+        _value=@"";
+    }
+    return _value;
+}
 
 -(void)ResultsWebservice
 {
@@ -462,24 +553,113 @@
                 self.resulttime.text = [NSString stringWithFormat:@"%@ %@",time,local];
                 
                 
-                NSString *key = [firstobj valueForKey:@"TeamA"];
-                
-                if([ key isEqualToString:@"India"])
-                {
-                    self.img1.image = [UIImage imageNamed:@"Indialogo"];
-                    self.img2.image = [UIImage imageNamed:@"Srilankalogo"];
+//                NSString *key = [firstobj valueForKey:@"TeamA"];
+//
+//                if([ key isEqualToString:@"India"])
+//                {
+//                    self.img1.image = [UIImage imageNamed:@"Indialogo"];
+//                    self.img2.image = [UIImage imageNamed:@"Srilankalogo"];
+//
+//                    self.resultImg1.image = [UIImage imageNamed:@"Indimage"];
+//                    self.resultImg2.image = [UIImage imageNamed:@"Slimage"];
+//                }
+//                else
+//                {
+//                    self.img1.image = [UIImage imageNamed:@"Srilankalogo"];
+//                    self.img2.image = [UIImage imageNamed:@"Indialogo"];
+//
+//                    self.resultImg1.image = [UIImage imageNamed:@"Slimage"];
+//                    self.resultImg2.image = [UIImage imageNamed:@"Indimage"];
+//                }
                     
-                    self.resultImg1.image = [UIImage imageNamed:@"Indimage"];
-                    self.resultImg2.image = [UIImage imageNamed:@"Slimage"];
-                }
-                else
-                {
-                    self.img1.image = [UIImage imageNamed:@"Srilankalogo"];
-                    self.img2.image = [UIImage imageNamed:@"Indialogo"];
                     
-                    self.resultImg1.image = [UIImage imageNamed:@"Slimage"];
-                    self.resultImg2.image = [UIImage imageNamed:@"Indimage"];
-                }
+                    [self.img1 sd_setImageWithURL:[NSURL URLWithString: [self checkNull:[firstobj valueForKey:@"TeamALogo"] ]] placeholderImage:[UIImage imageNamed:@"no-image"]];
+                    
+                    [self.img2 sd_setImageWithURL:[NSURL URLWithString: [self checkNull:[firstobj valueForKey:@"TeamBLogo"]]] placeholderImage:[UIImage imageNamed:@"no-image"]];
+                    
+                    if([ [firstobj valueForKey:@"TeamA"] isEqualToString:@"KKR"])
+                    {
+                        
+                        self.resultImg1.image = [UIImage imageNamed:@"KKR-right"];
+                        
+                    }
+                    else if([ [firstobj valueForKey:@"TeamA"] isEqualToString:@"MI"])
+                    {
+                        
+                        self.resultImg1.image = [UIImage imageNamed:@"MI-right"];
+                        
+                    } else if([ [firstobj valueForKey:@"TeamA"] isEqualToString:@"RR"])
+                    {
+                        self.resultImg1.image = [UIImage imageNamed:@"RR-left"];
+                        
+                    } else if([ [firstobj valueForKey:@"TeamA"] isEqualToString:@"DD"])
+                    {
+                        
+                        self.resultImg1.image = [UIImage imageNamed:@"DD-right"];
+                        
+                    } else if([ [firstobj valueForKey:@"TeamA"] isEqualToString:@"SRH"])
+                    {
+                        
+                        self.resultImg1.image = [UIImage imageNamed:@"SRH-right"];
+                        
+                    }
+                    else if([ [firstobj valueForKey:@"TeamA"] isEqualToString:@"CSK"])
+                    {
+                        self.resultImg1.image = [UIImage imageNamed:@"CSK-left"];
+                        
+                    } else if([ [firstobj valueForKey:@"TeamA"] isEqualToString:@"RCB"])
+                    {
+                        self.resultImg1.image = [UIImage imageNamed:@"RCB-left"];
+                        
+                    } else if([ [firstobj valueForKey:@"TeamA"] isEqualToString:@"KXIP"])
+                    {
+                        
+                        self.resultImg1.image = [UIImage imageNamed:@"KXIP-right"];
+                        
+                    }
+                    
+                    
+                    
+                    if([ [firstobj valueForKey:@"TeamB"] isEqualToString:@"KKR"])
+                    {
+                        
+                        self.resultImg2.image = [UIImage imageNamed:@"KKR-left"];
+                        
+                    }
+                    else if([ [firstobj valueForKey:@"TeamB"] isEqualToString:@"MI"])
+                    {
+                        
+                        self.resultImg2.image = [UIImage imageNamed:@"MI-left"];
+                        
+                    } else if([ [firstobj valueForKey:@"TeamB"] isEqualToString:@"RR"])
+                    {
+                        self.resultImg2.image = [UIImage imageNamed:@"RR-right"];
+                        
+                    } else if([ [firstobj valueForKey:@"TeamB"] isEqualToString:@"DD"])
+                    {
+                        
+                        self.resultImg2.image = [UIImage imageNamed:@"DD-left"];
+                        
+                    } else if([ [firstobj valueForKey:@"TeamB"] isEqualToString:@"SRH"])
+                    {
+                        
+                        self.resultImg2.image = [UIImage imageNamed:@"SRH-left"];
+                        
+                    }
+                    else if([ [firstobj valueForKey:@"TeamB"] isEqualToString:@"CSK"])
+                    {
+                        self.resultImg2.image = [UIImage imageNamed:@"CSK-right"];
+                        
+                    } else if([ [firstobj valueForKey:@"TeamB"] isEqualToString:@"RCB"])
+                    {
+                        self.resultImg2.image = [UIImage imageNamed:@"RCB-right"];
+                        
+                    } else if([ [firstobj valueForKey:@"TeamB"] isEqualToString:@"KXIP"])
+                    {
+                        
+                        self.resultImg2.image = [UIImage imageNamed:@"KXIP-left"];
+                        
+                    }
                 
                 
                 NSString *ground = [firstobj valueForKey:@"Ground"];
@@ -546,6 +726,7 @@
                 Appobj.Scorearray = scoreArray;
                 Appobj.backkey = @"no";
                 //[self.navigationController pushViewController:objFix animated:YES];
+                    [self PointsTableWebservice];
             }
             }
             
@@ -643,6 +824,8 @@
                // [dic setValue:realdate forKey:@"date"];
                 [dic setValue:team1 forKey:@"team1"];
                 [dic setValue:team2 forKey:@"team2"];
+                [dic setValue:[sepArray valueForKey:@"TeamALogo"] forKey:@"TeamALogo"];
+                [dic setValue:[sepArray valueForKey:@"TeamBLogo"] forKey:@"TeamBLogo"];
                     
                 [objarray addObject:dic];
                     
@@ -670,8 +853,17 @@
                 
                 
                 
+                [self.page_control addTarget:self action:@selector(pageChanged) forControlEvents:UIControlEventValueChanged];
+                NSUInteger pageCount =self.items.count;
+                self.page_control.numberOfPages =pageCount;
+                [NSTimer scheduledTimerWithTimeInterval:3.5
+                                                 target:self
+                                               selector:@selector(pageChanged)
+                                               userInfo:nil
+                                                repeats:YES];
                 
-                [self viewDidLoad];
+                
+                //[self viewDidLoad];
                 [self.swipeView reloadData];
                 
             }
@@ -688,6 +880,55 @@
         }];
     }
 
+}
+
+-(void)PointsTableWebservice
+{
+    [COMMON loadingIcon:self.view];
+    if([COMMON isInternetReachable])
+    {
+        
+        //NSString *URLString =  [URL_FOR_RESOURCE(@"") stringByAppendingString:[NSString stringWithFormat:@"%@",FixturesKey]];
+        
+        NSString *URLString = @"http://192.168.0.152:8083/CSK.svc/FETCHCSKPOINTTABLES";
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        AFHTTPRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+        [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        
+        manager.requestSerializer = requestSerializer;
+        
+        
+        NSString *YEAR = @"2018";
+        
+        
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        if(YEAR)   [dic    setObject:YEAR     forKey:@"YEAR"];
+        
+        
+        NSLog(@"parameters : %@",dic);
+        [manager POST:URLString parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"response ; %@",responseObject);
+            
+            if(responseObject >0)
+            {
+                self.pointsTableArray = [[NSMutableArray alloc]init];
+                self.pointsTableArray = [responseObject valueForKey:@"lstPointTable"];
+                
+                [self.PointsTable reloadData];
+            }
+            
+            [COMMON RemoveLoadingIcon];
+            [self.view setUserInteractionEnabled:YES];
+            
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"failed");
+            [COMMON webServiceFailureError];
+            [self.view setUserInteractionEnabled:YES];
+            
+        }];
+    }
+    
 }
 
 -(void)valuesCount

@@ -12,7 +12,6 @@
 		04C8518D1FB992A100AE18C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C8518B1FB992A100AE18C9 /* Main.storyboard */; };
 		04C8518F1FB992A100AE18C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C8518E1FB992A100AE18C9 /* Assets.xcassets */; };
 		04C851921FB992A100AE18C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C851901FB992A100AE18C9 /* LaunchScreen.storyboard */; };
-		AD6B1169D5998EFF67F6E55E /* libPods-NewSportsProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFBEF9204DD9F2FE82CBACE7 /* libPods-NewSportsProject.a */; };
 		CE91ABF420A1D1F400DBA042 /* CommentaryVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91AACD20A1D1F200DBA042 /* CommentaryVCCell.m */; };
 		CE91ABF520A1D1F400DBA042 /* CommentaryVCCell_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE91AACE20A1D1F200DBA042 /* CommentaryVCCell_iPad.xib */; };
 		CE91ABF620A1D1F400DBA042 /* CommentaryVCCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE91AACF20A1D1F200DBA042 /* CommentaryVCCell_iPhone.xib */; };
@@ -147,6 +146,7 @@
 		CE91AC8920A1D1F400DBA042 /* TeamMemDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABED20A1D1F400DBA042 /* TeamMemDetails.m */; };
 		CE91AC8A20A1D1F400DBA042 /* TeamsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABF020A1D1F400DBA042 /* TeamsVC.m */; };
 		CE91AC8B20A1D1F400DBA042 /* VideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABF320A1D1F400DBA042 /* VideoPlayerViewController.m */; };
+		D8A8BC8F98953E7EE9D4DDAF /* Pods_NewSportsProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F832D5A2810D0DB098D1230 /* Pods_NewSportsProject.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -159,6 +159,7 @@
 		04C851911FB992A100AE18C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04C851931FB992A100AE18C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25AD96EF9C20F56F008DEF5B /* Pods-NewSportsProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewSportsProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewSportsProject/Pods-NewSportsProject.release.xcconfig"; sourceTree = "<group>"; };
+		8F832D5A2810D0DB098D1230 /* Pods_NewSportsProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewSportsProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE91AACC20A1D1F200DBA042 /* CommentaryVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentaryVCCell.h; sourceTree = "<group>"; };
 		CE91AACD20A1D1F200DBA042 /* CommentaryVCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentaryVCCell.m; sourceTree = "<group>"; };
 		CE91AACE20A1D1F200DBA042 /* CommentaryVCCell_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentaryVCCell_iPad.xib; sourceTree = "<group>"; };
@@ -362,7 +363,6 @@
 		CE91ABF020A1D1F400DBA042 /* TeamsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamsVC.m; sourceTree = "<group>"; };
 		CE91ABF220A1D1F400DBA042 /* VideoPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayerViewController.h; sourceTree = "<group>"; };
 		CE91ABF320A1D1F400DBA042 /* VideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayerViewController.m; sourceTree = "<group>"; };
-		CFBEF9204DD9F2FE82CBACE7 /* libPods-NewSportsProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NewSportsProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E80A63DBFBB583E57E004ABB /* Pods-NewSportsProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewSportsProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewSportsProject/Pods-NewSportsProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -371,7 +371,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD6B1169D5998EFF67F6E55E /* libPods-NewSportsProject.a in Frameworks */,
+				D8A8BC8F98953E7EE9D4DDAF /* Pods_NewSportsProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +437,7 @@
 		583F00714E0CDE514F57C6AF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CFBEF9204DD9F2FE82CBACE7 /* libPods-NewSportsProject.a */,
+				8F832D5A2810D0DB098D1230 /* Pods_NewSportsProject.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1216,9 +1216,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NewSportsProject/Pods-NewSportsProject-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

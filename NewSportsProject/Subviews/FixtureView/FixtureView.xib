@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -38,11 +38,11 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gmI-cd-UOW">
-                    <rect key="frame" x="0.0" y="0.0" width="182" height="240"/>
+                    <rect key="frame" x="0.0" y="0.0" width="202" height="240"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k0b-V1-lK0">
-                    <rect key="frame" x="183" y="0.0" width="182" height="240"/>
+                    <rect key="frame" x="168" y="0.0" width="197" height="240"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2rI-Xz-pb3">
@@ -188,8 +188,8 @@
                 <constraint firstItem="i1J-ln-W5c" firstAttribute="centerX" secondItem="Yi0-g5-SOQ" secondAttribute="centerX" id="J8o-sc-bjv"/>
                 <constraint firstAttribute="trailing" secondItem="Cgz-Jy-sDm" secondAttribute="trailing" id="JcT-ti-fU6"/>
                 <constraint firstItem="gmI-cd-UOW" firstAttribute="leading" secondItem="Yi0-g5-SOQ" secondAttribute="leading" id="KcV-tB-SzV"/>
-                <constraint firstItem="i1J-ln-W5c" firstAttribute="leading" secondItem="gmI-cd-UOW" secondAttribute="trailing" id="L0G-e9-wXs"/>
-                <constraint firstItem="k0b-V1-lK0" firstAttribute="leading" secondItem="i1J-ln-W5c" secondAttribute="trailing" id="UjY-bQ-XFz"/>
+                <constraint firstItem="i1J-ln-W5c" firstAttribute="leading" secondItem="gmI-cd-UOW" secondAttribute="trailing" constant="-20" id="L0G-e9-wXs"/>
+                <constraint firstItem="k0b-V1-lK0" firstAttribute="leading" secondItem="i1J-ln-W5c" secondAttribute="trailing" constant="-15" id="UjY-bQ-XFz"/>
                 <constraint firstItem="2BG-c6-cZl" firstAttribute="leading" secondItem="Yi0-g5-SOQ" secondAttribute="leading" constant="15" id="a8X-Ub-xE3"/>
                 <constraint firstItem="gmI-cd-UOW" firstAttribute="top" secondItem="Yi0-g5-SOQ" secondAttribute="top" id="krx-6h-6X9"/>
                 <constraint firstAttribute="trailing" secondItem="2rI-Xz-pb3" secondAttribute="trailing" id="nZE-7w-bke"/>

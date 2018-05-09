@@ -33,6 +33,7 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *teamBLogo;
 @property (strong, nonatomic) IBOutlet UILabel *teamBNameLbl;
+@property (strong, nonatomic) IBOutlet UILabel *teamBScoreLbl;
 @property (strong, nonatomic) IBOutlet UILabel *teamBOversLbl;
 
 @property (strong, nonatomic) IBOutlet UILabel *runRateLbl;

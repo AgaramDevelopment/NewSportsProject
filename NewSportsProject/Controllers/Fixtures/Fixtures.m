@@ -12,7 +12,7 @@
 #import "AdvanceFilter.h"
 #import "AppCommon.h"
 #import "WebService.h"
-
+@import SDWebImage;
 
 
 @interface Fixtures ()
@@ -190,20 +190,22 @@
         cell.team1.text = [[objarray valueForKey:@"team1"] objectAtIndex:indexPath.row];
         cell.team2.text = [[objarray valueForKey:@"team2"] objectAtIndex:indexPath.row];
         
+        [cell.team1Img sd_setImageWithURL:[NSURL URLWithString: [self checkNull:[[objarray valueForKey:@"TeamALogo"] objectAtIndex:indexPath.row]]] placeholderImage:[UIImage imageNamed:@"no-image"]];
+        [cell.team2Img sd_setImageWithURL:[NSURL URLWithString: [self checkNull:[[objarray valueForKey:@"TeamBLogo"] objectAtIndex:indexPath.row]]] placeholderImage:[UIImage imageNamed:@"no-image"]];
         
-        NSString *key = [[objarray valueForKey:@"team1"] objectAtIndex:indexPath.row];
-        
-        if([ key isEqualToString:@"India"])
-        {
-           cell.team1Img.image = [UIImage imageNamed:@"Indialogo"];
-           cell.team2Img.image = [UIImage imageNamed:@"Srilankalogo"];
-            
-        }
-        else
-        {
-            cell.team1Img.image = [UIImage imageNamed:@"Srilankalogo"];
-            cell.team2Img.image = [UIImage imageNamed:@"Indialogo"];
-        }
+//        NSString *key = [[objarray valueForKey:@"team1"] objectAtIndex:indexPath.row];
+//
+//        if([ key isEqualToString:@"India"])
+//        {
+//           cell.team1Img.image = [UIImage imageNamed:@""];
+//           cell.team2Img.image = [UIImage imageNamed:@""];
+//
+//        }
+//        else
+//        {
+//            cell.team1Img.image = [UIImage imageNamed:@""];
+//            cell.team2Img.image = [UIImage imageNamed:@""];
+//        }
 
     
     return cell;
@@ -260,6 +262,14 @@
     {
         return 140;
     }
+}
+
+-(NSString *)checkNull:(NSString *)_value
+{
+    if ([_value isEqual:[NSNull null]] || _value == nil || [_value isEqual:@"<null>"]) {
+        _value=@"";
+    }
+    return _value;
 }
 
 -(void)FixturesWebservice
@@ -329,6 +339,8 @@
                     // [dic setValue:realdate forKey:@"date"];
                     [dic setValue:team1 forKey:@"team1"];
                     [dic setValue:team2 forKey:@"team2"];
+                    [dic setValue:[sepArray valueForKey:@"TeamALogo"] forKey:@"TeamALogo"];
+                    [dic setValue:[sepArray valueForKey:@"TeamBLogo"] forKey:@"TeamBLogo"];
                     
                     [objarray addObject:dic];
                     

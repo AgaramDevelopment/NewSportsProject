@@ -10,10 +10,6 @@
 #import "DashBoard.h"
 #import "Fixtures.h"
 #import "DashBoard.h"
-
-
-
-
 @interface tabViewController ()
 {
     DashBoard *dash;

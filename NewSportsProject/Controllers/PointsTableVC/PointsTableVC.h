@@ -26,4 +26,6 @@
 @property (nonatomic,strong) IBOutlet UIView * v1;
 @property (nonatomic,strong) IBOutlet UIView * v2;
 
+@property (nonatomic,strong)  NSMutableArray * PointsArray;
+
 @end

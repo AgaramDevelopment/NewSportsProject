@@ -119,7 +119,7 @@
 {
     if(isList)
     {
-        return 4;
+        return self.PointsArray.count;
     }
     else
     {
@@ -140,8 +140,6 @@
         
         static NSString *MyIdentifier = @"MyIdentifier";
         
-        
-        
         PointsTableCell *cell = [tableView dequeueReusableCellWithIdentifier:nil];
         if (cell == nil)
         {
@@ -158,14 +156,34 @@
         }
         
         cell = self.objCell;
-        int num = indexPath.row+1;
-        cell.Position.text = [NSString stringWithFormat:@"%d",num];
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        //cell = self.objsubcell;
         
-        // cell.textLabel.text = self.playername[indexPath.row];
         
-        //cell.textColor = [UIColor whiteColor];
+        cell.TeamName.text = [[self.PointsArray valueForKey:@"TEAMSHORTNAME"] objectAtIndex:indexPath.row];
+        cell.Played.text = [[self.PointsArray valueForKey:@"MATCHPLAYED"] objectAtIndex:indexPath.row];
+        cell.Won.text = [[self.PointsArray valueForKey:@"WON"] objectAtIndex:indexPath.row];
+        cell.Lost.text = [[self.PointsArray valueForKey:@"LOST"] objectAtIndex:indexPath.row];
+        cell.Tied.text = [[self.PointsArray valueForKey:@"TIED"] objectAtIndex:indexPath.row];
+        cell.NoResult.text = [[self.PointsArray valueForKey:@"NORESULT"] objectAtIndex:indexPath.row];
+        cell.NetRR.text = [[self.PointsArray valueForKey:@"NETRUNRATE"] objectAtIndex:indexPath.row];
+        cell.Points.text = [[self.PointsArray valueForKey:@"POINTS"] objectAtIndex:indexPath.row];
+        
+        if([cell.TeamName.text isEqualToString:@" CSK"])
+        {
+            cell.contentView.backgroundColor = [UIColor yellowColor];
+            
+            cell.TeamName.textColor = [UIColor redColor];
+            cell.Played.textColor = [UIColor redColor];
+            cell.Won.textColor = [UIColor redColor];
+            cell.Lost.textColor = [UIColor redColor];
+            cell.Tied.textColor = [UIColor redColor];
+            cell.NoResult.textColor = [UIColor redColor];
+            cell.NetRR.textColor = [UIColor redColor];
+            cell.Points.textColor = [UIColor redColor];
+            
+        }
+        
         
         return cell;
     }
