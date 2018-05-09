@@ -7032,7 +7032,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="260"/>
                                         <color key="backgroundColor" red="0.1058823529" green="0.16078431369999999" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RR 2.34 / RRR 5.98   " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDv-rG-i6B">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RR 2.34 / RRR 5.98   " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDv-rG-i6B" userLabel="RR 2.34 / RRR 5.98">
                                         <rect key="frame" x="0.0" y="230" width="164" height="30"/>
                                         <color key="backgroundColor" red="0.08235294118" green="0.10980392160000001" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -7487,8 +7487,19 @@
                         <outlet property="Plbl" destination="a3j-ty-yuh" id="ljG-xM-sGI"/>
                         <outlet property="ballsTbl" destination="dCL-c7-iDX" id="eWF-P9-vYq"/>
                         <outlet property="commentTbl" destination="Nzq-oS-Iz5" id="s9O-0O-9H3"/>
+                        <outlet property="competitionTypeLbl" destination="f4l-4j-Vh2" id="OIG-so-MS9"/>
+                        <outlet property="groundLbl" destination="owx-Y3-Iet" id="eRh-As-6CB"/>
                         <outlet property="next" destination="ue3-hW-5eL" id="UuR-Lg-etB"/>
                         <outlet property="previous" destination="ZAd-Fv-SkT" id="oGk-iO-axC"/>
+                        <outlet property="runRateLbl" destination="fDv-rG-i6B" id="hCV-IQ-GPH"/>
+                        <outlet property="teamALogo" destination="vIN-RM-fG2" id="9sb-ze-cpJ"/>
+                        <outlet property="teamANameLbl" destination="ZE5-9a-zIQ" id="cZf-cg-avz"/>
+                        <outlet property="teamAOversLbl" destination="OXF-QL-4Nb" id="CtX-Yf-Q4U"/>
+                        <outlet property="teamAScoreLbl" destination="Sfq-0f-KeY" id="VFj-st-m9R"/>
+                        <outlet property="teamBLogo" destination="pd4-mr-Oac" id="Twl-8i-NCj"/>
+                        <outlet property="teamBNameLbl" destination="IXd-T1-JTg" id="VId-IQ-c7J"/>
+                        <outlet property="teamBOversLbl" destination="roU-r6-jMq" id="lqJ-XN-yhD"/>
+                        <outlet property="wonMatchLbl" destination="26R-fc-ShG" id="PqV-F0-5Ec"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1b0-yo-2q5" userLabel="First Responder" sceneMemberID="firstResponder"/>

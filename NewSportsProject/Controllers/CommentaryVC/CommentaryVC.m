@@ -9,6 +9,9 @@
 #import "CommentaryVC.h"
 #import "CustomNavigation.h"
 #import "Config.h"
+#import "WebService.h"
+#import "AppCommon.h"
+
 
 @interface CommentaryVC ()
 
@@ -25,6 +28,7 @@
     [super viewDidLoad];
     
     [self customnavigationmethod];
+    
     self.img1.layer.masksToBounds = true;
     self.img1.clipsToBounds = true;
     self.img1.layer.cornerRadius = self.img1.frame.size.width/2;
@@ -64,8 +68,6 @@
     self.previous.hidden = YES;
     
     
-    
-    
 }
 
 -(void)customnavigationmethod
@@ -99,7 +101,6 @@
     objCustomNavigation.Cancelbtn.hidden = YES;
     
 }
-
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -194,8 +195,5 @@
     self.previous.hidden = YES;
     self.next.hidden = NO;
 }
-
-
-
 
 @end
