@@ -18,7 +18,7 @@
     [super awakeFromNib];
     // Initialization code
     
-    
+  /*
     self.Ball1.layer.masksToBounds = true;
     self.Ball1.clipsToBounds = true;
     self.Ball1.layer.cornerRadius = self.Ball1.frame.size.width/2;
