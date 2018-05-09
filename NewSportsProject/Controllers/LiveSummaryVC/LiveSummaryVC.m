@@ -14,7 +14,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface LiveSummaryVC () {
-    NSMutableArray *liveScoreArray;
+    NSMutableArray *recentLiveScore;
 }
 
 @end
@@ -108,7 +108,7 @@
 {
     [COMMON loadingIcon:self.view];
     
-    NSString *URLString =  @"http://csk.agaraminfotech.com/CSK.svc/FETCHPOSTMATCHCOMMENTRY";
+    NSString *URLString =  @"http://192.168.0.152:8083/CSK.svc/MOBILE_FETCHLIVESCORE";
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     AFHTTPRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
@@ -118,14 +118,17 @@
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic    setObject:@"UCC0000274"     forKey:@"COMPETITIONCODE"];
-    [dic    setObject:@"DMSC116D017C2AA4FC420180302113612078"     forKey:@"MATCHCODE"];
+    [dic    setObject:@"DMSC116D017C2AA4FC420180302114112079"     forKey:@"MATCHCODE"];
     
     NSLog(@"parameters : %@",dic);
     [manager POST:URLString parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"response ; %@",responseObject);
-        liveScoreArray = [NSMutableArray new];
-        liveScoreArray = [responseObject valueForKey:@"lstLiveScore"];
-        [self liveScoreDetails:liveScoreArray];
+        
+        if([[responseObject valueForKey:@"Status"] integerValue] == 1)
+        {
+            [self liveScoreDetails:responseObject];
+        }
+        
         
         [COMMON RemoveLoadingIcon];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -134,42 +137,71 @@
     }];
 }
 
-- (void)liveScoreDetails:(NSMutableArray*)liveScore {
+- (void)liveScoreDetails:(id)liveScore {
     
-    for (id key in liveScore) {
+    recentLiveScore = [NSMutableArray new];
+    recentLiveScore = [liveScore valueForKey:@"lstRecentLiveScore"];
+    NSMutableArray *matchDetailsArray = [liveScore valueForKey:@"lstMatchDetails"];
+    for (id key in matchDetailsArray) {
+        self.competitionTypeLbl.text = [key valueForKey:@"COMPETITIONNAME"];
+        self.groundLbl.text = [key valueForKey:@"GROUNDNAME"];
+    }
+    
+    NSMutableArray *liveScoreArray = [liveScore valueForKey:@"lstLiveScore"];
+    
+    for (id key in liveScoreArray) {
         
         [self.teamALogo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://csk.agaraminfotech.com/%@", [key valueForKey:@"BATTEAMLOGO"]]] placeholderImage:[UIImage imageNamed:@"no-image"]];
         
-        self.teamANameLbl.text = [self checkNull:[key valueForKey:@"FIRSTINNINGSSHORTNAME"]];
-        self.teamAScoreLbl.text = [self checkNull:[key valueForKey:@"FIRSTINNINGSSCORE"]];
+        self.teamANameLbl.text = [self checkNull:[key valueForKey:@"BATTEAMSHORTNAME"]];
+        self.teamAScoreLbl.text = [self checkNull:[key valueForKey:@"FIRSTINNINGSTOTAL"]];
         self.teamAOversLbl.text = [NSString stringWithFormat:@"(%@)", [self checkNull:[key valueForKey:@"FIRSTINNINGSOVERS"]]];
         
         [self.teamBLogo sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://csk.agaraminfotech.com/%@", [key valueForKey:@"BOWLTEAMLOGO"]]] placeholderImage:[UIImage imageNamed:@"no-image"]];
-        self.teamBNameLbl.text = [self checkNull:[key valueForKey:@"SECONDINNINGSSHORTNAME"]];
-        self.teamBScoreLbl.text = [self checkNull:[key valueForKey:@"SECONDINNINGSSCORE"]];
-        self.teamBOversLbl.text = [NSString stringWithFormat:@"(%@)", [self checkNull:[key valueForKey:@"SECONDINNINGSOVERS"]]];
+        self.teamBNameLbl.text = [self checkNull:[key valueForKey:@"BOWLTEAMSHORTNAME"]];
+        
+        if ([[key valueForKey:@"SECONDINNINGSSCORE"] isEqualToString:@""]) {
+            self.teamBScoreLbl.text = @"0";
+        } else {
+             self.teamBScoreLbl.text = [self checkNull:[key valueForKey:@"SECONDINNINGSSCORE"]];
+        }
+        
+        if ([[self checkNull:[key valueForKey:@"SECONDINNINGSOVERS"]] isEqualToString:@""]) {
+            self.teamBOversLbl.text = @"(0)";
+        } else {
+            self.teamBOversLbl.text = [NSString stringWithFormat:@"(%@)", [self checkNull:[key valueForKey:@"SECONDINNINGSOVERS"]]];
+        }
         
         self.runRateLbl.text = [NSString stringWithFormat:@"RR %@ / RRR %@", [self checkNull:[key valueForKey:@"RUNRATE"]], [self checkNull:[key valueForKey:@"REQRUNRATE"]]];
         
         self.matchWonLbl.text = [self checkNull:[key valueForKey:@"MATCHSTATUS"]];
         
-        
+        //Batting & Bowling
         self.partnershipRunsLbl.text = [NSString stringWithFormat:@"%@ [%@]", [self checkNull:[key valueForKey:@"PARTNERSHIPRUNS"]], [self checkNull:[key valueForKey:@"PARTNERSHIPBALLS"]]];
-        [self.battingStrikerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://csk.agaraminfotech.com/%@", [key valueForKey:@"BATTEAMLOGO"]]] placeholderImage:[UIImage imageNamed:@"no-image"]];
+        [self.battingStrikerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", [key valueForKey:@"BATTEAMLOGO"]]] placeholderImage:[UIImage imageNamed:@"testimgplayer"]];
         self.battingStrikerNameLbl.text = [self checkNull:[key valueForKey:@"STRIKERNAME"]];
         self.battingStrikerRunsLbl.text = [NSString stringWithFormat:@"%@ [%@]", [self checkNull:[key valueForKey:@"STRIKERTOTALRUNS"]], [self checkNull:[key valueForKey:@"STRIKERTOTALBALLS"]]];
         
         
-        [self.battingNonStrikerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://csk.agaraminfotech.com/%@", [key valueForKey:@"BATTEAMLOGO"]]] placeholderImage:[UIImage imageNamed:@"no-image"]];
+        [self.battingNonStrikerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", [key valueForKey:@"BATTEAMLOGO"]]] placeholderImage:[UIImage imageNamed:@"virat"]];
         self.battingNonStrikerNameLbl.text = [self checkNull:[key valueForKey:@"NONSTRIKERNAME"]];
         self.battingNonStrikerRunsLbl.text = [NSString stringWithFormat:@"%@ [%@]", [self checkNull:[key valueForKey:@"NONSTRIKERTOTALRUNS"]], [self checkNull:[key valueForKey:@"NONSTRIKERTOTALBALLS"]]];
-        /*
-        self.partnershipOversLbl.text = [self checkNull:[key valueForKey:@"MATCHSTATUS"]];
-        [self.bowlingStrikerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://csk.agaraminfotech.com/%@", [key valueForKey:@"BATTEAMLOGO"]]] placeholderImage:[UIImage imageNamed:@"no-image"]];
-        self.bowlingStrikerNameLbl.text = [self checkNull:[key valueForKey:@"NONSTRIKERNAME"]];
-        self.bowlingStrikerOversLbl.text = [self checkNull:[key valueForKey:@"MATCHSTATUS"]];
-         */
     }
+    
+    NSMutableArray *matchOverSummaryArray = [liveScore valueForKey:@"lstMatchOverSummary"];
+    
+//     self.partnershipOversLbl.text = [self checkNull:[key valueForKey:@"MATCHSTATUS"]];
+     [self.bowlingStrikerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", [[matchOverSummaryArray objectAtIndex:0] valueForKey:@"BATTEAMLOGO"]]] placeholderImage:[UIImage imageNamed:@"testimgplayer"]];
+     self.bowlingStrikerNameLbl.text = [self checkNull:[[matchOverSummaryArray objectAtIndex:0] valueForKey:@"BOWLERNAME"]];
+     self.bowlingStrikerOversLbl.text = [self checkNull:[[matchOverSummaryArray objectAtIndex:0] valueForKey:@"BOWLERDETAIL"]];
+     
+     [self.bowlingNonStrikerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", [[matchOverSummaryArray objectAtIndex:1] valueForKey:@"BATTEAMLOGO"]]] placeholderImage:[UIImage imageNamed:@"virat"]];
+     self.bowlingNonStrikerNameLbl.text = [self checkNull:[[matchOverSummaryArray objectAtIndex:1] valueForKey:@"BOWLERNAME"]];
+     self.bowlingNonStrikerOversLbl.text = [self checkNull:[[matchOverSummaryArray objectAtIndex:1] valueForKey:@"BOWLERDETAIL"]];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.ballsTbl reloadData];
+    });
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -177,13 +209,19 @@
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 5;
+    return recentLiveScore.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
     LiveSummaryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"photoCell" forIndexPath:indexPath];
+    
+    if ([[[recentLiveScore objectAtIndex:indexPath.row] valueForKey:@"TOTALRUNS"] isEqualToString:@"W"] || [[[recentLiveScore objectAtIndex:indexPath.row] valueForKey:@"TOTALRUNS"] isEqualToString:@"w"]) {
+        cell.Ball1.backgroundColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
+    } else if ([[[recentLiveScore objectAtIndex:indexPath.row] valueForKey:@"TOTALRUNS"] isEqualToString:@"4"] || [[[recentLiveScore objectAtIndex:indexPath.row] valueForKey:@"TOTALRUNS"] isEqualToString:@"4"]) {
+        cell.Ball1.backgroundColor = [UIColor colorWithRed:(44/255.0f) green:(167/255.0f) blue:(219/255.0f) alpha:1.0f];
+    }
+    
+    cell.Ball1.text = [[recentLiveScore objectAtIndex:indexPath.row] valueForKey:@"TOTALRUNS"];
     
     return cell;
     

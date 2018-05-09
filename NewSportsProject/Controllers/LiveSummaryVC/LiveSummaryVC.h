@@ -12,6 +12,9 @@
 
 @interface LiveSummaryVC : UIViewController
 
+@property (strong, nonatomic) IBOutlet UILabel *competitionTypeLbl;
+@property (strong, nonatomic) IBOutlet UILabel *groundLbl;
+
     //Team-A Properties
 @property (strong, nonatomic) IBOutlet UIImageView *teamALogo;
 @property (strong, nonatomic) IBOutlet UILabel *teamANameLbl;

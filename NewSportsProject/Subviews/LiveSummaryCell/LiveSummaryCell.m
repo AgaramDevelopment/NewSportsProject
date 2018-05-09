@@ -18,7 +18,7 @@
     [super awakeFromNib];
     // Initialization code
     
-    
+  /*
     self.Ball1.layer.masksToBounds = true;
     self.Ball1.clipsToBounds = true;
     self.Ball1.layer.cornerRadius = self.Ball1.frame.size.width/2;
@@ -51,7 +51,7 @@
     self.Ball1.backgroundColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
     self.Ball4.backgroundColor = [UIColor colorWithRed:(44/255.0f) green:(167/255.0f) blue:(219/255.0f) alpha:1.0f];
     self.Ball5.backgroundColor = [UIColor colorWithRed:(44/255.0f) green:(167/255.0f) blue:(219/255.0f) alpha:1.0f];
-
+*/
     
     
     
