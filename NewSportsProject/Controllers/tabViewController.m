@@ -59,15 +59,15 @@
 //    tabItem6.image = [[UIImage imageNamed:@"PlayengXIBlue"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
 //    tabItem6.title = @"PLAYING XI";
     
-    UITabBarItem *tabItem7 = [tabBar.items objectAtIndex:4];
-    tabItem7.selectedImage = [[UIImage imageNamed:@"HeadWhite"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
-    tabItem7.image = [[UIImage imageNamed:@"HeadBlue"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
-    tabItem7.title = @"HEAD2HEAD";
+//    UITabBarItem *tabItem7 = [tabBar.items objectAtIndex:4];
+//    tabItem7.selectedImage = [[UIImage imageNamed:@"HeadWhite"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+//    tabItem7.image = [[UIImage imageNamed:@"HeadBlue"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+//    tabItem7.title = @"HEAD2HEAD";
     
-//    UITabBarItem *tabItem8 = [tabBar.items objectAtIndex:5];
-//    tabItem8.selectedImage = [[UIImage imageNamed:@"CommentaryWhite"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
-//    tabItem8.image = [[UIImage imageNamed:@"CommentaryBlue"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
-//    tabItem8.title = @"COMMENTARY";
+    UITabBarItem *tabItem8 = [tabBar.items objectAtIndex:4];
+    tabItem8.selectedImage = [[UIImage imageNamed:@"CommentaryWhite"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabItem8.image = [[UIImage imageNamed:@"CommentaryBlue"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+    tabItem8.title = @"COMMENTARY";
 
 
     
