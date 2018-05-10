@@ -13,6 +13,12 @@
 		04C8518D1FB992A100AE18C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C8518B1FB992A100AE18C9 /* Main.storyboard */; };
 		04C8518F1FB992A100AE18C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04C8518E1FB992A100AE18C9 /* Assets.xcassets */; };
 		04C851921FB992A100AE18C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C851901FB992A100AE18C9 /* LaunchScreen.storyboard */; };
+		18266FBD20A4713B004877A3 /* ScoreCardHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18266FB620A47137004877A3 /* ScoreCardHeader.m */; };
+		18266FBE20A4713B004877A3 /* ScoreCardHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18266FB920A47139004877A3 /* ScoreCardHeader.xib */; };
+		18266FBF20A4713B004877A3 /* ScoreCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18266FBB20A4713A004877A3 /* ScoreCardVC.m */; };
+		18266FC020A4713B004877A3 /* UIScrollView+APParallaxHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18266FBC20A4713A004877A3 /* UIScrollView+APParallaxHeader.m */; };
+		18266FC720A4717E004877A3 /* ScorecardBowlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18266FC320A4717C004877A3 /* ScorecardBowlCell.m */; };
+		18266FC820A4717E004877A3 /* ScoreCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18266FC620A4717D004877A3 /* ScoreCardCell.m */; };
 		CE91ABF420A1D1F400DBA042 /* CommentaryVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91AACD20A1D1F200DBA042 /* CommentaryVCCell.m */; };
 		CE91ABF520A1D1F400DBA042 /* CommentaryVCCell_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE91AACE20A1D1F200DBA042 /* CommentaryVCCell_iPad.xib */; };
 		CE91ABF620A1D1F400DBA042 /* CommentaryVCCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE91AACF20A1D1F200DBA042 /* CommentaryVCCell_iPhone.xib */; };
@@ -87,8 +93,6 @@
 		CE91AC3B20A1D1F400DBA042 /* ResultsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91AB3120A1D1F200DBA042 /* ResultsCell.m */; };
 		CE91AC3C20A1D1F400DBA042 /* ResultsCell_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE91AB3220A1D1F200DBA042 /* ResultsCell_iPad.xib */; };
 		CE91AC3D20A1D1F400DBA042 /* ResultsCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE91AB3320A1D1F200DBA042 /* ResultsCell_iPhone.xib */; };
-		CE91AC3E20A1D1F400DBA042 /* ScorecardBowlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91AB3620A1D1F200DBA042 /* ScorecardBowlCell.m */; };
-		CE91AC3F20A1D1F400DBA042 /* ScoreCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91AB3920A1D1F200DBA042 /* ScoreCardCell.m */; };
 		CE91AC4020A1D1F400DBA042 /* SessionDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91AB3C20A1D1F200DBA042 /* SessionDayCell.m */; };
 		CE91AC4120A1D1F400DBA042 /* SessionPartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91AB3F20A1D1F200DBA042 /* SessionPartCell.m */; };
 		CE91AC4220A1D1F400DBA042 /* TeamsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91AB4220A1D1F200DBA042 /* TeamsCell.m */; };
@@ -138,7 +142,6 @@
 		CE91AC8020A1D1F400DBA042 /* PlayingIXVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABD720A1D1F400DBA042 /* PlayingIXVC.m */; };
 		CE91AC8120A1D1F400DBA042 /* PointsTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABDA20A1D1F400DBA042 /* PointsTableVC.m */; };
 		CE91AC8220A1D1F400DBA042 /* ResultsVc.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABDD20A1D1F400DBA042 /* ResultsVc.m */; };
-		CE91AC8320A1D1F400DBA042 /* ScoreCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABE020A1D1F400DBA042 /* ScoreCardVC.m */; };
 		CE91AC8420A1D1F400DBA042 /* SessionSummaryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABE320A1D1F400DBA042 /* SessionSummaryVC.m */; };
 		CE91AC8520A1D1F400DBA042 /* StatsPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABE620A1D1F400DBA042 /* StatsPlayer.m */; };
 		CE91AC8620A1D1F400DBA042 /* StatsPlayer_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE91ABE720A1D1F400DBA042 /* StatsPlayer_iPad.xib */; };
@@ -161,6 +164,17 @@
 		04C8518E1FB992A100AE18C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04C851911FB992A100AE18C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04C851931FB992A100AE18C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18266FB620A47137004877A3 /* ScoreCardHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreCardHeader.m; sourceTree = "<group>"; };
+		18266FB720A47137004877A3 /* UIScrollView+APParallaxHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+APParallaxHeader.h"; sourceTree = "<group>"; };
+		18266FB820A47138004877A3 /* ScoreCardHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreCardHeader.h; sourceTree = "<group>"; };
+		18266FB920A47139004877A3 /* ScoreCardHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScoreCardHeader.xib; sourceTree = "<group>"; };
+		18266FBA20A47139004877A3 /* ScoreCardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreCardVC.h; sourceTree = "<group>"; };
+		18266FBB20A4713A004877A3 /* ScoreCardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreCardVC.m; sourceTree = "<group>"; };
+		18266FBC20A4713A004877A3 /* UIScrollView+APParallaxHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+APParallaxHeader.m"; sourceTree = "<group>"; };
+		18266FC220A4717C004877A3 /* ScorecardBowlCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScorecardBowlCell.h; sourceTree = "<group>"; };
+		18266FC320A4717C004877A3 /* ScorecardBowlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScorecardBowlCell.m; sourceTree = "<group>"; };
+		18266FC520A4717D004877A3 /* ScoreCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreCardCell.h; sourceTree = "<group>"; };
+		18266FC620A4717D004877A3 /* ScoreCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreCardCell.m; sourceTree = "<group>"; };
 		25AD96EF9C20F56F008DEF5B /* Pods-NewSportsProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewSportsProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewSportsProject/Pods-NewSportsProject.release.xcconfig"; sourceTree = "<group>"; };
 		8F832D5A2810D0DB098D1230 /* Pods_NewSportsProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewSportsProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE91AACC20A1D1F200DBA042 /* CommentaryVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentaryVCCell.h; sourceTree = "<group>"; };
@@ -253,10 +267,6 @@
 		CE91AB3120A1D1F200DBA042 /* ResultsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsCell.m; sourceTree = "<group>"; };
 		CE91AB3220A1D1F200DBA042 /* ResultsCell_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsCell_iPad.xib; sourceTree = "<group>"; };
 		CE91AB3320A1D1F200DBA042 /* ResultsCell_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsCell_iPhone.xib; sourceTree = "<group>"; };
-		CE91AB3520A1D1F200DBA042 /* ScorecardBowlCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScorecardBowlCell.h; sourceTree = "<group>"; };
-		CE91AB3620A1D1F200DBA042 /* ScorecardBowlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScorecardBowlCell.m; sourceTree = "<group>"; };
-		CE91AB3820A1D1F200DBA042 /* ScoreCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreCardCell.h; sourceTree = "<group>"; };
-		CE91AB3920A1D1F200DBA042 /* ScoreCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreCardCell.m; sourceTree = "<group>"; };
 		CE91AB3B20A1D1F200DBA042 /* SessionDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionDayCell.h; sourceTree = "<group>"; };
 		CE91AB3C20A1D1F200DBA042 /* SessionDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDayCell.m; sourceTree = "<group>"; };
 		CE91AB3E20A1D1F200DBA042 /* SessionPartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionPartCell.h; sourceTree = "<group>"; };
@@ -350,8 +360,6 @@
 		CE91ABDA20A1D1F400DBA042 /* PointsTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsTableVC.m; sourceTree = "<group>"; };
 		CE91ABDC20A1D1F400DBA042 /* ResultsVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsVc.h; sourceTree = "<group>"; };
 		CE91ABDD20A1D1F400DBA042 /* ResultsVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsVc.m; sourceTree = "<group>"; };
-		CE91ABDF20A1D1F400DBA042 /* ScoreCardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreCardVC.h; sourceTree = "<group>"; };
-		CE91ABE020A1D1F400DBA042 /* ScoreCardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreCardVC.m; sourceTree = "<group>"; };
 		CE91ABE220A1D1F400DBA042 /* SessionSummaryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionSummaryVC.h; sourceTree = "<group>"; };
 		CE91ABE320A1D1F400DBA042 /* SessionSummaryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionSummaryVC.m; sourceTree = "<group>"; };
 		CE91ABE520A1D1F400DBA042 /* StatsPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsPlayer.h; sourceTree = "<group>"; };
@@ -428,6 +436,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		18266FC120A4717C004877A3 /* ScorecardBowlCell */ = {
+			isa = PBXGroup;
+			children = (
+				18266FC220A4717C004877A3 /* ScorecardBowlCell.h */,
+				18266FC320A4717C004877A3 /* ScorecardBowlCell.m */,
+			);
+			path = ScorecardBowlCell;
+			sourceTree = "<group>";
+		};
+		18266FC420A4717D004877A3 /* ScoreCardCell */ = {
+			isa = PBXGroup;
+			children = (
+				18266FC520A4717D004877A3 /* ScoreCardCell.h */,
+				18266FC620A4717D004877A3 /* ScoreCardCell.m */,
+			);
+			path = ScoreCardCell;
+			sourceTree = "<group>";
+		};
 		226FA33F973B9FE94B785F6C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,8 +491,6 @@
 				CE91AB2520A1D1F200DBA042 /* PlayingXICell */,
 				CE91AB2A20A1D1F200DBA042 /* PointsTableCell */,
 				CE91AB2F20A1D1F200DBA042 /* ResultsCell */,
-				CE91AB3420A1D1F200DBA042 /* ScorecardBowlCell */,
-				CE91AB3720A1D1F200DBA042 /* ScoreCardCell */,
 				CE91AB3A20A1D1F200DBA042 /* SessionDayCell */,
 				CE91AB3D20A1D1F200DBA042 /* SessionPartCell */,
 				CE91AB4020A1D1F200DBA042 /* TeamsCell */,
@@ -669,24 +693,6 @@
 			path = ResultsCell;
 			sourceTree = "<group>";
 		};
-		CE91AB3420A1D1F200DBA042 /* ScorecardBowlCell */ = {
-			isa = PBXGroup;
-			children = (
-				CE91AB3520A1D1F200DBA042 /* ScorecardBowlCell.h */,
-				CE91AB3620A1D1F200DBA042 /* ScorecardBowlCell.m */,
-			);
-			path = ScorecardBowlCell;
-			sourceTree = "<group>";
-		};
-		CE91AB3720A1D1F200DBA042 /* ScoreCardCell */ = {
-			isa = PBXGroup;
-			children = (
-				CE91AB3820A1D1F200DBA042 /* ScoreCardCell.h */,
-				CE91AB3920A1D1F200DBA042 /* ScoreCardCell.m */,
-			);
-			path = ScoreCardCell;
-			sourceTree = "<group>";
-		};
 		CE91AB3A20A1D1F200DBA042 /* SessionDayCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -876,6 +882,8 @@
 				CE91ABD520A1D1F400DBA042 /* PlayingIXVC */,
 				CE91ABD820A1D1F400DBA042 /* PointsTableVC */,
 				CE91ABDB20A1D1F400DBA042 /* ResultsVc */,
+				18266FC120A4717C004877A3 /* ScorecardBowlCell */,
+				18266FC420A4717D004877A3 /* ScoreCardCell */,
 				CE91ABDE20A1D1F400DBA042 /* ScoreCardVC */,
 				CE91ABE120A1D1F400DBA042 /* SessionSummaryVC */,
 				CE91ABE420A1D1F400DBA042 /* StatsPlayer */,
@@ -1022,8 +1030,13 @@
 		CE91ABDE20A1D1F400DBA042 /* ScoreCardVC */ = {
 			isa = PBXGroup;
 			children = (
-				CE91ABDF20A1D1F400DBA042 /* ScoreCardVC.h */,
-				CE91ABE020A1D1F400DBA042 /* ScoreCardVC.m */,
+				18266FB820A47138004877A3 /* ScoreCardHeader.h */,
+				18266FB620A47137004877A3 /* ScoreCardHeader.m */,
+				18266FB920A47139004877A3 /* ScoreCardHeader.xib */,
+				18266FBA20A47139004877A3 /* ScoreCardVC.h */,
+				18266FBB20A4713A004877A3 /* ScoreCardVC.m */,
+				18266FB720A47137004877A3 /* UIScrollView+APParallaxHeader.h */,
+				18266FBC20A4713A004877A3 /* UIScrollView+APParallaxHeader.m */,
 			);
 			path = ScoreCardVC;
 			sourceTree = "<group>";
@@ -1157,6 +1170,7 @@
 				CE91AC6B20A1D1F400DBA042 /* CustomNavigation_iPhone.xib in Resources */,
 				CE91ABFB20A1D1F400DBA042 /* FixturesCell_iPad.xib in Resources */,
 				CE91ABF920A1D1F400DBA042 /* ExtrasCell.xib in Resources */,
+				18266FBE20A4713B004877A3 /* ScoreCardHeader.xib in Resources */,
 				CE91AC3920A1D1F400DBA042 /* PointsTableCell_iPad.xib in Resources */,
 				CE91AC3720A1D1F400DBA042 /* PlayingXICell_iPhone.xib in Resources */,
 				CE91AC2220A1D1F400DBA042 /* MontserratAlternates-Thin.otf in Resources */,
@@ -1285,7 +1299,6 @@
 				CE91AC5220A1D1F400DBA042 /* TYPagerController.m in Sources */,
 				CE91AC5420A1D1F400DBA042 /* TYPagerViewLayout.m in Sources */,
 				CE91AC5C20A1D1F400DBA042 /* NSArray+PureLayout.m in Sources */,
-				CE91AC3E20A1D1F400DBA042 /* ScorecardBowlCell.m in Sources */,
 				CE91AC8420A1D1F400DBA042 /* SessionSummaryVC.m in Sources */,
 				CE91AC5D20A1D1F400DBA042 /* NSLayoutConstraint+PureLayout.m in Sources */,
 				CE91AC5620A1D1F400DBA042 /* TYTabPagerBarCell.m in Sources */,
@@ -1299,17 +1312,19 @@
 				CE91ABFD20A1D1F400DBA042 /* FixtureView.m in Sources */,
 				CE91AC2C20A1D1F400DBA042 /* PlayerStatsCell.m in Sources */,
 				CE91AC3820A1D1F400DBA042 /* PointsTableCell.m in Sources */,
+				18266FC820A4717E004877A3 /* ScoreCardCell.m in Sources */,
 				CE91AC7420A1D1F400DBA042 /* DashBoard.m in Sources */,
 				CE91AC7F20A1D1F400DBA042 /* PlayersVC.m in Sources */,
 				CE91AC7920A1D1F400DBA042 /* Fixtures.m in Sources */,
 				CE91ABF420A1D1F400DBA042 /* CommentaryVCCell.m in Sources */,
 				CE91AC7220A1D1F400DBA042 /* BowlingKPIViewController.m in Sources */,
+				18266FC720A4717E004877A3 /* ScorecardBowlCell.m in Sources */,
 				04C851871FB992A100AE18C9 /* AppDelegate.m in Sources */,
 				CE91AC4020A1D1F400DBA042 /* SessionDayCell.m in Sources */,
+				18266FBF20A4713B004877A3 /* ScoreCardVC.m in Sources */,
+				18266FC020A4713B004877A3 /* UIScrollView+APParallaxHeader.m in Sources */,
 				CE91AC7620A1D1F400DBA042 /* FieldSummaryTVC.m in Sources */,
 				CE91AC5B20A1D1F400DBA042 /* MDCParallaxView.m in Sources */,
-				CE91AC3F20A1D1F400DBA042 /* ScoreCardCell.m in Sources */,
-				CE91AC8320A1D1F400DBA042 /* ScoreCardVC.m in Sources */,
 				CE91AC4520A1D1F400DBA042 /* WebService.m in Sources */,
 				CE91AC7520A1D1F400DBA042 /* BallsInVideosCVC.m in Sources */,
 				CE91AC8520A1D1F400DBA042 /* StatsPlayer.m in Sources */,
@@ -1327,6 +1342,7 @@
 				CE91AC6920A1D1F400DBA042 /* CustomNavigation.m in Sources */,
 				CE91AC5920A1D1F400DBA042 /* TYTabPagerView.m in Sources */,
 				CE91AC3B20A1D1F400DBA042 /* ResultsCell.m in Sources */,
+				18266FBD20A4713B004877A3 /* ScoreCardHeader.m in Sources */,
 				CE91AC2B20A1D1F400DBA042 /* PlayersCell.m in Sources */,
 				CE91AC5720A1D1F400DBA042 /* TYTabPagerBarLayout.m in Sources */,
 				CE91AC6F20A1D1F400DBA042 /* Reachability.m in Sources */,
