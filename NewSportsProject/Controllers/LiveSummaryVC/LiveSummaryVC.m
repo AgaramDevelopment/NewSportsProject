@@ -27,13 +27,41 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+//    [self customnavigationmethod];
+    
+    [self liveSummaryPostMethodWebService];
+   
+//    myTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(liveScore) userInfo:nil repeats:YES];
+
+    [NSTimer scheduledTimerWithTimeInterval:5
+                                     target:self
+                                   selector:@selector(pageRefresh:)
+                                   userInfo:nil
+                                    repeats:YES];
+}
+
+-(IBAction)pageRefresh:(id)sender {
+
+    [self liveSummaryPostMethodWebService];
+}
+
+- (void)liveScore {
+    [self liveSummaryPostMethodWebService];
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
     [self customnavigationmethod];
+    
+    //Custom Code for Circle Format and
+    
     self.battingStrikerImage.layer.masksToBounds = true;
     self.battingStrikerImage.clipsToBounds = true;
-    self.battingStrikerImage.layer.cornerRadius = self.battingStrikerImage.frame.size.width/2;
+    
+    self.battingStrikerImage.layer.cornerRadius = self.battingStrikerImage.frame.size.height/2;
     self.battingNonStrikerImage.layer.masksToBounds = true;
     self.battingNonStrikerImage.clipsToBounds = true;
-    self.battingNonStrikerImage.layer.cornerRadius = self.battingNonStrikerImage.frame.size.width/2;
+    self.battingNonStrikerImage.layer.cornerRadius = self.battingNonStrikerImage.frame.size.height/2;
     
     
     self.bowlingStrikerImage.layer.masksToBounds = true;
@@ -68,30 +96,13 @@
     mask1.frame = self.bowlingPartnershipLbl.bounds;
     mask1.path = path1.CGPath;
     self.bowlingPartnershipLbl.layer.mask = mask1;
-    
-    [self liveSummaryPostMethodWebService];
-   
-//    myTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(liveScore) userInfo:nil repeats:YES];
-
-    [NSTimer scheduledTimerWithTimeInterval:5
-                                     target:self
-                                   selector:@selector(pageRefresh:)
-                                   userInfo:nil
-                                    repeats:YES];
-}
-
--(IBAction)pageRefresh:(id)sender {
-
-    [self liveSummaryPostMethodWebService];
-}
-
-- (void)liveScore {
-    [self liveSummaryPostMethodWebService];
 }
 
 -(void)customnavigationmethod
 {
+    
     CustomNavigation * objCustomNavigation;
+/*
     if(IS_IPHONE_DEVICE)
     {
         objCustomNavigation=[[CustomNavigation alloc] initWithNibName:@"CustomNavigation_iPhone" bundle:nil];
@@ -100,9 +111,10 @@
     {
         objCustomNavigation=[[CustomNavigation alloc] initWithNibName:@"CustomNavigation_iPad" bundle:nil];
     }
-    
-    
-    [self.view addSubview:objCustomNavigation.view];
+*/
+    objCustomNavigation=[[CustomNavigation alloc] initWithNibName:@"CustomNavigation_iPad" bundle:nil];
+    objCustomNavigation=[[CustomNavigation alloc] initWithNibName:@"CustomNavigation_iPhone" bundle:nil];
+    [self.navigationView addSubview:objCustomNavigation.view];
     
     objCustomNavigation.tittle_lbl.text=@"";
     if([objCustomNavigation.tittle_lbl.text isEqualToString: @""])

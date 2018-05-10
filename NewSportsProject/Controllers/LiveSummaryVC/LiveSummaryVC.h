@@ -12,6 +12,8 @@
 
 @interface LiveSummaryVC : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIView *navigationView;
+
 @property (strong, nonatomic) IBOutlet UILabel *competitionTypeLbl;
 @property (strong, nonatomic) IBOutlet UILabel *groundLbl;
 
