@@ -13,8 +13,10 @@
 #import "AppCommon.h"
 @import SDWebImage;
 
-
 @interface CommentaryVC ()
+{
+    CGFloat tableRowHeight;
+}
 
 @property (nonatomic,strong)  NSMutableArray * BallType1;
 
@@ -184,9 +186,9 @@
         
         //NSString *URLString =  [URL_FOR_RESOURCE(@"") stringByAppendingString:[NSString stringWithFormat:@"%@",ResultsKey]];
         
-        NSString *URLString = @"http://192.168.0.152:8083/CSK.svc/MOBILE_FETCHLIVESCORE";
+    //    NSString *URLString = @"http://192.168.0.152:8083/CSK.svc/MOBILE_FETCHLIVESCORE";
 //        NSString *URLString = @"https://csk.agaraminfotech.com/CSK.svc/MOBILE_FETCHLIVESCORE";
-//    NSString *URLString = @"http://192.168.0.152:8083/CSK.svc/MOBILE_FETCHLIVESCORE";
+    NSString *URLString = @"http://192.168.0.152:8083/CSK.svc/MOBILE_FETCHLIVESCORE";
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         AFHTTPRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
         [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -219,8 +221,15 @@
                 self.commonArray = arr;
                 [self.commentTbl reloadData];
                 
-                NSMutableArray *matchDetails = [[NSMutableArray alloc]init];
                 
+                NSMutableArray *groundDetails = [[NSMutableArray alloc]init];
+                groundDetails = [responseObject valueForKey:@"lstMatchDetails"];
+                
+                self.competitionTypeLbl.text = [[groundDetails valueForKey:@"COMPETITIONNAME"] objectAtIndex:0];
+                self.groundLbl.text = [[groundDetails valueForKey:@"GROUNDNAME"] objectAtIndex:0];
+                
+                
+                NSMutableArray *matchDetails = [[NSMutableArray alloc]init];
                 
                 matchDetails = [responseObject valueForKey:@"lstLiveScore"];
                 
@@ -291,21 +300,65 @@
     
     
     CommentaryVCCell *cell = [self.commentTbl dequeueReusableCellWithIdentifier:MyIdentifier];
-    if(IS_IPHONE_DEVICE)
-    {
-        [[NSBundle mainBundle] loadNibNamed:@"CommentaryVCCell_iPhone" owner:self options:nil];
-    }
-    else
-    {
+//    if(IS_IPHONE_DEVICE)
+//    {
+//        [[NSBundle mainBundle] loadNibNamed:@"CommentaryVCCell_iPhone" owner:self options:nil];
+//    }
+//    else
+//    {
         [[NSBundle mainBundle] loadNibNamed:@"CommentaryVCCell_iPad" owner:self options:nil];
         
-    }
+   // }
     
     
     
     cell = self.objlistCell;
     
-    cell.overs.text = [self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPEDESC"] objectAtIndex:indexPath.row]];
+    if([[self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPE"] objectAtIndex:indexPath.row]] isEqualToString:@"1"])
+    {
+            cell.overs.text = [self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPEDESC"] objectAtIndex:indexPath.row]];
+        
+            cell.cmtText.text = [self checkNull:[[self.commonArray valueForKey:@"COMMENTRY"] objectAtIndex:indexPath.row]];
+        
+    }
+    else if([[self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPE"] objectAtIndex:indexPath.row]] isEqualToString:@"3"])
+    {
+            cell.overs.text = @"";
+        
+//        //NSString *myString = [self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPEDESC"] objectAtIndex:indexPath.row]];
+//        //NSAttributedString *myBoldString = [[NSAttributedString alloc] initWithString:myString
+//                                                                           attributes:@{ NSFontAttributeName: [UIFont boldSystemFontOfSize:35.0] }];
+        
+        if([[self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPEDESC"] objectAtIndex:indexPath.row]] isEqualToString:@""])
+        {
+            NSString *reqCommentry = [NSString stringWithFormat:@"\n%@",[self checkNull:[[self.commonArray valueForKey:@"COMMENTRY"] objectAtIndex:indexPath.row]]];
+            
+            cell.cmtText.text = reqCommentry;
+            
+        }else
+        {
+            
+            
+            NSString *myString = [NSString stringWithFormat:@"%@:",[self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPEDESC"] objectAtIndex:indexPath.row]]] ;
+            
+            NSMutableAttributedString *myBoldString = [[NSMutableAttributedString alloc] initWithString:myString
+                                                                               attributes:@{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Bold" size:15.0] }];
+            
+            
+            NSString *myString1 = [NSString stringWithFormat:@"\n%@",[self checkNull:[[self.commonArray valueForKey:@"COMMENTRY"] objectAtIndex:indexPath.row]]];
+            
+            ;
+            NSMutableAttributedString *myBoldString1 = [[NSMutableAttributedString alloc] initWithString:myString1
+                                                                                             attributes:@{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Regular" size:14.0] }];
+            
+//        NSString *reqCommentry = [NSString stringWithFormat:@"%@:\n%@",[self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPEDESC"] objectAtIndex:indexPath.row]],[self checkNull:[[self.commonArray valueForKey:@"COMMENTRY"] objectAtIndex:indexPath.row]]];
+            
+            [myBoldString appendAttributedString:myBoldString1];
+        
+            cell.cmtText.attributedText = myBoldString;
+        }
+    }
+    
     cell.Ball.text = [self checkNull:[[self.commonArray valueForKey:@"RUNS"] objectAtIndex:indexPath.row]];
     
         if([cell.Ball.text isEqualToString:@"4"] || [cell.Ball.text isEqualToString:@"6"] )
@@ -317,23 +370,39 @@
             cell.Ball.backgroundColor = [UIColor colorWithRed:(93/255.0f) green:(93/255.0f) blue:(93/255.0f) alpha:1.0f];
         }
     
-        if([cell.Ball.text isEqualToString:@"W"])
+        else if([cell.Ball.text isEqualToString:@"W"])
         {
             cell.backgroundColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
             cell.Ball.textColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
             cell.overs.textColor = [UIColor whiteColor];
             cell.cmtText.textColor = [UIColor whiteColor];
         }
+        else if([cell.Ball.text isEqualToString:@""])
+        {
+            cell.Ball.hidden = YES;
+        }
+        else
+        {
+            cell.Ball.backgroundColor = [UIColor blackColor];
+            cell.Ball.textColor = [UIColor whiteColor];
+        }
     
-    cell.cmtText.text = [self checkNull:[[self.commonArray valueForKey:@"COMMENTRY"] objectAtIndex:indexPath.row]];
+    [self setUpCell:cell atIndexPath:indexPath];
     
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100;
+    
+    //static NSString *MyIdentifier = @"MyIdentifier";
+    //CommentaryVCCell *cell = [self.commentTbl dequeueReusableCellWithIdentifier:MyIdentifier];
+    return tableRowHeight;
 }
 
+- (void)setUpCell:(CommentaryVCCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    
+    tableRowHeight = cell.contentView.frame.size.height;
+}
 
 -(IBAction)nextBtn:(id)sender
 {

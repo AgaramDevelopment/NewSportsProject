@@ -16,6 +16,8 @@
 
 @property (nonatomic,strong) IBOutlet UILabel * overs;
 
+@property (nonatomic,strong) IBOutlet UILabel * title;
+
 
 
 @end

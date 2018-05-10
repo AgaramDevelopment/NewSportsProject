@@ -258,14 +258,14 @@
     {
         // cell = [[PointsTableCell alloc] initWithStyle:UITableViewCellStyleDefaultreuseIdentifier:MyIdentifier];
         
-        if(IS_IPHONE_DEVICE)
-        {
-            [[NSBundle mainBundle] loadNibNamed:@"PointsTableCell_iPhone" owner:self options:nil];
-        }
-        else
-        {
+//        if(IS_IPHONE_DEVICE)
+//        {
+//            [[NSBundle mainBundle] loadNibNamed:@"PointsTableCell_iPhone" owner:self options:nil];
+//        }
+//        else
+        //{
             [[NSBundle mainBundle] loadNibNamed:@"PointsTableCell_iPad" owner:self options:nil];
-        }
+       // }
     }
     cell = self.objCell;
 
@@ -326,21 +326,21 @@
         view = [[UIView alloc] initWithFrame:self.swipeView.bounds];
         view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
-        if(IS_IPHONE_DEVICE)
-        {
-            
-            
-            Fix = [[FixtureView alloc] initWithNibName:@"FixtureView_iPhone" bundle:nil];
-            Fix.view.frame = CGRectMake(0, 0, self.swipeView.bounds.size.width, self.swipeView.bounds.size.height);
-    
-            
-            [Fix.btn addTarget:self action:@selector(didClickBtn:) forControlEvents:UIControlEventTouchUpInside];
-            
-            
-            
-        }
-        else
-        {
+//        if(IS_IPHONE_DEVICE)
+//        {
+//
+//
+//            Fix = [[FixtureView alloc] initWithNibName:@"FixtureView_iPhone" bundle:nil];
+//            Fix.view.frame = CGRectMake(0, 0, self.swipeView.bounds.size.width, self.swipeView.bounds.size.height);
+//
+//
+//            [Fix.btn addTarget:self action:@selector(didClickBtn:) forControlEvents:UIControlEventTouchUpInside];
+//
+//
+//
+//        }
+//        else
+//        {
                 Fix = [[FixtureView alloc] initWithNibName:@"FixtureView" bundle:nil];
                 Fix.view.frame = CGRectMake(-5, 0, self.swipeView.bounds.size.width, self.swipeView.bounds.size.height);
                 
@@ -474,7 +474,7 @@
 //        //get a reference to the label in the recycled view
 //        label = (UILabel *)[view viewWithTag:1];
 //    }
-        }
+     //   }
     
     return view;
 }
