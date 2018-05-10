@@ -923,12 +923,28 @@
         objCustomNavigation.nav_header_img.image = [UIImage imageNamed:@"withText"];
     }
     
-    
+    if([self.backkey isEqualToString:@"yes"])
+    {
+        objCustomNavigation.btn_back.hidden = NO;
+        objCustomNavigation.filter_btn.hidden = YES;
+        objCustomNavigation.Cancelbtn.hidden = YES;
+        objCustomNavigation.summarybtn.hidden=YES;
+        
+        [objCustomNavigation.btn_back addTarget:self action:@selector(BackBtn:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
     objCustomNavigation.btn_back.hidden = YES;
     objCustomNavigation.filter_btn.hidden = YES;
     objCustomNavigation.Cancelbtn.hidden = YES;
     objCustomNavigation.summarybtn.hidden=YES;
+    }
     
+}
+
+-(IBAction)BackBtn:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(IBAction)didClickSummaryBtn:(id)sender
