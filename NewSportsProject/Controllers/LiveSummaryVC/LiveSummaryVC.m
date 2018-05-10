@@ -11,6 +11,7 @@
 #import "Config.h"
 #import "WebService.h"
 #import "AppCommon.h"
+#import "LiveScoreCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface LiveSummaryVC () {
@@ -71,7 +72,7 @@
     [self liveSummaryPostMethodWebService];
    
 //    myTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(liveScore) userInfo:nil repeats:YES];
-    
+
     [NSTimer scheduledTimerWithTimeInterval:5
                                      target:self
                                    selector:@selector(pageRefresh:)
@@ -83,6 +84,7 @@
 
     [self liveSummaryPostMethodWebService];
 }
+
 - (void)liveScore {
     [self liveSummaryPostMethodWebService];
 }
@@ -119,39 +121,58 @@
     
 }
 
+
 -(void)liveSummaryPostMethodWebService
 {
-    [COMMON loadingIcon:self.view];
+    /****************************** Written By *****************************
+     Live Match Url: http://192.168.0.152:8083/CSK.svc/MOBILE_FETCHLIVESCORE
+     Parameters: {
+     "COMPETITIONCODE" : "UCC0000274",
+     "MATCHCODE" : "DMSC116D017C2AA4FC420180302114212080"
+     }
+     Mthod: POST
+     ***********************************************************************
+     Post Match Url: http://csk.agaraminfotech.com/CSK.svc/FETCHPOSTMATCHCOMMENTRY
+     Parameters: {
+     "COMPETITIONCODE" : "UCC0000274",
+     "MATCHCODE" : "DMSC116D017C2AA4FC420180302113612078" //DMSC116D017C2AA4FC420180302114112079
+     }
+     Mthod: POST
+     ******************************* VEERESH *********************************/
     
-    NSString *URLString =  @"http://192.168.0.152:8083/CSK.svc/MOBILE_FETCHLIVESCORE";
-   // NSString *URLString = @"http://192.168.0.152:8083/CSK.svc/MOBILE_FETCHLIVESCORE";
+//    [COMMON loadingIcon:self.view];
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    AFHTTPRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-    [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    
-    manager.requestSerializer = requestSerializer;
-//    DMSC116D017C2AA4FC420180302114212080
-    //DMSC116D017C2AA4FC420180302114112079 -> Old
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic    setObject:@"UCC0000274"     forKey:@"COMPETITIONCODE"];
-    [dic    setObject:@"DMSC116D017C2AA4FC420180302114212080"     forKey:@"MATCHCODE"];
-    
-    NSLog(@"parameters : %@",dic);
-    [manager POST:URLString parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"response ; %@",responseObject);
+    if([COMMON isInternetReachable]) {
         
-        if([[responseObject valueForKey:@"Status"] integerValue] == 1)
-        {
-            [self liveScoreDetails:responseObject];
-        }
+        NSString *URLString =  @"http://192.168.0.152:8083/CSK.svc/MOBILE_FETCHLIVESCORE";
         
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        AFHTTPRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+        [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         
-        [COMMON RemoveLoadingIcon];
+        manager.requestSerializer = requestSerializer;
+        
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic    setObject:@"UCC0000274"     forKey:@"COMPETITIONCODE"];
+        [dic    setObject:@"DMSC116D017C2AA4FC420180302114212080"     forKey:@"MATCHCODE"];
+        
+        NSLog(@"parameters : %@",dic);
+        [manager POST:URLString parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"response ; %@",responseObject);
+            
+            if([[responseObject valueForKey:@"Status"] integerValue] == 1)
+                {
+                [self liveScoreDetails:responseObject];
+                }
+            
+            [COMMON RemoveLoadingIcon];
+            [self.view setUserInteractionEnabled:YES];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"failed");
-        [COMMON RemoveLoadingIcon];
-    }];
+            NSLog(@"failed");
+            [COMMON RemoveLoadingIcon];
+            [self.view setUserInteractionEnabled:YES];
+        }];
+    }
 }
 
 - (void)liveScoreDetails:(id)liveScore {
@@ -221,7 +242,8 @@
     }
 
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.ballsTbl reloadData];
+//        [self.ballsTbl reloadData];
+        [self.ballsCollectionView reloadData];
     });
 }
 
@@ -234,61 +256,39 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     /*
+     Wicket - W
+     Wide - WD
+     No Ball- NB
+     Byes - B
+     Leg Byes -LB
+     Retired Hurt - RH
+     */
     if (recentLiveScore.count) {
-        LiveSummaryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"photoCell" forIndexPath:indexPath];
         
-        if ([[[recentLiveScore objectAtIndex:indexPath.row] valueForKey:@"TOTALRUNS"] isEqualToString:@"W"] || [[[recentLiveScore objectAtIndex:indexPath.row] valueForKey:@"TOTALRUNS"] isEqualToString:@"w"]) {
-            cell.Ball1.backgroundColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
-        } else if ([[[recentLiveScore objectAtIndex:indexPath.row] valueForKey:@"TOTALRUNS"] isEqualToString:@"4"] || [[[recentLiveScore objectAtIndex:indexPath.row] valueForKey:@"TOTALRUNS"] isEqualToString:@"4"]) {
+        LiveScoreCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"liveCell" forIndexPath:indexPath];
+    
+        cell.Ball1.text = [self checkNull:[[recentLiveScore objectAtIndex:indexPath.row] valueForKey:@"TOTALRUNS"]];
+        
+        if([cell.Ball1.text isEqualToString:@"4"] || [cell.Ball1.text isEqualToString:@"6"] ) {
             cell.Ball1.backgroundColor = [UIColor colorWithRed:(44/255.0f) green:(167/255.0f) blue:(219/255.0f) alpha:1.0f];
+            cell.Ball1.textColor = [UIColor whiteColor];
+        } else if([cell.Ball1.text isEqualToString:@"0"] || [cell.Ball1.text isEqualToString:@"1"] || [cell.Ball1.text isEqualToString:@"2"] || [cell.Ball1.text isEqualToString:@"3"] ) {
+            //cell.Ball1.backgroundColor = [UIColor colorWithRed:(93/255.0f) green:(93/255.0f) blue:(93/255.0f) alpha:1.0f];
+            cell.Ball1.backgroundColor = [UIColor whiteColor];
+            cell.Ball1.textColor = [UIColor blackColor];
+        } else if([cell.Ball1.text isEqualToString:@"W"]) {
+            cell.Ball1.backgroundColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
+            cell.Ball1.textColor = [UIColor whiteColor];
+        } else {
+            cell.Ball1.backgroundColor = [UIColor whiteColor];
+            cell.Ball1.textColor = [UIColor blackColor];
         }
-        
-        cell.Ball1.text = [[recentLiveScore objectAtIndex:indexPath.row] valueForKey:@"TOTALRUNS"];
         
         return cell;
     }
-   
     return nil;
-    */
-    
-    LiveSummaryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"photoCell" forIndexPath:indexPath];
-    
-    if( [[self checkNull:[[recentLiveScore valueForKey:@"TOTALRUNS"]objectAtIndex:indexPath.row]] isEqualToString:@"0NB"])
-        {
-        NSString *arr = [self checkNull:[[recentLiveScore valueForKey:@"TOTALRUNS"]objectAtIndex:indexPath.row]];
-        NSString *ss = [NSString stringWithFormat:@"%@",[arr substringFromIndex:1]];
-        cell.Ball1.text = ss;
-        }
-    else
-        {
-        
-        cell.Ball1.text = [self checkNull:[[recentLiveScore valueForKey:@"TOTALRUNS"]objectAtIndex:indexPath.row]];
-        }
-    
-    if([cell.Ball1.text isEqualToString:@"4"] || [cell.Ball1.text isEqualToString:@"6"] )
-        {
-        cell.Ball1.backgroundColor = [UIColor colorWithRed:(44/255.0f) green:(167/255.0f) blue:(219/255.0f) alpha:1.0f];
-        cell.Ball1.textColor = [UIColor whiteColor];
-        }
-    else if([cell.Ball1.text isEqualToString:@"0"] || [cell.Ball1.text isEqualToString:@"1"] || [cell.Ball1.text isEqualToString:@"2"] || [cell.Ball1.text isEqualToString:@"3"] )
-        {
-            //cell.Ball1.backgroundColor = [UIColor colorWithRed:(93/255.0f) green:(93/255.0f) blue:(93/255.0f) alpha:1.0f];
-        cell.Ball1.backgroundColor = [UIColor whiteColor];
-        cell.Ball1.textColor = [UIColor blackColor];
-        }
-    else if([cell.Ball1.text isEqualToString:@"W"])
-        {
-        cell.Ball1.backgroundColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
-        cell.Ball1.textColor = [UIColor whiteColor];
-        }
-    else
-        {
-        cell.Ball1.backgroundColor = [UIColor whiteColor];
-        cell.Ball1.textColor = [UIColor blackColor];
-        }
-    
-    return cell;
 }
 
 - (NSString *)checkNull:(NSString *)_value

@@ -29,6 +29,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *runRateLbl;
 @property (strong, nonatomic) IBOutlet UILabel *matchWonLbl;
+@property (strong, nonatomic) IBOutlet UICollectionView *ballsCollectionView;
 
 @property (nonatomic,strong) IBOutlet UICollectionView * ballsTbl;
 @property (nonatomic,strong) IBOutlet LiveSummaryCell * objcell;
@@ -54,15 +55,5 @@
 @property (strong, nonatomic) IBOutlet UIImageView *bowlingNonStrikerImage;
 @property (strong, nonatomic) IBOutlet UILabel *bowlingNonStrikerNameLbl;
 @property (strong, nonatomic) IBOutlet UILabel *bowlingNonStrikerOversLbl;
-
-
-
-@property (nonatomic,strong) IBOutlet UIImageView * img3;
-@property (nonatomic,strong) IBOutlet UIImageView * img4;
-
-
-
-
-
 
 @end
