@@ -32,7 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self customnavigationmethod];
+//    [self customnavigationmethod];
     
     self.commonArray = [[NSMutableArray alloc]init];
     self.RecentBallsArray = [[NSMutableArray alloc]init];
@@ -52,18 +52,6 @@
     self.img4.clipsToBounds = true;
     self.img4.layer.cornerRadius = self.img4.frame.size.width/2;
     
-    
-    UIBezierPath *path = [UIBezierPath new];
-    
-    [path moveToPoint:(CGPoint){self.Plbl.frame.size.width-15,0 }];//w0
-    [path addLineToPoint:(CGPoint){0, 0}];//00
-    [path addLineToPoint:(CGPoint){15,self.Plbl.frame.size.height }];//0h
-    [path addLineToPoint:(CGPoint){self.Plbl.frame.size.width, self.Plbl.frame.size.height}];//wh20
-    
-    CAShapeLayer *mask = [CAShapeLayer new];
-    mask.frame = self.Plbl.bounds;
-    mask.path = path.CGPath;
-    self.Plbl.layer.mask = mask;
     
     
     
@@ -93,9 +81,27 @@
     [self ResultsWebservice];
 }
 
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    [self customnavigationmethod];
+    
+    //Custom Commentary Label
+    UIBezierPath *path = [UIBezierPath new];
+    
+    [path moveToPoint:(CGPoint){self.Plbl.frame.size.width-15,0 }];//w0
+    [path addLineToPoint:(CGPoint){0, 0}];//00
+    [path addLineToPoint:(CGPoint){15,self.Plbl.frame.size.height }];//0h
+    [path addLineToPoint:(CGPoint){self.Plbl.frame.size.width, self.Plbl.frame.size.height}];//wh20
+    
+    CAShapeLayer *mask = [CAShapeLayer new];
+    mask.frame = self.Plbl.bounds;
+    mask.path = path.CGPath;
+    self.Plbl.layer.mask = mask;
+}
 -(void)customnavigationmethod
 {
     CustomNavigation * objCustomNavigation;
+/*
     if(IS_IPHONE_DEVICE)
     {
         objCustomNavigation=[[CustomNavigation alloc] initWithNibName:@"CustomNavigation_iPhone" bundle:nil];
@@ -104,9 +110,11 @@
     {
         objCustomNavigation=[[CustomNavigation alloc] initWithNibName:@"CustomNavigation_iPad" bundle:nil];
     }
+*/
+  
     
-    
-    [self.view addSubview:objCustomNavigation.view];
+    objCustomNavigation=[[CustomNavigation alloc] initWithNibName:@"CustomNavigation_iPad" bundle:nil];
+    [self.navigationView addSubview:objCustomNavigation.view];
     
     objCustomNavigation.tittle_lbl.text=@"";
     if([objCustomNavigation.tittle_lbl.text isEqualToString: @""])
@@ -200,7 +208,7 @@
         //        NSString *matchCode = @"DMSC116D017C2AA4FC420180302113612078";
         
         NSString *competition = @"UCC0000274";
-        NSString *matchCode = @"DMSC116D017C2AA4FC420180302114212080";
+        NSString *matchCode = @"DMSC116D017C2AA4FC420180302114512081";
         
         
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
@@ -224,10 +232,11 @@
                 
                 NSMutableArray *groundDetails = [[NSMutableArray alloc]init];
                 groundDetails = [responseObject valueForKey:@"lstMatchDetails"];
-                
-                self.competitionTypeLbl.text = [[groundDetails valueForKey:@"COMPETITIONNAME"] objectAtIndex:0];
-                self.groundLbl.text = [[groundDetails valueForKey:@"GROUNDNAME"] objectAtIndex:0];
-                
+            
+               if (groundDetails.count) {
+                   self.competitionTypeLbl.text = [[groundDetails valueForKey:@"COMPETITIONNAME"] objectAtIndex:0];
+                   self.groundLbl.text = [[groundDetails valueForKey:@"GROUNDNAME"] objectAtIndex:0];
+               }
                 
                 NSMutableArray *matchDetails = [[NSMutableArray alloc]init];
                 
@@ -244,8 +253,9 @@
                 self.teamAOversLbl.text = [self checkNull:[[matchDetails valueForKey:@"FIRSTINNINGSOVERS"] objectAtIndex:0]];
                 self.teamBOversLbl.text = [self checkNull:[[matchDetails valueForKey:@"SECONDINNINGSOVERS"] objectAtIndex:0]];
                 
-                self.wonMatchLbl.text = [self checkNull:[[matchDetails valueForKey:@"MATCHSTATUS"] objectAtIndex:0]];
+                self.runRateLbl.text = [NSString stringWithFormat:@"RR %@ / RRR %@", [self checkNull:[[matchDetails valueForKey:@"RUNRATE"] objectAtIndex:0]], [self checkNull:[[matchDetails valueForKey:@"REQRUNRATE"] objectAtIndex:0]]];
                 
+                self.wonMatchLbl.text = [self checkNull:[[matchDetails valueForKey:@"MATCHSTATUS"] objectAtIndex:0]];
                 
                 NSString *teamA = [NSString stringWithFormat:@"http://csk.agaraminfotech.com/%@",[self checkNull:[[matchDetails valueForKey:@"BATTEAMLOGO"] objectAtIndex:0]]];//BATTEAMLOGO
                 [self.teamALogo sd_setImageWithURL:[NSURL URLWithString: [self checkNull:teamA]] placeholderImage:[UIImage imageNamed:@"no-image"]];

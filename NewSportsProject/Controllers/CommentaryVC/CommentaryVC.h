@@ -14,6 +14,8 @@
 
 @interface CommentaryVC : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIView *navigationView;
+
 @property (nonatomic,strong) IBOutlet UICollectionView * ballsTbl;
 
 @property (nonatomic,strong) IBOutlet UITableView * commentTbl;

@@ -113,7 +113,6 @@
     }
 */
     objCustomNavigation=[[CustomNavigation alloc] initWithNibName:@"CustomNavigation_iPad" bundle:nil];
-    objCustomNavigation=[[CustomNavigation alloc] initWithNibName:@"CustomNavigation_iPhone" bundle:nil];
     [self.navigationView addSubview:objCustomNavigation.view];
     
     objCustomNavigation.tittle_lbl.text=@"";
@@ -166,7 +165,7 @@
         
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         [dic    setObject:@"UCC0000274"     forKey:@"COMPETITIONCODE"];
-        [dic    setObject:@"DMSC116D017C2AA4FC420180302114212080"     forKey:@"MATCHCODE"];
+        [dic    setObject:@"DMSC116D017C2AA4FC420180302114512081"     forKey:@"MATCHCODE"];
         
         NSLog(@"parameters : %@",dic);
         [manager POST:URLString parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
