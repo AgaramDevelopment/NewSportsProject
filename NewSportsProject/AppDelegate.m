@@ -21,13 +21,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    
-    
-    
-    
     UIViewController *initViewController;
-    UIStoryboard *storyBoard;
-    
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    /*
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         // iPad
         
@@ -38,7 +34,7 @@
         
         storyBoard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
     }
-    
+    */
     //if(![[NSUserDefaults standardUserDefaults] boolForKey:@"Skip"]) {
         //initViewController = [storyBoard instantiateViewControllerWithIdentifier:@"tabViewController"];
 //    } else {
