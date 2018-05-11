@@ -141,6 +141,27 @@
     self.img2.layer.cornerRadius = self.img1.frame.size.width/2;
     
     
+    //Assign Data for Season Table Properies
+    
+    if (IS_IPAD) {
+        self.teamLbl.text = @"Team";
+        self.playedLbl.text = @"Played";
+        self.wonLbl.text = @"Won";
+        self.lostLbl.text = @"Lost";
+        self.tiedLbl.text = @"Tied";
+        self.noResultLbl.text = @"No Result";
+        self.netRunRateLbl.text = @"Net RR";
+        self.pointsLbl.text = @"Points";
+    } else {
+        self.teamLbl.text = @"T";
+        self.playedLbl.text = @"P";
+        self.wonLbl.text = @"W";
+        self.lostLbl.text = @"L";
+        self.tiedLbl.text = @"T";
+        self.noResultLbl.text = @"NR";
+        self.netRunRateLbl.text = @"NRR";
+        self.pointsLbl.text = @"P";
+    }
     
 }
 -(IBAction)didClickBtn:(id)sender
@@ -342,7 +363,7 @@
 //        else
 //        {
                 Fix = [[FixtureView alloc] initWithNibName:@"FixtureView" bundle:nil];
-                Fix.view.frame = CGRectMake(-5, 0, self.swipeView.bounds.size.width, self.swipeView.bounds.size.height);
+                Fix.view.frame = CGRectMake(0, 0, self.swipeView.bounds.size.width, self.swipeView.bounds.size.height);
                 
                 Fix.datelbl.text = [[objarray valueForKey:@"date"] objectAtIndex:index];
                 Fix.timelbl.text = [[objarray valueForKey:@"time"] objectAtIndex:index];
