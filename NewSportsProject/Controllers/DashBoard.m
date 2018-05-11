@@ -799,6 +799,9 @@
                 fixArr = [responseObject valueForKey:@"lstFixturesGridValues"];
                 //self.items = [NSMutableArray array];
                 
+                NSString *currentMatchCode = [[fixArr valueForKey:@"MATCHCODE"] objectAtIndex:0];
+            
+                appDel.LiveMatchCode = currentMatchCode;
                  cc = fixArr.count;
 
                 [super awakeFromNib];

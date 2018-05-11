@@ -17,5 +17,7 @@
 
 @property (strong, readwrite) NSString *backkey;
 
+@property (strong, readwrite) NSString *LiveMatchCode;
+
 @end
 

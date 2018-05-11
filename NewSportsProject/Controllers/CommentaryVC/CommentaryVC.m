@@ -11,6 +11,7 @@
 #import "Config.h"
 #import "WebService.h"
 #import "AppCommon.h"
+#import "AppDelegate.h"
 @import SDWebImage;
 
 @interface CommentaryVC ()
@@ -227,7 +228,7 @@
         //        NSString *matchCode = @"DMSC116D017C2AA4FC420180302113612078";
         
         NSString *competition = @"UCC0000274";
-        NSString *matchCode = @"DMSC116D017C2AA4FC420180302114512081";
+        NSString *matchCode = appDel.LiveMatchCode;
         
         
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
