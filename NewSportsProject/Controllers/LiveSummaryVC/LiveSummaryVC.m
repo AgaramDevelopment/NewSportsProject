@@ -282,6 +282,20 @@
     
         cell.Ball1.text = [self checkNull:[[recentLiveScore objectAtIndex:indexPath.row] valueForKey:@"TOTALRUNS"]];
         
+        cell.EndOverlbl.hidden = YES;
+        NSString *balNum = [self checkNull:[[recentLiveScore valueForKey:@"BALLNO"]objectAtIndex:indexPath.row]];
+        NSArray *arr = [balNum componentsSeparatedByString:@"."];
+        NSString *endBall = arr[1];
+        
+        if([endBall isEqualToString:@"1"])
+            {
+            cell.EndOverlbl.hidden = NO;
+            }
+        else
+            {
+            cell.EndOverlbl.hidden = YES;
+            }
+        
         if([cell.Ball1.text isEqualToString:@"4"] || [cell.Ball1.text isEqualToString:@"6"] ) {
             cell.Ball1.backgroundColor = [UIColor colorWithRed:(44/255.0f) green:(167/255.0f) blue:(219/255.0f) alpha:1.0f];
             cell.Ball1.textColor = [UIColor whiteColor];

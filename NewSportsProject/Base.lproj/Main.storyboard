@@ -2777,6 +2777,9 @@
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvG-HL-VBw">
                                                 <rect key="frame" x="0.0" y="0.0" width="365" height="80"/>
+                                                <connections>
+                                                    <action selector="didClickTeams:" destination="yPC-Md-76G" eventType="touchUpInside" id="IkH-P4-w9M"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -12342,6 +12345,16 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="43" height="42"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
+                                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hp5-8e-QRb">
+                                                                            <rect key="frame" x="42" y="3" width="1" height="36"/>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="1" id="iAH-PY-uS7"/>
+                                                                            </constraints>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaQ-ud-jWj">
                                                                             <rect key="frame" x="5" y="7" width="30" height="30"/>
                                                                             <color key="backgroundColor" red="0.41960784309999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -12356,12 +12369,16 @@
                                                                     </subviews>
                                                                 </view>
                                                                 <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="Hp5-8e-QRb" secondAttribute="trailing" id="FCs-yf-eQ3"/>
                                                                     <constraint firstItem="JaQ-ud-jWj" firstAttribute="top" secondItem="f5f-vG-A5l" secondAttribute="top" constant="7" id="GxH-5i-ilP"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Hp5-8e-QRb" secondAttribute="bottom" constant="3" id="hiI-0R-thb"/>
                                                                     <constraint firstItem="JaQ-ud-jWj" firstAttribute="leading" secondItem="f5f-vG-A5l" secondAttribute="leading" constant="5" id="iJD-qC-wM6"/>
+                                                                    <constraint firstItem="Hp5-8e-QRb" firstAttribute="top" secondItem="f5f-vG-A5l" secondAttribute="top" constant="3" id="p3x-Pm-4n6"/>
                                                                 </constraints>
                                                                 <size key="customSize" width="43" height="42"/>
                                                                 <connections>
                                                                     <outlet property="Ball1" destination="JaQ-ud-jWj" id="tOH-Yb-BZa"/>
+                                                                    <outlet property="EndOverlbl" destination="Hp5-8e-QRb" id="uhR-x2-ED4"/>
                                                                 </connections>
                                                             </collectionViewCell>
                                                         </cells>
@@ -13203,6 +13220,16 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="43" height="42"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
+                                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMw-5m-mAf">
+                                                                            <rect key="frame" x="42" y="3" width="1" height="36"/>
+                                                                            <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="1" id="xw6-Ug-ZpA"/>
+                                                                            </constraints>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="W" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Joz-Mc-reg">
                                                                             <rect key="frame" x="5" y="7" width="30" height="30"/>
                                                                             <color key="backgroundColor" red="0.41960784309999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -13219,10 +13246,14 @@
                                                                 <constraints>
                                                                     <constraint firstItem="Joz-Mc-reg" firstAttribute="leading" secondItem="mST-Lw-Rua" secondAttribute="leading" constant="5" id="Nfl-Ci-xpO"/>
                                                                     <constraint firstItem="Joz-Mc-reg" firstAttribute="top" secondItem="mST-Lw-Rua" secondAttribute="top" constant="7" id="aXx-TV-DUg"/>
+                                                                    <constraint firstItem="RMw-5m-mAf" firstAttribute="top" secondItem="mST-Lw-Rua" secondAttribute="top" constant="3" id="gvt-DQ-urk"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="RMw-5m-mAf" secondAttribute="trailing" id="hHB-e0-ul5"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="RMw-5m-mAf" secondAttribute="bottom" constant="3" id="keQ-Qc-2My"/>
                                                                 </constraints>
                                                                 <size key="customSize" width="43" height="42"/>
                                                                 <connections>
                                                                     <outlet property="Ball1" destination="Joz-Mc-reg" id="q2G-Gg-dud"/>
+                                                                    <outlet property="EndOverlbl" destination="RMw-5m-mAf" id="904-a7-Q1c"/>
                                                                 </connections>
                                                             </collectionViewCell>
                                                         </cells>

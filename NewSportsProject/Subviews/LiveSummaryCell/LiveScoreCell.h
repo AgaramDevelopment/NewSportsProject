@@ -11,5 +11,5 @@
 @interface LiveScoreCell : UICollectionViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *Ball1;
-
+@property (nonatomic,strong) IBOutlet UILabel * EndOverlbl;
 @end

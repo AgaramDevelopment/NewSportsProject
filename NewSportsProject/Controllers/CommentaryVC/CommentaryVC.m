@@ -146,6 +146,25 @@
     
     LiveSummaryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"photoCell" forIndexPath:indexPath];
     
+    cell.EndOverlbl.hidden = YES;
+    NSString *balNum = [self checkNull:[[self.RecentBallsArray valueForKey:@"BALLNO"]objectAtIndex:indexPath.row]];
+    NSArray *arr = [balNum componentsSeparatedByString:@"."];
+    NSString *endBall = arr[1];
+    
+        //    NSString *ball2 = [self checkNull:[[self.RecentBallsArray valueForKey:@"BALLNO"]objectAtIndex:indexPath.row-1]];
+        //    NSArray*arr2 = [ball2 componentsSeparatedByString:@"."];
+        //    NSString*previousball = arr2[1];
+    
+    
+    if([endBall isEqualToString:@"1"])
+        {
+        cell.EndOverlbl.hidden = NO;
+        }
+    else
+        {
+        cell.EndOverlbl.hidden = YES;
+        }
+    
     if( [[self checkNull:[[self.RecentBallsArray valueForKey:@"TOTALRUNS"]objectAtIndex:indexPath.row]] isEqualToString:@"0NB"])
     {
         NSString *arr = [self checkNull:[[self.RecentBallsArray valueForKey:@"TOTALRUNS"]objectAtIndex:indexPath.row]];
