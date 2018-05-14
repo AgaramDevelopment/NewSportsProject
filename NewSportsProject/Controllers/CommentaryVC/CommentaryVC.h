@@ -54,4 +54,26 @@
 @property (strong, nonatomic) IBOutlet UIImageView *img3;
 @property (strong, nonatomic) IBOutlet UIImageView *img4;
 
+    //Batting Partnership Properties
+@property (nonatomic,strong) IBOutlet UILabel * battingPartnershipLbl;
+@property (strong, nonatomic) IBOutlet UILabel *partnershipRunsLbl;
+@property (strong, nonatomic) IBOutlet UIImageView *battingStrikerImage;
+@property (strong, nonatomic) IBOutlet UILabel *battingStrikerNameLbl;
+@property (strong, nonatomic) IBOutlet UILabel *battingStrikerRunsLbl;
+
+@property (strong, nonatomic) IBOutlet UIImageView *battingNonStrikerImage;
+@property (strong, nonatomic) IBOutlet UILabel *battingNonStrikerNameLbl;
+@property (strong, nonatomic) IBOutlet UILabel *battingNonStrikerRunsLbl;
+
+    //Bowling Partnership Properties
+@property (nonatomic,strong) IBOutlet UILabel * bowlingPartnershipLbl;
+@property (strong, nonatomic) IBOutlet UILabel *partnershipOversLbl;
+@property (strong, nonatomic) IBOutlet UIImageView *bowlingStrikerImage;
+@property (strong, nonatomic) IBOutlet UILabel *bowlingStrikerNameLbl;
+@property (strong, nonatomic) IBOutlet UILabel *bowlingStrikerOversLbl;
+
+@property (strong, nonatomic) IBOutlet UIImageView *bowlingNonStrikerImage;
+@property (strong, nonatomic) IBOutlet UILabel *bowlingNonStrikerNameLbl;
+@property (strong, nonatomic) IBOutlet UILabel *bowlingNonStrikerOversLbl;
+
 @end

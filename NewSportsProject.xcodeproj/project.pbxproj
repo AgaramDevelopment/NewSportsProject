@@ -10,6 +10,7 @@
 		045999DD20A413CF00F37F06 /* LiveScoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045999DC20A413CF00F37F06 /* LiveScoreCell.m */; };
 		04A9E66020A954C500471F70 /* DropDownTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9E65E20A954C500471F70 /* DropDownTableViewController.m */; };
 		04A9E66120A954C500471F70 /* DropDownTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A9E65F20A954C500471F70 /* DropDownTableViewController.xib */; };
+		04A9E66420A9B89300471F70 /* CommentaryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9E66220A9B89200471F70 /* CommentaryVC.m */; };
 		04C851841FB992A100AE18C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C851831FB992A100AE18C9 /* main.m */; };
 		04C851871FB992A100AE18C9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C851861FB992A100AE18C9 /* AppDelegate.m */; };
 		04C8518D1FB992A100AE18C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C8518B1FB992A100AE18C9 /* Main.storyboard */; };
@@ -128,7 +129,6 @@
 		CE91AC7020A1D1F400DBA042 /* AdvanceFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABAF20A1D1F300DBA042 /* AdvanceFilter.m */; };
 		CE91AC7120A1D1F400DBA042 /* BattingKPIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABB220A1D1F300DBA042 /* BattingKPIViewController.m */; };
 		CE91AC7220A1D1F400DBA042 /* BowlingKPIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABB520A1D1F300DBA042 /* BowlingKPIViewController.m */; };
-		CE91AC7320A1D1F400DBA042 /* CommentaryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABB820A1D1F300DBA042 /* CommentaryVC.m */; };
 		CE91AC7420A1D1F400DBA042 /* DashBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABBB20A1D1F300DBA042 /* DashBoard.m */; };
 		CE91AC7520A1D1F400DBA042 /* BallsInVideosCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABBE20A1D1F300DBA042 /* BallsInVideosCVC.m */; };
 		CE91AC7620A1D1F400DBA042 /* FieldSummaryTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABC020A1D1F300DBA042 /* FieldSummaryTVC.m */; };
@@ -161,6 +161,8 @@
 		04A9E65D20A954C400471F70 /* DropDownTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownTableViewController.h; sourceTree = "<group>"; };
 		04A9E65E20A954C500471F70 /* DropDownTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownTableViewController.m; sourceTree = "<group>"; };
 		04A9E65F20A954C500471F70 /* DropDownTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownTableViewController.xib; sourceTree = "<group>"; };
+		04A9E66220A9B89200471F70 /* CommentaryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentaryVC.m; sourceTree = "<group>"; };
+		04A9E66320A9B89200471F70 /* CommentaryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentaryVC.h; sourceTree = "<group>"; };
 		04C8517F1FB992A100AE18C9 /* NewSportsProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewSportsProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C851831FB992A100AE18C9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04C851851FB992A100AE18C9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -336,8 +338,6 @@
 		CE91ABB220A1D1F300DBA042 /* BattingKPIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattingKPIViewController.m; sourceTree = "<group>"; };
 		CE91ABB420A1D1F300DBA042 /* BowlingKPIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BowlingKPIViewController.h; sourceTree = "<group>"; };
 		CE91ABB520A1D1F300DBA042 /* BowlingKPIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BowlingKPIViewController.m; sourceTree = "<group>"; };
-		CE91ABB720A1D1F300DBA042 /* CommentaryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentaryVC.h; sourceTree = "<group>"; };
-		CE91ABB820A1D1F300DBA042 /* CommentaryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentaryVC.m; sourceTree = "<group>"; };
 		CE91ABBA20A1D1F300DBA042 /* DashBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashBoard.h; sourceTree = "<group>"; };
 		CE91ABBB20A1D1F300DBA042 /* DashBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashBoard.m; sourceTree = "<group>"; };
 		CE91ABBD20A1D1F300DBA042 /* BallsInVideosCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallsInVideosCVC.h; sourceTree = "<group>"; };
@@ -942,8 +942,8 @@
 		CE91ABB620A1D1F300DBA042 /* CommentaryVC */ = {
 			isa = PBXGroup;
 			children = (
-				CE91ABB720A1D1F300DBA042 /* CommentaryVC.h */,
-				CE91ABB820A1D1F300DBA042 /* CommentaryVC.m */,
+				04A9E66320A9B89200471F70 /* CommentaryVC.h */,
+				04A9E66220A9B89200471F70 /* CommentaryVC.m */,
 			);
 			path = CommentaryVC;
 			sourceTree = "<group>";
@@ -1305,6 +1305,7 @@
 				CE91AC5D20A1D1F400DBA042 /* NSLayoutConstraint+PureLayout.m in Sources */,
 				CE91AC5620A1D1F400DBA042 /* TYTabPagerBarCell.m in Sources */,
 				CE91ABFA20A1D1F400DBA042 /* FixturesCell.m in Sources */,
+				04A9E66420A9B89300471F70 /* CommentaryVC.m in Sources */,
 				CE91AC5120A1D1F400DBA042 /* CRTableViewCell.m in Sources */,
 				CE91AC8120A1D1F400DBA042 /* PointsTableVC.m in Sources */,
 				CE91AC2720A1D1F400DBA042 /* BowlingTableViewCell.m in Sources */,
@@ -1336,7 +1337,6 @@
 				CE91AC7C20A1D1F400DBA042 /* OverviewPlayer.m in Sources */,
 				CE91AC2A20A1D1F400DBA042 /* PagerViewDmeoController.m in Sources */,
 				CE91AC5F20A1D1F400DBA042 /* SwipeView.m in Sources */,
-				CE91AC7320A1D1F400DBA042 /* CommentaryVC.m in Sources */,
 				CE91AC4620A1D1F400DBA042 /* AppCommon.m in Sources */,
 				CE91AC7B20A1D1F400DBA042 /* LiveSummaryVC.m in Sources */,
 				CE91AC8B20A1D1F400DBA042 /* VideoPlayerViewController.m in Sources */,
