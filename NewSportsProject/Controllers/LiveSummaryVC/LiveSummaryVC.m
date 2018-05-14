@@ -13,6 +13,8 @@
 #import "AppCommon.h"
 #import "LiveScoreCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "AppDelegate.h"
+
 
 @interface LiveSummaryVC () {
     NSMutableArray *recentLiveScore;
@@ -165,7 +167,7 @@
         
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         [dic    setObject:@"UCC0000274"     forKey:@"COMPETITIONCODE"];
-        [dic    setObject:@"DMSC116D017C2AA4FC420180302114512081"     forKey:@"MATCHCODE"];
+        [dic    setObject:appDel.LiveMatchCode     forKey:@"MATCHCODE"];
         
         NSLog(@"parameters : %@",dic);
         [manager POST:URLString parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
