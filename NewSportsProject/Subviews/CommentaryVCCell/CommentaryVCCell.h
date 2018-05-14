@@ -12,7 +12,9 @@
 
 @property (nonatomic,strong) IBOutlet UILabel * Ball;
 
-@property (nonatomic,strong) IBOutlet UILabel * cmtText;
+//@property (nonatomic,strong) IBOutlet UILabel * cmtText;
+@property (strong, nonatomic) IBOutlet UITextView *cmtText;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *constraintTextViewHeight;
 
 @property (nonatomic,strong) IBOutlet UILabel * overs;
 
