@@ -164,6 +164,14 @@
     }
     
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (!appDel.MainArray.count) {
+        [COMMON getIPLteams];
+    }
+}
 -(IBAction)didClickBtn:(id)sender
 {
     

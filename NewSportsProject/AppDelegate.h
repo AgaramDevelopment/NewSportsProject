@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Config.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -17,5 +18,8 @@
 
 @property (strong, readwrite) NSString *backkey;
 
+@property (strong, nonatomic) NSMutableArray *ArrayCompetition;
+@property (strong, nonatomic) NSMutableArray *ArrayTeam;
+@property (strong, nonatomic) NSMutableArray *MainArray;
 @end
 

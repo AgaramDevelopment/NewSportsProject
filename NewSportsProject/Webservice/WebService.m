@@ -156,7 +156,60 @@ static NSString       *ServiceMimeType    = @"image/jpeg";
     
 }
 
+-(void)TeamComposition :(NSString *)list :(NSString *)Competitioncode :(NSString *)teamcode success:(WebserviceRequestSuccessHandler)success
+                failure:(WebserviceRequestFailureHandler)failure
+{
+    urlString = [URL_FOR_RESOURCE(@"") stringByAppendingString:[NSString stringWithFormat:@"%@/%@/%@",list,Competitioncode,teamcode]];
+    NSLog(@"urlString = %@",urlString);
+    
+    
+    [self sendRequestWithURLString:urlString
+                     andParameters:nil
+                            method:ServiceGet
+           completionSucessHandler:success
+          completionFailureHandler:failure];
+}
 
+-(void)getIPLCompeteionCodesuccess:(WebserviceRequestSuccessHandler)success failure:(WebserviceRequestFailureHandler)failure
+{
+    NSString* URL = URL_FOR_RESOURCE(@"FETCH_IPLCOMPETITIONS");
+    [self GET:URL parameters:nil
+      success:^(AFHTTPRequestOperation *operation, id responseDict)
+     {
+     if (success){
+         success(operation,responseDict);
+     }
+     }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+     if (failure){
+         NSLog(@"response");
+         failure(operation, error);
+     }
+     }];
+}
+
+-(void)getIPLTeamCodessuccess:(WebserviceRequestSuccessHandler)success failure:(WebserviceRequestFailureHandler)failure
+{
+    NSString* URL = URL_FOR_RESOURCE(@"FETCH_IPLTEAMS");
+    
+        //    NSString* URL = URL_FOR_RESOURCE(@"FETCH_IPLTEAMSTEMP");
+    [self GET:URL parameters:nil
+      success:^(AFHTTPRequestOperation *operation, id responseDict)
+     {
+     if (success){
+         success(operation,responseDict);
+     }
+     }
+      failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+     if (failure){
+         NSLog(@"response");
+         failure(operation, error);
+     }
+     }];
+    
+}
 
 
 
@@ -212,6 +265,7 @@ static NSString       *ServiceMimeType    = @"image/jpeg";
 {
     [self.operationQueue cancelAllOperations];
 }
+
 
 
 @end

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		045999DD20A413CF00F37F06 /* LiveScoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045999DC20A413CF00F37F06 /* LiveScoreCell.m */; };
+		04A9E66020A954C500471F70 /* DropDownTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9E65E20A954C500471F70 /* DropDownTableViewController.m */; };
+		04A9E66120A954C500471F70 /* DropDownTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A9E65F20A954C500471F70 /* DropDownTableViewController.xib */; };
 		04C851841FB992A100AE18C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C851831FB992A100AE18C9 /* main.m */; };
 		04C851871FB992A100AE18C9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C851861FB992A100AE18C9 /* AppDelegate.m */; };
 		04C8518D1FB992A100AE18C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C8518B1FB992A100AE18C9 /* Main.storyboard */; };
@@ -156,6 +158,9 @@
 /* Begin PBXFileReference section */
 		045999DB20A413CF00F37F06 /* LiveScoreCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveScoreCell.h; sourceTree = "<group>"; };
 		045999DC20A413CF00F37F06 /* LiveScoreCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveScoreCell.m; sourceTree = "<group>"; };
+		04A9E65D20A954C400471F70 /* DropDownTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownTableViewController.h; sourceTree = "<group>"; };
+		04A9E65E20A954C500471F70 /* DropDownTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownTableViewController.m; sourceTree = "<group>"; };
+		04A9E65F20A954C500471F70 /* DropDownTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownTableViewController.xib; sourceTree = "<group>"; };
 		04C8517F1FB992A100AE18C9 /* NewSportsProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewSportsProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C851831FB992A100AE18C9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04C851851FB992A100AE18C9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -389,6 +394,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04A9E65C20A9549500471F70 /* DropDownVC */ = {
+			isa = PBXGroup;
+			children = (
+				04A9E65D20A954C400471F70 /* DropDownTableViewController.h */,
+				04A9E65E20A954C500471F70 /* DropDownTableViewController.m */,
+				04A9E65F20A954C500471F70 /* DropDownTableViewController.xib */,
+			);
+			path = DropDownVC;
+			sourceTree = "<group>";
+		};
 		04C851761FB992A100AE18C9 = {
 			isa = PBXGroup;
 			children = (
@@ -866,6 +881,7 @@
 		CE91ABAC20A1D1F300DBA042 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				04A9E65C20A9549500471F70 /* DropDownVC */,
 				CE91ABAD20A1D1F300DBA042 /* AdvanceFilter */,
 				CE91ABB020A1D1F300DBA042 /* BattingKPIVC */,
 				CE91ABB320A1D1F300DBA042 /* BowlingKPIVC */,
@@ -1100,7 +1116,6 @@
 				04C8517C1FB992A100AE18C9 /* Frameworks */,
 				04C8517D1FB992A100AE18C9 /* Resources */,
 				4AD53A3AC50809311DE79F6B /* [CP] Embed Pods Frameworks */,
-				4C4A3D50AD4FE1F1EE1154EA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1172,6 +1187,7 @@
 				CE91ABF920A1D1F400DBA042 /* ExtrasCell.xib in Resources */,
 				18266FBE20A4713B004877A3 /* ScoreCardHeader.xib in Resources */,
 				CE91AC3920A1D1F400DBA042 /* PointsTableCell_iPad.xib in Resources */,
+				04A9E66120A954C500471F70 /* DropDownTableViewController.xib in Resources */,
 				CE91AC3720A1D1F400DBA042 /* PlayingXICell_iPhone.xib in Resources */,
 				CE91AC2220A1D1F400DBA042 /* MontserratAlternates-Thin.otf in Resources */,
 				CE91AC1D20A1D1F400DBA042 /* MontserratAlternates-Medium.otf in Resources */,
@@ -1249,21 +1265,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewSportsProject/Pods-NewSportsProject-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4C4A3D50AD4FE1F1EE1154EA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewSportsProject/Pods-NewSportsProject-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B5A8D2802F9124D41F0BB1EA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1293,6 +1294,7 @@
 				CE91AC7020A1D1F400DBA042 /* AdvanceFilter.m in Sources */,
 				045999DD20A413CF00F37F06 /* LiveScoreCell.m in Sources */,
 				CE91AC4220A1D1F400DBA042 /* TeamsCell.m in Sources */,
+				04A9E66020A954C500471F70 /* DropDownTableViewController.m in Sources */,
 				CE91AC6020A1D1F400DBA042 /* UITabBarController+Swipe.m in Sources */,
 				CE91AC8820A1D1F400DBA042 /* tabViewController.m in Sources */,
 				CE91AC8920A1D1F400DBA042 /* TeamMemDetails.m in Sources */,

@@ -104,6 +104,6 @@
 
 #define GetVideoFilePath       @"GETSCORECARDVIDEOSFILEPATH"
 
-
+#define TeamCompoKey           @"APT_TEAMCOMPOSITION"
 
 

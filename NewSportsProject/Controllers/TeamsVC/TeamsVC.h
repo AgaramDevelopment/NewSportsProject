@@ -29,8 +29,10 @@
 @property (nonatomic,strong) IBOutlet UIButton * listBtn;
 @property (nonatomic,strong) IBOutlet UIButton * gridBtn;
 
-@property (nonatomic,strong) IBOutlet UIView * v1;
-@property (nonatomic,strong) IBOutlet UIView * v2;
+@property (nonatomic,strong) IBOutlet UIView * dropviewComp1;
+@property (nonatomic,strong) IBOutlet UIView * dropviewComp2;
+@property (strong, nonatomic) IBOutlet UILabel *Competitionlbl;
+@property (strong, nonatomic) IBOutlet UILabel *Teamnamelbl;
 
 
 @end

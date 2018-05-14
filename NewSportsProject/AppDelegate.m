@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "UITabBarController+Swipe.h"
 #import "tabViewController.h"
-
+#import "AppCommon.h"
 
 @interface AppDelegate ()
 
@@ -41,6 +41,7 @@
         initViewController = [storyBoard instantiateViewControllerWithIdentifier:@"tabViewController"];
 //    }
     
+    
     UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:initViewController];
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     navigationController.navigationBarHidden = YES;
@@ -52,7 +53,8 @@
     
    // tabViewController = (UITabBarController *)self.window.rootViewController;
     [tab setupSwipeGestureRecognizersAllowCyclingThroughTabs:YES];
-
+    
+    [COMMON getIPLteams];
     
     return YES;
 

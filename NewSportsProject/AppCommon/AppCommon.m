@@ -10,6 +10,7 @@
 #import "Reachability.h"
 #import "WebService.h"
 #import "Config.h"
+#import "AppDelegate.h"
 
 @implementation AppCommon
 AppCommon *sharedCommon = nil;
@@ -122,7 +123,161 @@ AppCommon *sharedCommon = nil;
     return CGSizeMake(dataHeight.width, dataHeight.height);
 }
 
++(NSString *)getCurrentCompetitionCode
+{
+    return [[NSUserDefaults standardUserDefaults] stringForKey:@"SelectedCompetitionCode"];
+}
 
++(NSString *)getCurrentCompetitionName
+{
+    return [[NSUserDefaults standardUserDefaults] stringForKey:@"SelectedCompetitionName"];
+}
 
++(NSString *)getCurrentTeamCode
+{
+    return [[NSUserDefaults standardUserDefaults] stringForKey:@"SelectedTeamCode"];
+}
+
++(NSString *)getCurrentTeamName
+{
+    return [[NSUserDefaults standardUserDefaults] stringForKey:@"SelectedTeamName"];
+}
+
+-(void)getIPLCompetetion
+{
+    if(![COMMON isInternetReachable])
+        return;
+    
+    
+        //    [AppCommon showLoading];
+        
+    WebService *objWebservice = [[WebService alloc]init];
+    [objWebservice getIPLCompeteionCodesuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if(responseObject >0)
+            {
+            appDel.ArrayCompetition = [NSMutableArray new];
+            appDel.ArrayCompetition = responseObject;
+            
+            NSString* Competetioncode = [[appDel.ArrayCompetition firstObject] valueForKey:@"CompetitionCode"];
+            NSString* CompetetionName = [[appDel.ArrayCompetition firstObject] valueForKey:@"CompetitionName"];
+            NSLog(@"IPL COMPETETION %@ ",responseObject);
+            [[NSUserDefaults standardUserDefaults] setValue:CompetetionName forKey:@"SelectedCompetitionName"];
+            [[NSUserDefaults standardUserDefaults] setValue:Competetioncode forKey:@"SelectedCompetitionCode"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            }
+            //        [AppCommon hideLoading];
+    } failure:^(AFHTTPRequestOperation *operation, id error) {
+        NSLog(@"failed");
+        [COMMON webServiceFailureError];
+    }];
+    
+}
+
+-(void)getIPLteams
+{
+    if(![COMMON isInternetReachable])
+        return;
+    
+    
+        //    [AppCommon showLoading];
+    
+    WebService* objWebservice = [[WebService alloc]init];
+    [objWebservice getIPLTeamCodessuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if(responseObject >0)
+            {
+            appDel.MainArray = [NSMutableArray new];
+            appDel.MainArray = responseObject;
+            NSLog(@"IPL TEAMS %@ ",appDel.MainArray);
+            NSString* Teamcode = [[responseObject firstObject] valueForKey:@"TeamCode"];
+            NSString* TeamName = [[responseObject firstObject] valueForKey:@"TeamName"];
+            
+            [[NSUserDefaults standardUserDefaults] setValue:TeamName forKey:@"SelectedTeamName"];
+            [[NSUserDefaults standardUserDefaults] setValue:Teamcode forKey:@"SelectedTeamCode"];
+            
+            NSLog(@"IPL COMPETETION %@ ",appDel.MainArray);
+            NSString* Competetioncode = [[responseObject firstObject] valueForKey:@"CompetitionCode"];
+            NSString* CompetetionName = [[responseObject firstObject] valueForKey:@"CompetitionName"];
+            
+            [[NSUserDefaults standardUserDefaults] setValue:CompetetionName forKey:@"SelectedCompetitionName"];
+            [[NSUserDefaults standardUserDefaults] setValue:Competetioncode forKey:@"SelectedCompetitionCode"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+                //            NSSet* set1 = [NSSet setWithArray:[responseObject valueForKey:@"CompetitionCode"]];
+                //            [appDel.ArrayCompetition addObjectsFromArray:];
+            
+            appDel.ArrayCompetition = [NSMutableArray new];
+            
+                //            NSMutableArray* temp = [NSMutableArray new];
+            for (NSDictionary* dict in responseObject) {
+                
+                NSLog(@"%@",dict[@"CompetitionCode"]);
+                if (![[appDel.ArrayCompetition valueForKey:@"CompetitionCode"] containsObject:dict[@"CompetitionCode"]]) {
+                    [appDel.ArrayCompetition addObject:dict];
+                    NSLog(@"temp %@",[appDel.ArrayCompetition valueForKey:@"CompetitionCode"]);
+                }
+                
+            }
+            NSString* lastYearTeams = [[appDel.ArrayCompetition firstObject] valueForKey:@"CompetitionName"];
+            NSArray* temp = [COMMON getCorrespondingTeamName:lastYearTeams];
+                //            appDel.ArrayCompetition = temp;
+            NSLog(@"appDel.ArrayCompetition %@ ",appDel.ArrayCompetition);
+            
+            }
+        
+            //        [AppCommon hideLoading];
+        
+            //        dispatch_async(dispatch_get_main_queue(), ^{
+            //            [self getIPLCompetetion];
+            //        });
+        
+    } failure:^(AFHTTPRequestOperation *operation, id error) {
+            //        [AppCommon hideLoading];
+        NSLog(@"failed");
+        [COMMON webServiceFailureError];
+        
+    }];
+    
+}
+
+-(NSArray *)getCorrespondingTeamName:(NSString *)competetionName
+{
+    
+    if (![[NSUserDefaults standardUserDefaults] stringForKey:@"SelectedCompetitionName"]) {
+        NSLog(@"Please select Competetion");
+    }
+    
+    NSLog(@"competetionName %@",appDel.MainArray);
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"CompetitionName == %@", competetionName];
+    NSArray* temparray = [appDel.MainArray filteredArrayUsingPredicate:resultPredicate];
+    
+    if (temparray.count > 0) {
+        appDel.ArrayTeam = [NSMutableArray new];
+        
+        for (NSDictionary* temp1 in temparray) {
+            if (![[appDel.ArrayTeam valueForKey:@"TeamCode"] containsObject:[temp1 valueForKey:@"TeamCode"]]) {
+                [appDel.ArrayTeam addObject:temp1];
+            }
+        }
+        
+    }
+    else
+        {
+        NSString* msg = [NSString stringWithFormat:@"NO Teams Founds in %@",competetionName];
+        [AppCommon showAlertWithMessage:msg];
+        }
+    
+    return appDel.ArrayTeam;
+}
+
++(void)showAlertWithMessage:(NSString *)message
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:APP_NAME message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:action];
+    [appDel.window.rootViewController presentViewController:alert animated:YES completion:nil];
+}
 
 @end

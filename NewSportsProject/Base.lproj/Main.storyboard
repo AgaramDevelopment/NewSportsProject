@@ -2980,7 +2980,7 @@
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwx-1V-o9t">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Competetion Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwx-1V-o9t">
                                                 <rect key="frame" x="10" y="39" width="323" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Coy-dG-qBf"/>
@@ -3046,7 +3046,7 @@
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UgS-ea-NAI">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UgS-ea-NAI">
                                                 <rect key="frame" x="10" y="39" width="323" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="XZ4-eq-hQS"/>
@@ -3072,11 +3072,11 @@
                                                     <constraint firstAttribute="height" constant="20" id="qy4-5g-csS"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYw-YZ-TIt">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYw-YZ-TIt">
                                                 <rect key="frame" x="0.0" y="0.0" width="368" height="80"/>
                                                 <connections>
+                                                    <action selector="didClickCompetetion:" destination="C7S-hb-gha" eventType="touchUpInside" id="QwV-dT-kpb"/>
                                                     <action selector="didClickCompetetion:" destination="o8S-kA-j79" eventType="touchUpInside" id="fWv-A9-AJy"/>
-                                                    <action selector="didClickSeason:" destination="C7S-hb-gha" eventType="touchUpInside" id="RLY-ss-5kS"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -3347,17 +3347,19 @@
                     <size key="freeformSize" width="768" height="1024"/>
                     <connections>
                         <outlet property="CompetBtn" destination="T2P-r2-dv9" id="aec-9B-XEW"/>
+                        <outlet property="Competitionlbl" destination="mwx-1V-o9t" id="Ai2-EB-QjU"/>
                         <outlet property="GridTbl" destination="hBg-qM-taK" id="nhq-vs-xWi"/>
                         <outlet property="ListTbl" destination="CDM-FX-dGJ" id="84m-vA-1Do"/>
                         <outlet property="SeasonBtn" destination="wYw-YZ-TIt" id="VWO-OD-njC"/>
                         <outlet property="ShawdowView" destination="4na-wW-N0Y" id="m6L-UU-MXw"/>
+                        <outlet property="Teamnamelbl" destination="UgS-ea-NAI" id="VB5-0j-2sj"/>
+                        <outlet property="dropviewComp1" destination="tAq-8o-cDT" id="ZoD-cg-RFO"/>
+                        <outlet property="dropviewComp2" destination="m77-7L-cYO" id="ckx-aA-ry3"/>
                         <outlet property="gridBtn" destination="7ef-J7-HZX" id="MgW-dd-QIL"/>
                         <outlet property="listBtn" destination="cFQ-c6-ngw" id="NxI-Qx-oaK"/>
                         <outlet property="popTbl" destination="48L-M1-YHd" id="Eyy-13-mHu"/>
                         <outlet property="popWidth" destination="JVC-br-ZH6" id="4UE-tD-Ljz"/>
                         <outlet property="popXposition" destination="NEh-XS-cZw" id="mY2-NY-MS8"/>
-                        <outlet property="v1" destination="tAq-8o-cDT" id="nIp-QC-Fie"/>
-                        <outlet property="v2" destination="m77-7L-cYO" id="eED-HT-53v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xe7-8Z-3KW" userLabel="First Responder" sceneMemberID="firstResponder"/>

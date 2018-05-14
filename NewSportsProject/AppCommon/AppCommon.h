@@ -7,7 +7,7 @@
 //
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-
+#import "AppDelegate.h"
 
 
 @interface AppCommon : NSObject
@@ -42,9 +42,15 @@
 - (CGSize)getControlHeight:(NSString *)string withFontName:(NSString *)fontName ofSize:(NSInteger)size withSize:(CGSize)LabelWidth;
 -(void)AddMenuView:(UIView *)view;
 - (CGSize)getControlHeight:(NSString *)string withFontName:(NSString *)fontName ofSize:(NSInteger)size withSize:(CGSize)LabelWidth;
+-(NSArray *)getCorrespondingTeamName:(NSString *)competetionName;
++(void)showAlertWithMessage:(NSString *)message;
+-(void)getIPLCompetetion;
+-(void)getIPLteams;
 
-
-
++(NSString *)getCurrentCompetitionCode;
++(NSString *)getCurrentCompetitionName;
++(NSString *)getCurrentTeamCode;
++(NSString *)getCurrentTeamName;
 
 @end
 extern AppCommon *sharedCommon;
