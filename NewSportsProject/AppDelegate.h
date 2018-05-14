@@ -17,7 +17,7 @@
 @property (strong, readwrite) NSMutableArray *Scorearray;
 
 @property (strong, readwrite) NSString *backkey;
-
+@property (strong, readwrite) NSString *LiveMatchCode;
 @property (strong, nonatomic) NSMutableArray *ArrayCompetition;
 @property (strong, nonatomic) NSMutableArray *ArrayTeam;
 @property (strong, nonatomic) NSMutableArray *MainArray;
