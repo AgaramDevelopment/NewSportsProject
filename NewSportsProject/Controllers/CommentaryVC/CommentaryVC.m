@@ -270,11 +270,11 @@
         
         
             //        NSString *competition = @"UCC0000274";
-            //        NSString *matchCode = @"DMSC116D017C2AA4FC420180302113612078";
+            //        NSString *matchCode = @"DMSC116D017C2AA4FC420180302122412087";
         
         NSString *competition = @"UCC0000274";
         NSString *matchCode = appDel.LiveMatchCode; // Live Match Code
-//        NSString *matchCode = @"DMSC116D017C2AA4FC420180302114212080"; //Post Match Code
+//        NSString *matchCode = @"DMSC116D017C2AA4FC420180302122412087"; //Post Match Code
         //DMSC116D017C2AA4FC420180302122412087
         
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
@@ -398,6 +398,7 @@
             
                 //Batting & Bowling
             self.partnershipRunsLbl.text = [NSString stringWithFormat:@"%@ [%@]", [self checkNull:[key valueForKey:@"PARTNERSHIPRUNS"]], [self checkNull:[key valueForKey:@"PARTNERSHIPBALLS"]]];
+            /*
             [self.battingStrikerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", [self checkNull:[key valueForKey:@"BATTEAMLOGO"]]]] placeholderImage:[UIImage imageNamed:@"testimgplayer"]];
             self.battingStrikerNameLbl.text = [self checkNull:[key valueForKey:@"STRIKERNAME"]];
             self.battingStrikerRunsLbl.text = [NSString stringWithFormat:@"%@ [%@]", [self checkNull:[key valueForKey:@"STRIKERTOTALRUNS"]], [self checkNull:[key valueForKey:@"STRIKERTOTALBALLS"]]];
@@ -406,9 +407,26 @@
             [self.battingNonStrikerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", [self checkNull:[key valueForKey:@"BATTEAMLOGO"]]]] placeholderImage:[UIImage imageNamed:@"virat"]];
             self.battingNonStrikerNameLbl.text = [self checkNull:[key valueForKey:@"NONSTRIKERNAME"]];
             self.battingNonStrikerRunsLbl.text = [NSString stringWithFormat:@"%@ [%@]", [self checkNull:[key valueForKey:@"NONSTRIKERTOTALRUNS"]], [self checkNull:[key valueForKey:@"NONSTRIKERTOTALBALLS"]]];
+            */
         }
     }
     
+    //Batting & Bowling Score and Images
+    NSMutableArray *battingStrikerArray = [liveScore valueForKey:@"lstStriker"];
+    
+    if (battingStrikerArray.count) {
+        for (id key in battingStrikerArray) {
+            [self.battingStrikerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", [self checkNull:[key valueForKey:@"STRIKERPHOTO"]]]] placeholderImage:[UIImage imageNamed:@"testimgplayer"]];
+            self.battingStrikerNameLbl.text = [self checkNull:[key valueForKey:@"STRIKERNAME"]];
+            self.battingStrikerRunsLbl.text = [self checkNull:[key valueForKey:@"STRIKERSCORE"]];
+            
+            
+            [self.battingNonStrikerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", [self checkNull:[key valueForKey:@"NONSTRIKERPHOTO"]]]] placeholderImage:[UIImage imageNamed:@"virat"]];
+            self.battingNonStrikerNameLbl.text = [self checkNull:[key valueForKey:@"NONSTRIKERNAME"]];
+            self.battingNonStrikerRunsLbl.text = [self checkNull:[key valueForKey:@"NONSTRIKERSCORE"]];
+        }
+    }
+
     
     NSMutableArray *matchOverSummaryArray = [liveScore valueForKey:@"lstMatchOverSummary"];
     
@@ -419,10 +437,13 @@
         self.bowlingStrikerNameLbl.text = [self checkNull:[[matchOverSummaryArray objectAtIndex:0] valueForKey:@"BOWLERNAME"]];
         self.bowlingStrikerOversLbl.text = [self checkNull:[[matchOverSummaryArray objectAtIndex:0] valueForKey:@"BOWLERDETAIL"]];
         
+        [self.bowlingStrikerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", [self checkNull:[[matchOverSummaryArray objectAtIndex:0]valueForKey:@"BOWLERPHOTO"]]]] placeholderImage:[UIImage imageNamed:@"testimgplayer"]];
+        
         if (matchOverSummaryArray.count > 1) {
             [self.bowlingNonStrikerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", [self checkNull:[[matchOverSummaryArray objectAtIndex:1] valueForKey:@"BATTEAMLOGO"]]]] placeholderImage:[UIImage imageNamed:@"virat"]];
             self.bowlingNonStrikerNameLbl.text = [self checkNull:[[matchOverSummaryArray objectAtIndex:1] valueForKey:@"BOWLERNAME"]];
             self.bowlingNonStrikerOversLbl.text = [self checkNull:[[matchOverSummaryArray objectAtIndex:1] valueForKey:@"BOWLERDETAIL"]];
+             [self.bowlingNonStrikerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", [self checkNull:[[matchOverSummaryArray objectAtIndex:1]valueForKey:@"BOWLERPHOTO"]]]] placeholderImage:[UIImage imageNamed:@"testimgplayer"]];
         }
     }
 }
@@ -466,6 +487,9 @@
     
     cell = self.objlistCell;
     
+    NSString *www = [self checkNull:[[self.commonArray valueForKey:@"RUNS"] objectAtIndex:indexPath.row]];
+    NSLog(@"Wickets:%@", www);
+    
     if([[self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPE"] objectAtIndex:indexPath.row]] isEqualToString:@"1"])
     {
             cell.overs.text = [self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPEDESC"] objectAtIndex:indexPath.row]];
@@ -489,7 +513,7 @@
             cell.cmtText.text = reqCommentry;
             CGSize sizeThatFitsTextView = [cell.cmtText sizeThatFits:CGSizeMake(cell.cmtText.frame.size.width, MAXFLOAT)];
             cell.constraintTextViewHeight.constant = sizeThatFitsTextView.height;
-            
+        
         }else
         {
             
@@ -532,7 +556,7 @@
             cell.backgroundColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
             cell.Ball.textColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
             cell.overs.textColor = [UIColor whiteColor];
-            cell.cmtText.textColor = [UIColor whiteColor];
+            cell.cmtText.textColor = [UIColor redColor];
         }
         else if([cell.Ball.text isEqualToString:@""])
         {

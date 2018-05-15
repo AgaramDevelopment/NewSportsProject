@@ -2798,7 +2798,7 @@
                                             <constraint firstItem="TKU-fF-AGJ" firstAttribute="leading" secondItem="CcU-pv-4GN" secondAttribute="leading" constant="15" id="zF0-KB-Tut"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FHX-s0-dJy">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FHX-s0-dJy">
                                         <rect key="frame" x="5" y="1010" width="365" height="80"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG-TeamVenue" translatesAutoresizingMaskIntoConstraints="NO" id="3kB-ZK-dMO">
@@ -2839,7 +2839,7 @@
                                             <constraint firstAttribute="height" constant="80" id="wmP-bd-W1h"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HOf-TU-deX">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HOf-TU-deX">
                                         <rect key="frame" x="5" y="1105" width="365" height="80"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG-TeamVenue" translatesAutoresizingMaskIntoConstraints="NO" id="9yZ-YO-HBL">
@@ -13366,8 +13366,9 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qzY-5c-pkL" userLabel="Batting Striker">
                                                                 <rect key="frame" x="0.0" y="0.0" width="315" height="100"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testimgplayer" translatesAutoresizingMaskIntoConstraints="NO" id="TY3-Ja-WOE">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TY3-Ja-WOE">
                                                                         <rect key="frame" x="235" y="10" width="80" height="80"/>
+                                                                        <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="XT6-9b-jkU">
                                                                                 <variation key="heightClass=regular-widthClass=regular" constant="80"/>
@@ -13430,9 +13431,9 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lpJ-wl-5JU" userLabel="Batting Non-Striker">
                                                                 <rect key="frame" x="413" y="0.0" width="315" height="100"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="virat" translatesAutoresizingMaskIntoConstraints="NO" id="oNs-IE-9bU">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oNs-IE-9bU">
                                                                         <rect key="frame" x="0.0" y="10" width="80" height="80"/>
-                                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <color key="backgroundColor" red="0.66666666666666663" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="cNB-EC-HEX">
                                                                                 <variation key="heightClass=regular-widthClass=regular" constant="80"/>
@@ -13577,8 +13578,9 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="agR-mC-4du" userLabel="Bowling Striker">
                                                                 <rect key="frame" x="0.0" y="0.0" width="315" height="100"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testimgplayer" translatesAutoresizingMaskIntoConstraints="NO" id="Vwx-w1-C7r">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vwx-w1-C7r">
                                                                         <rect key="frame" x="235" y="10" width="80" height="80"/>
+                                                                        <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="Hqy-88-DN7">
                                                                                 <variation key="heightClass=regular-widthClass=regular" constant="80"/>
@@ -13641,7 +13643,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYU-Lc-wIX" userLabel="Bowling Non-Striker">
                                                                 <rect key="frame" x="413" y="0.0" width="315" height="100"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="virat" translatesAutoresizingMaskIntoConstraints="NO" id="U0V-Kg-Yx1">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U0V-Kg-Yx1">
                                                                         <rect key="frame" x="0.0" y="10" width="80" height="80"/>
                                                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <constraints>
