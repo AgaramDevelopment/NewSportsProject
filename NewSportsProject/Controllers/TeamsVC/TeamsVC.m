@@ -140,13 +140,21 @@
         
         dropVC.array = [COMMON getCorrespondingTeamName:Competitionlbl.text];
         dropVC.key = @"TeamName";
-        [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(dropviewComp2.frame), CGRectGetMaxY(dropviewComp2.superview.frame)+70, CGRectGetWidth(dropviewComp2.frame), 300)];
+        if (IS_IPAD) {
+            [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(dropviewComp2.frame), CGRectGetMaxY(dropviewComp2.superview.frame), CGRectGetWidth(dropviewComp2.frame), 300)];
+        } else {
+            [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(dropviewComp2.frame), CGRectGetMaxY(dropviewComp2.superview.frame)+20, CGRectGetWidth(dropviewComp2.frame), 300)];
+        }
     }
     else // COMPETETION
     {
         dropVC.array = appDel.ArrayCompetition;
         dropVC.key = @"CompetitionName";
-        [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(dropviewComp1.frame), CGRectGetMaxY(dropviewComp1.superview.frame)+70, CGRectGetWidth(dropviewComp1.frame), 300)];
+    if (IS_IPAD) {
+        [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(dropviewComp1.frame), CGRectGetMaxY(dropviewComp1.superview.frame), CGRectGetWidth(dropviewComp1.frame), 300)];
+    } else {
+        [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(dropviewComp1.frame), CGRectGetMaxY(dropviewComp1.superview.frame)+20, CGRectGetWidth(dropviewComp1.frame), 300)];
+    }
     }
     
 //    [appDel.frontNavigationController presentViewController:dropVC animated:YES completion:^{
