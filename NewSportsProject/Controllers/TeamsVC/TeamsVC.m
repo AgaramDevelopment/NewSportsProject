@@ -13,6 +13,8 @@
 #import "DropDownTableViewController.h"
 #import "AppCommon.h"
 #import "WebService.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "TeamsCollectionViewCell.h"
 
 @interface TeamsVC () <selectedDropDown>
 {
@@ -28,7 +30,7 @@
 @property (strong, nonatomic)  NSMutableArray *BowlersArray;
 @property (strong, nonatomic)  NSMutableArray *BatsmenArray;
 @property (strong, nonatomic)  NSMutableArray *AllrounderArray;
-
+@property (strong, nonatomic)  NSMutableArray *playersArray;
 
 @property (strong, nonatomic)  NSMutableArray *TeamPlayersArray1;
 @property (strong, nonatomic)  NSMutableArray *TeamPlayersArray2;
@@ -58,7 +60,7 @@
     [super viewDidLoad];
     
     [self customnavigationmethod];
-    
+    objWebservice = [WebService new];
     self.ShawdowView.clipsToBounds = NO;
     self.ShawdowView.layer.shadowColor = [[UIColor blackColor] CGColor];
     self.ShawdowView.layer.shadowOffset = CGSizeMake(0,5);
@@ -214,7 +216,8 @@
             self.BowlersArray = [[NSMutableArray alloc]init];
             self.BatsmenArray = [[NSMutableArray alloc]init];
             self.AllrounderArray = [[NSMutableArray alloc]init];
-            
+            self.playersArray = [NSMutableArray new];
+            self.playersArray = arrayFromResponse;
             for(int i=0;i<arrayFromResponse.count;i++)
             {
                 NSString *playerrole = [[arrayFromResponse valueForKey:@"PlayerRole"]objectAtIndex:i];
@@ -314,7 +317,14 @@
              [self.AllrounderCollectionView reloadData];
              [self.teamCompCollectionView reloadData];
              */
-            [self.GridTbl reloadData];
+            NSLog(@"BowlersArray:%@", self.BowlersArray);
+            NSLog(@"BatsmenArray:%@", self.BatsmenArray);
+            NSLog(@"AllrounderArray:%@", self.AllrounderArray);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.ListTbl reloadData];
+                [self.GridTbl reloadData];
+           });
+        
         }
             //        [AppCommon hideLoading];
 //        [COMMON RemoveLoadingIcon];
@@ -381,7 +391,7 @@
 {
     if(isList)
     {
-        return 4;
+        return self.playersArray.count;
     }
     else
     {
@@ -419,8 +429,9 @@
         // cell.textLabel.text = self.playername[indexPath.row];
         
         //cell.textColor = [UIColor whiteColor];
-        
-        cell.Playername.text = @"Virat Kohli";
+        [cell.playerImg sd_setImageWithURL:[NSURL URLWithString:[[self.playersArray objectAtIndex:indexPath.row] valueForKey:@"PlayerPhoto"]] placeholderImage:[UIImage imageNamed:@"Default_image"]];
+    
+        cell.Playername.text = [[self.playersArray objectAtIndex:indexPath.row] valueForKey:@"PlayerName"];
         
         //CGSize expectedLabelSize = [cell.Playername.text sizeWithFont:cell.Playername.font
                                         //constrainedToSize:maximumLabelSize
@@ -435,7 +446,7 @@
         cell.Playername.frame = newFrame;
         
         
-        cell.Playertype.text = @"Batsman";
+        cell.Playertype.text = [[self.playersArray objectAtIndex:indexPath.row] valueForKey:@"PlayerRole"];
         
         //CGSize expectedLabelSize = [cell.Playername.text sizeWithFont:cell.Playername.font
         //constrainedToSize:maximumLabelSize
@@ -448,7 +459,8 @@
         CGRect newFrame1 = cell.Playertype.frame;
         newFrame1.size.height = size1.height;
         cell.Playertype.frame = newFrame1;
-
+    
+        cell.Teamname.text = self.Teamnamelbl.text;
         
         return cell;
     }
@@ -500,7 +512,7 @@
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return self.playersArray.count;
 }
 
 #pragma mark collection view cell paddings
@@ -543,20 +555,19 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     
-    UICollectionViewCell *cell = [self.GridTbl dequeueReusableCellWithReuseIdentifier:@"photoCell" forIndexPath:indexPath];
+    TeamsCollectionViewCell *cell = [self.GridTbl dequeueReusableCellWithReuseIdentifier:@"photoCell" forIndexPath:indexPath];
     
     
-    //cell.photos.image =[UIImage imageNamed:[imageArray objectAtIndex:indexPath.row]];
-    
-    
-    //cell.photos_title_lbl.text = titleArray[indexPath.row];
-    
+//    cell.photos.image =[UIImage imageNamed:[imageArray objectAtIndex:indexPath.row]];
+//    cell.photos_title_lbl.text = titleArray[indexPath.row];
     //cell.backgroundColor= [UIColor colorWithRed:(0/255.0f) green:(0/255.0f) blue:(0/255.0f) alpha:0.27f];
-    
     //cell.cellinView.backgroundColor = [UIColor colorWithRed:(0/255.0f) green:(0/255.0f) blue:(0/255.0f) alpha:0.27f];
-    
     //cell.layer.borderWidth=0.5f;
     //cell.layer.borderColor=[UIColor colorWithRed:(255/255.0f) green:(255/255.0f) blue:(255/255.0f) alpha:0.5f].CGColor;
+    
+    [cell.playerImage sd_setImageWithURL:[NSURL URLWithString:[[self.playersArray objectAtIndex:indexPath.row] valueForKey:@"PlayerPhoto"]] placeholderImage:[UIImage imageNamed:@"Default_image"]];
+    
+    cell.playerName.text = [[self.playersArray objectAtIndex:indexPath.row] valueForKey:@"PlayerName"];
     
     return cell;
 }

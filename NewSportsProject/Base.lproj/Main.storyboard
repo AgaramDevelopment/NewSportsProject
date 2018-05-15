@@ -2964,6 +2964,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pct-sf-gUD">
+                                <rect key="frame" x="0.0" y="60" width="768" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoI-u8-4OT">
+                                        <rect key="frame" x="0.0" y="0.0" width="256" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="RyD-JR-r8Q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="T20">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFq-pe-bos">
+                                        <rect key="frame" x="256" y="0.0" width="256" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="mzi-Tw-L3i"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="ODI">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISP-zX-Nbf">
+                                        <rect key="frame" x="512" y="0.0" width="256" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="qvs-hA-sVW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="Test Match">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.058823529411764705" green="0.10588235294117647" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ISP-zX-Nbf" secondAttribute="trailing" id="1aM-uh-Jkk"/>
+                                    <constraint firstItem="zoI-u8-4OT" firstAttribute="leading" secondItem="pct-sf-gUD" secondAttribute="leading" id="CYY-xF-2v8"/>
+                                    <constraint firstItem="fFq-pe-bos" firstAttribute="leading" secondItem="zoI-u8-4OT" secondAttribute="trailing" id="GH3-aG-lLG"/>
+                                    <constraint firstItem="fFq-pe-bos" firstAttribute="top" secondItem="pct-sf-gUD" secondAttribute="top" id="M3H-zV-5WH"/>
+                                    <constraint firstItem="zoI-u8-4OT" firstAttribute="top" secondItem="pct-sf-gUD" secondAttribute="top" id="Nvz-9D-6D8"/>
+                                    <constraint firstItem="ISP-zX-Nbf" firstAttribute="leading" secondItem="fFq-pe-bos" secondAttribute="trailing" id="Yx9-aw-pZ5"/>
+                                    <constraint firstAttribute="height" constant="40" id="ZQz-ZJ-yJJ"/>
+                                    <constraint firstItem="ISP-zX-Nbf" firstAttribute="top" secondItem="pct-sf-gUD" secondAttribute="top" id="b4X-n2-Pii"/>
+                                    <constraint firstItem="ISP-zX-Nbf" firstAttribute="width" secondItem="zoI-u8-4OT" secondAttribute="width" id="mKd-bI-tGh"/>
+                                    <constraint firstItem="fFq-pe-bos" firstAttribute="width" secondItem="zoI-u8-4OT" secondAttribute="width" id="p3N-15-B2L"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4na-wW-N0Y">
                                 <rect key="frame" x="0.0" y="100" width="768" height="85"/>
                                 <subviews>
@@ -3119,54 +3167,6 @@
                                     <outlet property="delegate" destination="C7S-hb-gha" id="WZn-4t-d0W"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pct-sf-gUD">
-                                <rect key="frame" x="0.0" y="60" width="768" height="40"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoI-u8-4OT">
-                                        <rect key="frame" x="0.0" y="0.0" width="256" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="RyD-JR-r8Q"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="T20">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFq-pe-bos">
-                                        <rect key="frame" x="256" y="0.0" width="256" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="mzi-Tw-L3i"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="ODI">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISP-zX-Nbf">
-                                        <rect key="frame" x="512" y="0.0" width="256" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="qvs-hA-sVW"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <state key="normal" title="Test Match">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.058823529411764705" green="0.10588235294117647" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="ISP-zX-Nbf" secondAttribute="trailing" id="1aM-uh-Jkk"/>
-                                    <constraint firstItem="zoI-u8-4OT" firstAttribute="leading" secondItem="pct-sf-gUD" secondAttribute="leading" id="CYY-xF-2v8"/>
-                                    <constraint firstItem="fFq-pe-bos" firstAttribute="leading" secondItem="zoI-u8-4OT" secondAttribute="trailing" id="GH3-aG-lLG"/>
-                                    <constraint firstItem="fFq-pe-bos" firstAttribute="top" secondItem="pct-sf-gUD" secondAttribute="top" id="M3H-zV-5WH"/>
-                                    <constraint firstItem="zoI-u8-4OT" firstAttribute="top" secondItem="pct-sf-gUD" secondAttribute="top" id="Nvz-9D-6D8"/>
-                                    <constraint firstItem="ISP-zX-Nbf" firstAttribute="leading" secondItem="fFq-pe-bos" secondAttribute="trailing" id="Yx9-aw-pZ5"/>
-                                    <constraint firstAttribute="height" constant="40" id="ZQz-ZJ-yJJ"/>
-                                    <constraint firstItem="ISP-zX-Nbf" firstAttribute="top" secondItem="pct-sf-gUD" secondAttribute="top" id="b4X-n2-Pii"/>
-                                    <constraint firstItem="ISP-zX-Nbf" firstAttribute="width" secondItem="zoI-u8-4OT" secondAttribute="width" id="mKd-bI-tGh"/>
-                                    <constraint firstItem="fFq-pe-bos" firstAttribute="width" secondItem="zoI-u8-4OT" secondAttribute="width" id="p3N-15-B2L"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VDj-GE-EDe">
                                 <rect key="frame" x="581" y="195" width="177" height="38"/>
                                 <subviews>
@@ -3219,7 +3219,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="rFS-tr-uYj">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="rFS-tr-uYj" customClass="TeamsCollectionViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="186" height="178"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -3300,6 +3300,11 @@
                                             <constraint firstItem="gLH-Rv-Be6" firstAttribute="leading" secondItem="rFS-tr-uYj" secondAttribute="leading" id="U8T-pi-rLI"/>
                                             <constraint firstAttribute="trailing" secondItem="gLH-Rv-Be6" secondAttribute="trailing" id="fc0-cm-qx8"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="playerImage" destination="Rgh-6F-TcT" id="VBL-ax-xsY"/>
+                                            <outlet property="playerName" destination="MpS-8k-GzA" id="G1a-OE-qBI"/>
+                                            <outlet property="playerRuns" destination="VsU-rK-FVn" id="F8l-fb-4G3"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

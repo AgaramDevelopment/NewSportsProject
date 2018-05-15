@@ -11,6 +11,7 @@
 		04A9E66020A954C500471F70 /* DropDownTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9E65E20A954C500471F70 /* DropDownTableViewController.m */; };
 		04A9E66120A954C500471F70 /* DropDownTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A9E65F20A954C500471F70 /* DropDownTableViewController.xib */; };
 		04A9E66420A9B89300471F70 /* CommentaryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9E66220A9B89200471F70 /* CommentaryVC.m */; };
+		04A9E66720AADD3100471F70 /* TeamsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9E66620AADD3100471F70 /* TeamsCollectionViewCell.m */; };
 		04C851841FB992A100AE18C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C851831FB992A100AE18C9 /* main.m */; };
 		04C851871FB992A100AE18C9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C851861FB992A100AE18C9 /* AppDelegate.m */; };
 		04C8518D1FB992A100AE18C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C8518B1FB992A100AE18C9 /* Main.storyboard */; };
@@ -163,6 +164,8 @@
 		04A9E65F20A954C500471F70 /* DropDownTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownTableViewController.xib; sourceTree = "<group>"; };
 		04A9E66220A9B89200471F70 /* CommentaryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentaryVC.m; sourceTree = "<group>"; };
 		04A9E66320A9B89200471F70 /* CommentaryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentaryVC.h; sourceTree = "<group>"; };
+		04A9E66520AADD3100471F70 /* TeamsCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamsCollectionViewCell.h; sourceTree = "<group>"; };
+		04A9E66620AADD3100471F70 /* TeamsCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamsCollectionViewCell.m; sourceTree = "<group>"; };
 		04C8517F1FB992A100AE18C9 /* NewSportsProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewSportsProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C851831FB992A100AE18C9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04C851851FB992A100AE18C9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -733,6 +736,8 @@
 				CE91AB4220A1D1F200DBA042 /* TeamsCell.m */,
 				CE91AB4320A1D1F200DBA042 /* TeamsCell_iPad.xib */,
 				CE91AB4420A1D1F200DBA042 /* TeamsCell_iPhone.xib */,
+				04A9E66520AADD3100471F70 /* TeamsCollectionViewCell.h */,
+				04A9E66620AADD3100471F70 /* TeamsCollectionViewCell.m */,
 			);
 			path = TeamsCell;
 			sourceTree = "<group>";
@@ -1327,6 +1332,7 @@
 				18266FBF20A4713B004877A3 /* ScoreCardVC.m in Sources */,
 				18266FC020A4713B004877A3 /* UIScrollView+APParallaxHeader.m in Sources */,
 				CE91AC7620A1D1F400DBA042 /* FieldSummaryTVC.m in Sources */,
+				04A9E66720AADD3100471F70 /* TeamsCollectionViewCell.m in Sources */,
 				CE91AC5B20A1D1F400DBA042 /* MDCParallaxView.m in Sources */,
 				CE91AC4520A1D1F400DBA042 /* WebService.m in Sources */,
 				CE91AC7520A1D1F400DBA042 /* BallsInVideosCVC.m in Sources */,
