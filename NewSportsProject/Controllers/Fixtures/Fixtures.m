@@ -166,14 +166,14 @@
     {
         // cell = [[PointsTableCell alloc] initWithStyle:UITableViewCellStyleDefaultreuseIdentifier:MyIdentifier];
         
-        if(IS_IPHONE_DEVICE)
-        {
-            [[NSBundle mainBundle] loadNibNamed:@"FixturesCell_iPhone" owner:self options:nil];
-        }
-        else
-        {
+//        if(IS_IPHONE_DEVICE)
+//        {
+//            [[NSBundle mainBundle] loadNibNamed:@"FixturesCell_iPhone" owner:self options:nil];
+//        }
+//        else
+//        {
         [[NSBundle mainBundle] loadNibNamed:@"FixturesCell_iPad" owner:self options:nil];
-        }
+        //}
     }
     
     cell = self.objCell;

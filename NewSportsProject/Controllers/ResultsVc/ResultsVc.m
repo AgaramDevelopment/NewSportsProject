@@ -13,6 +13,7 @@
 #import "AppCommon.h"
 #import "WebService.h"
 #import "ScoreCardVC.h"
+@import SDWebImage;
 
 @interface ResultsVc ()
 {
@@ -20,6 +21,8 @@
     BOOL isList;
     
     NSString *displayMatchCode;
+    
+    NSString *CompetionCode;
 }
 @property (nonatomic,strong) IBOutlet NSLayoutConstraint * popXposition;
 
@@ -40,6 +43,7 @@
     self.ShawdowView.layer.shadowOpacity = 0.5;
     isList = YES;
     self.competitionLbl.text = [[self.listCompArray valueForKey:@"COMPETITIONNAME"] objectAtIndex:0];
+    CompetionCode = [[self.listCompArray valueForKey:@"COMPETITIONCODE"] objectAtIndex:0];
     [self ResultsWebservice];
     self.popTbl.hidden = YES;
     
@@ -186,19 +190,9 @@
         cell.time.text = [NSString stringWithFormat:@"%@ %@",time,local];
         
         
-        NSString *key = [firstobj valueForKey:@"TeamA"];
-        
-        if([ key isEqualToString:@"India"])
-        {
-            cell.team1Img.image = [UIImage imageNamed:@"Indialogo"];
-            cell.team2Img.image = [UIImage imageNamed:@"Srilankalogo"];
-        }
-        else
-        {
-            cell.team1Img.image = [UIImage imageNamed:@"Srilankalogo"];
-            cell.team2Img.image = [UIImage imageNamed:@"Indialogo"];
-        }
-        
+        [cell.team1Img sd_setImageWithURL:[NSURL URLWithString: [self checkNull:[firstobj valueForKey:@"TeamALogo"]]] placeholderImage:[UIImage imageNamed:@"no-image"]];
+        [cell.team2Img sd_setImageWithURL:[NSURL URLWithString: [self checkNull:[firstobj valueForKey:@"TeamBLogo"]]] placeholderImage:[UIImage imageNamed:@"no-image"]];
+
         
         //        NSString *ground = [firstobj valueForKey:@"Ground"];
         //        NSString *place = [firstobj valueForKey:@"GroundCode"];
@@ -272,7 +266,7 @@
         
         
         static NSString *MyIdentifier = @"MyIdentifier";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:nil];
         
         
         
@@ -305,12 +299,20 @@
     
     
 }
+-(NSString *)checkNull:(NSString *)_value
+{
+    if ([_value isEqual:[NSNull null]] || _value == nil || [_value isEqual:@"<null>"]) {
+        _value=@"";
+    }
+    return _value;
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(isPop==YES)
     {
         self.competitionLbl.text = [[self.listCompArray valueForKey:@"COMPETITIONNAME"]objectAtIndex:indexPath.row];
         
+        CompetionCode = [[self.listCompArray valueForKey:@"COMPETITIONCODE"]objectAtIndex:indexPath.row];
         isList = NO;
         isPop =NO;
         self.popTbl.hidden =YES;
@@ -367,9 +369,8 @@
         
         //NSString *competition = [[self.listCompArray valueForKey:@""] objectAtIndex:0];
         
-        
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-        if(self.competitionLbl.text)   [dic    setObject:self.competitionLbl.text     forKey:@"Competitioncode"];
+        if(CompetionCode)   [dic    setObject:CompetionCode     forKey:@"Competitioncode"];
         
         
         NSLog(@"parameters : %@",dic);
@@ -415,6 +416,49 @@
     }
     
 }
+
+//-(void)setFilterResults
+//{
+//
+//    self.resultArr = [[NSMutableArray alloc]init];
+//
+//    if(![_competitionLbl.text isEqualToString:@""])
+//    {
+//
+//        if([Teamcode isEqualToString:@""])
+//        {
+//            self.resultArr = self.TotalMatchesArr;
+//        }
+//        else
+//        {
+//            NSMutableArray *ReqTeamArray = [[NSMutableArray alloc]init];
+//            ReqTeamArray = self.TotalMatchesArr;
+//
+//            for( int i=0;i<ReqTeamArray.count;i++)
+//            {
+//                NSString *selectedTeamCodeA = [[ReqTeamArray valueForKey:@"TeamACode"] objectAtIndex:i];
+//                NSString *selectedTeamCodeB = [[ReqTeamArray valueForKey:@"TeamBCode"] objectAtIndex:i];
+//                NSString *GlobalteamCode = [AppCommon getCurrentTeamCode];
+//                if([Teamcode isEqualToString:selectedTeamCodeA] || [Teamcode isEqualToString:selectedTeamCodeB])
+//                {
+//                    [self.resultArr addObject:[ReqTeamArray objectAtIndex:i]];
+//                }
+//                //                else if([Teamcode isEqualToString:selectedTeamCodeB])
+//                //                {
+//                //                    [self.resultArr addObject:[ReqTeamArray objectAtIndex:i]];
+//                //                }
+//            }
+//
+//
+//        }
+//
+//        SelectedResultsArray =[NSMutableArray new];
+//        SelectedResultsArray = self.resultArr;
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self.ListTbl reloadData];
+//        });
+//    }
+//}
 
 
 -(IBAction)didClickBackBtn:(id)sender
