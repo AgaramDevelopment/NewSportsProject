@@ -38,7 +38,7 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18.4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ft5-rF-OxB">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ft5-rF-OxB">
                         <rect key="frame" x="20" y="55" width="40" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="5wO-7O-PO3"/>
@@ -47,31 +47,27 @@
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nlu-FR-dTF">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" editable="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nlu-FR-dTF">
                         <rect key="frame" x="70" y="0.0" width="305" height="80"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="80" id="7Fo-xf-evJ"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="PDw-Td-1l7" firstAttribute="top" secondItem="Z7K-Gy-LNm" secondAttribute="top" constant="10" id="8N0-Fl-kCJ"/>
+                    <constraint firstItem="nlu-FR-dTF" firstAttribute="centerY" secondItem="Z7K-Gy-LNm" secondAttribute="centerY" id="E0G-QL-bXH"/>
                     <constraint firstItem="Ft5-rF-OxB" firstAttribute="top" secondItem="PDw-Td-1l7" secondAttribute="bottom" constant="5" id="HT9-BP-e5q"/>
+                    <constraint firstAttribute="trailing" secondItem="nlu-FR-dTF" secondAttribute="trailing" id="I8M-Hu-PAv"/>
                     <constraint firstItem="PDw-Td-1l7" firstAttribute="leading" secondItem="Z7K-Gy-LNm" secondAttribute="leading" constant="20" id="JHd-s0-pWd"/>
                     <constraint firstItem="Ft5-rF-OxB" firstAttribute="leading" secondItem="Z7K-Gy-LNm" secondAttribute="leading" constant="20" id="VaU-oK-Y9h"/>
                     <constraint firstItem="nlu-FR-dTF" firstAttribute="leading" secondItem="PDw-Td-1l7" secondAttribute="trailing" constant="10" id="Xgk-aC-8af"/>
-                    <constraint firstAttribute="trailing" secondItem="nlu-FR-dTF" secondAttribute="trailing" id="nJ2-18-dwx"/>
                     <constraint firstItem="nlu-FR-dTF" firstAttribute="top" secondItem="Z7K-Gy-LNm" secondAttribute="top" id="oml-dl-Y1k"/>
-                    <constraint firstAttribute="bottom" secondItem="nlu-FR-dTF" secondAttribute="bottom" id="w8C-jx-2oA"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="Ball" destination="PDw-Td-1l7" id="RHt-g5-AqQ"/>
                 <outlet property="cmtText" destination="nlu-FR-dTF" id="8FG-2o-nok"/>
-                <outlet property="constraintTextViewHeight" destination="7Fo-xf-evJ" id="UE8-cF-PVw"/>
                 <outlet property="overs" destination="Ft5-rF-OxB" id="ndB-1Z-afe"/>
             </connections>
             <point key="canvasLocation" x="-105.5" y="-44"/>

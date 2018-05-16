@@ -21,5 +21,10 @@
 @property (nonatomic,strong) IBOutlet UILabel * title;
 
 
+@property (nonatomic,strong) IBOutlet NSLayoutConstraint * flexibleHeight;
+
+
+
+
 
 @end

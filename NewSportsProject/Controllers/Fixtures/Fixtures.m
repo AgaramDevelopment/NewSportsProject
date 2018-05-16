@@ -47,7 +47,6 @@
    // self.competitionLbl.text = [[self.fixturesArray valueForKey:@"COMPETITIONNAME"] objectAtIndex:0];
     [self FixturesWebservice];
 
-    
     self.popTbl.hidden = YES;
 }
 
@@ -83,7 +82,7 @@
         objCustomNavigation.btn_back.hidden = YES;
     }
     objCustomNavigation.summarybtn.hidden=YES;
-    objCustomNavigation.filter_btn.hidden = NO;
+    objCustomNavigation.filter_btn.hidden = YES;
     objCustomNavigation.Cancelbtn.hidden = YES;
     [objCustomNavigation.btn_back addTarget:self action:@selector(didClickBackBtn:) forControlEvents:UIControlEventTouchUpInside];
     [objCustomNavigation.filter_btn addTarget:self action:@selector(didClickFilterBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -113,27 +112,27 @@
     }
 }
 
--(IBAction)didClickSeason:(id)sender
-{
-    
-    if(isPop==NO)
-    {
-    self.popTbl.hidden = NO;
-    isPop = YES;
-    isList = NO;
-    self.popXposition.constant = self.v2.frame.origin.x;
-    self.popWidth.constant = self.SeasonBtn.frame.size.width;
-        
-    }
-    else
-    {
-        isPop=NO;
-        isList = YES;
-        self.popTbl.hidden = YES;
-    }
 
-    [self.popTbl reloadData];
-}
+//-(IBAction)didClickSeason:(id)sender
+//{
+//
+//    if(isPop==NO)
+//    {
+//    self.popTbl.hidden = NO;
+//    isPop = YES;
+//    isList = NO;
+//    self.popXposition.constant = self.v2.frame.origin.x;
+//    self.popWidth.constant = self.SeasonBtn.frame.size.width;
+//    }
+//    else
+//    {
+//        isPop=NO;
+//        isList = YES;
+//        self.popTbl.hidden = YES;
+//    }
+//
+//    [self.popTbl reloadData];
+//}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -350,7 +349,8 @@
                 popArray = [[NSMutableArray alloc]init];
                 popArray = [responseObject valueForKey:@"lstCompetitionVal"];
                 
-                [self.ListTbl reloadData];
+                    
+                    [self.ListTbl reloadData];
 
                 }
             }

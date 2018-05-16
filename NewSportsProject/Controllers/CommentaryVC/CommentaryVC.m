@@ -553,9 +553,12 @@
     
         else if([cell.Ball.text isEqualToString:@"W"])
         {
-            cell.backgroundColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
-            cell.Ball.textColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
-            cell.overs.textColor = [UIColor whiteColor];
+           // cell.backgroundColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
+            //cell.Ball.textColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
+            cell.backgroundColor = [UIColor whiteColor];
+            cell.Ball.textColor = [UIColor whiteColor];
+            cell.Ball.backgroundColor = [UIColor redColor];
+            cell.overs.textColor = [UIColor redColor];
             cell.cmtText.textColor = [UIColor redColor];
         }
         else if([cell.Ball.text isEqualToString:@""])
@@ -568,6 +571,8 @@
             cell.Ball.textColor = [UIColor whiteColor];
         }
     
+    //cell.cmtText.autoresizingMask;
+
     [self setUpCell:cell atIndexPath:indexPath];
     
     return cell;
@@ -576,13 +581,26 @@
 {
     
     //static NSString *MyIdentifier = @"MyIdentifier";
-    //CommentaryVCCell *cell = [self.commentTbl dequeueReusableCellWithIdentifier:MyIdentifier];
+   // CommentaryVCCell *cell = [self.commentTbl dequeueReusableCellWithIdentifier:nil];
+  //  [self setUpCell:cell atIndexPath:indexPath];
+    
     return tableRowHeight;
 }
 
 - (void)setUpCell:(CommentaryVCCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     
-    tableRowHeight = cell.contentView.frame.size.height;
+    CGRect frame = cell.cmtText.frame;
+    frame.size.height = cell.cmtText.contentSize.height;
+    cell.cmtText.frame = frame;
+    
+    CGFloat fixedWidth = cell.cmtText.frame.size.width;
+    //CGFloat fixedHeight = cell.cmtText.frame.size.height;
+    CGSize newSize = [cell.cmtText sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
+    CGRect newFrame = cell.cmtText.frame;
+    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+    cell.cmtText.frame = newFrame;
+
+    tableRowHeight = cell.cmtText.frame.size.height+30;
 }
 
 -(IBAction)nextBtn:(id)sender
