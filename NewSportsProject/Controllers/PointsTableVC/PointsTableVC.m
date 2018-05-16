@@ -36,6 +36,28 @@
     isList = YES;
     
     self.popTbl.hidden = YES;
+    
+        //Assign Data for Season Table Properies
+    
+    if (IS_IPAD) {
+        self.teamLbl.text = @"Team";
+        self.playedLbl.text = @"Played";
+        self.wonLbl.text = @"Won";
+        self.lostLbl.text = @"Lost";
+        self.tiedLbl.text = @"Tied";
+        self.noResultLbl.text = @"No Result";
+        self.netRunRateLbl.text = @"Net RR";
+        self.pointsLbl.text = @"Points";
+    } else {
+        self.teamLbl.text = @"T";
+        self.playedLbl.text = @"P";
+        self.wonLbl.text = @"W";
+        self.lostLbl.text = @"L";
+        self.tiedLbl.text = @"T";
+        self.noResultLbl.text = @"NR";
+        self.netRunRateLbl.text = @"NRR";
+        self.pointsLbl.text = @"P";
+    }
 }
 
 -(void)customnavigationmethod
