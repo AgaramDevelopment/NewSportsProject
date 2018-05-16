@@ -28,4 +28,14 @@
 
 @property (nonatomic,strong)  NSMutableArray * PointsArray;
 
+    //Season Table Properties
+
+@property (strong, nonatomic) IBOutlet UILabel *teamLbl;
+@property (strong, nonatomic) IBOutlet UILabel *playedLbl;
+@property (strong, nonatomic) IBOutlet UILabel *wonLbl;
+@property (strong, nonatomic) IBOutlet UILabel *lostLbl;
+@property (strong, nonatomic) IBOutlet UILabel *tiedLbl;
+@property (strong, nonatomic) IBOutlet UILabel *noResultLbl;
+@property (strong, nonatomic) IBOutlet UILabel *netRunRateLbl;
+@property (strong, nonatomic) IBOutlet UILabel *pointsLbl;
 @end
