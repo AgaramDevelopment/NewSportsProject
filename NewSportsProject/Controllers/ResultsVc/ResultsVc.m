@@ -44,8 +44,15 @@
     self.ShawdowView.layer.shadowOffset = CGSizeMake(0,5);
     self.ShawdowView.layer.shadowOpacity = 0.5;
     isList = YES;
-    self.competitionLbl.text = [[self.listCompArray valueForKey:@"COMPETITIONNAME"] objectAtIndex:0];
-    CompetionCode = [[self.listCompArray valueForKey:@"COMPETITIONCODE"] objectAtIndex:0];
+   // self.competitionLbl.text = [[self.listCompArray valueForKey:@"COMPETITIONNAME"] objectAtIndex:0];
+    //CompetionCode = [[self.listCompArray valueForKey:@"COMPETITIONCODE"] objectAtIndex:0];
+    
+    self.competitionLbl.text = [AppCommon getCurrentCompetitionName];
+    self.Teamnamelbl.text = @"TeamName";
+    
+    CompetionCode = [AppCommon getCurrentCompetitionCode];
+    Teamcode = [AppCommon getCurrentTeamCode];
+    
     [self ResultsWebservice];
     self.popTbl.hidden = YES;
     
@@ -368,7 +375,6 @@
         
         manager.requestSerializer = requestSerializer;
         
-        
         //NSString *competition = [[self.listCompArray valueForKey:@""] objectAtIndex:0];
         
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
@@ -541,6 +547,7 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         self.Teamnamelbl.text = @"Team Name";
+        [self ResultsWebservice];
         
     } else {
         self.Teamnamelbl.text = [[array objectAtIndex:Index.row] valueForKey:key];

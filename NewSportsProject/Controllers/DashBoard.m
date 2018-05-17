@@ -922,7 +922,7 @@
         
         //NSString *URLString =  [URL_FOR_RESOURCE(@"") stringByAppendingString:[NSString stringWithFormat:@"%@",FixturesKey]];
         
-        NSString *URLString = @"http://192.168.0.152:8083/CSK.svc/FETCHCSKPOINTTABLES";
+        NSString *URLString = @"http://192.168.0.152:8083/LiveMatch.svc/FETCHCSKPOINTTABLES";
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         AFHTTPRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
         [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
