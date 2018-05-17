@@ -470,41 +470,10 @@
                 Fix.team2img.image = [UIImage imageNamed:@"KXIP-left"];
                 
             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            //NSString *key2 = [[objarray valueForKey:@"team2"] objectAtIndex:index];
 
-            //if([ key2 isEqualToString:@"MI"])
-            //{
-            //   Fix.team2img.image = [UIImage imageNamed:@"MI-left"];
+    [Fix.btn addTarget:self action:@selector(didClickBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:Fix.view];
 
-           // }
-
-
-                
-                //[self.header_scroll addSubview:Fix.view];
-                [Fix.btn addTarget:self action:@selector(didClickBtn:) forControlEvents:UIControlEventTouchUpInside];
-                //[view addSubview:Fix.view];
-           // }
-            
-       // }
-        
-        [view addSubview:Fix.view];
-//    }
-//    else
-//    {
-//        //get a reference to the label in the recycled view
-//        label = (UILabel *)[view viewWithTag:1];
-//    }
-     //   }
-    
     return view;
 }
 

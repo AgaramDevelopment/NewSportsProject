@@ -20,23 +20,27 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Gemini (1.2.0)
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.4)
+  - Gemini
   - SDWebImage (~> 4.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - Gemini
     - SDWebImage
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  Gemini: acff98012273066f1b83c887731260abfaf18ec5
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
 
-PODFILE CHECKSUM: ae869217f978ed4c803c671022eef53e91908d22
+PODFILE CHECKSUM: e2156f7684fb2a617e2a496ecc8d2e9857c0ddf8
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.2

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Config.h"
+#import "NewSportsProject-Bridging-Header.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

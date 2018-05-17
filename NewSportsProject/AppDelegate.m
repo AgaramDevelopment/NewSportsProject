@@ -10,7 +10,9 @@
 #import "UITabBarController+Swipe.h"
 #import "tabViewController.h"
 #import "AppCommon.h"
+#import "NewSportsProject-Swift.h"
 
+@class GemViewController1;
 @interface AppDelegate ()
 
 
@@ -21,38 +23,27 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    UIViewController *initViewController;
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    /*
-    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-        // iPad
-        
-        storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
-    } else {
-        // iPhone
-        
-        storyBoard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-    }
-    */
-    //if(![[NSUserDefaults standardUserDefaults] boolForKey:@"Skip"]) {
-        //initViewController = [storyBoard instantiateViewControllerWithIdentifier:@"tabViewController"];
-//    } else {
-        initViewController = [storyBoard instantiateViewControllerWithIdentifier:@"tabViewController"];
-//    }
-    
-    
-    UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:initViewController];
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
+//    tabViewController *initViewController;
+    GemViewController1 *initViewController;
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+//    initViewController = (tabViewController*)[storyBoard instantiateViewControllerWithIdentifier:@"tabViewController"];
+    
+    initViewController = (GemViewController1 *)[storyBoard instantiateViewControllerWithIdentifier:@"YawRotationViewController"];
+//    [GemViewController1 make]
+//    let viewController = YawRotationViewController.make(scrollDirection: .vertical, effect: .yawDown)
+//    navigationController?.pushViewController(viewController, animated: true)
+
+    UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:initViewController];
+    
     navigationController.navigationBarHidden = YES;
+    
     _window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     
-    
-    tabViewController *tab = [[tabViewController alloc]init];
-    
-   // tabViewController = (UITabBarController *)self.window.rootViewController;
-    [tab setupSwipeGestureRecognizersAllowCyclingThroughTabs:YES];
+//    [initViewController setupSwipeGestureRecognizersAllowCyclingThroughTabs:YES];
     
     [COMMON getIPLteams];
     
