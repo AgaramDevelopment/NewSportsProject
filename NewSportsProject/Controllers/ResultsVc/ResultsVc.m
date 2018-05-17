@@ -13,6 +13,8 @@
 #import "AppCommon.h"
 #import "WebService.h"
 #import "ScoreCardVC.h"
+#import "DropDownTableViewController.h"
+@import SDWebImage;
 
 @interface ResultsVc ()
 {
@@ -20,6 +22,9 @@
     BOOL isList;
     
     NSString *displayMatchCode;
+    
+    NSString *CompetionCode;
+    NSString* Teamcode;
 }
 @property (nonatomic,strong) IBOutlet NSLayoutConstraint * popXposition;
 
@@ -39,7 +44,15 @@
     self.ShawdowView.layer.shadowOffset = CGSizeMake(0,5);
     self.ShawdowView.layer.shadowOpacity = 0.5;
     isList = YES;
-    self.competitionLbl.text = [[self.listCompArray valueForKey:@"COMPETITIONNAME"] objectAtIndex:0];
+   // self.competitionLbl.text = [[self.listCompArray valueForKey:@"COMPETITIONNAME"] objectAtIndex:0];
+    //CompetionCode = [[self.listCompArray valueForKey:@"COMPETITIONCODE"] objectAtIndex:0];
+    
+    self.competitionLbl.text = [AppCommon getCurrentCompetitionName];
+    self.Teamnamelbl.text = @"TeamName";
+    
+    CompetionCode = [AppCommon getCurrentCompetitionCode];
+    Teamcode = [AppCommon getCurrentTeamCode];
+    
     [self ResultsWebservice];
     self.popTbl.hidden = YES;
     
@@ -75,31 +88,31 @@
     
 }
 
--(IBAction)didClickCompetetion:(id)sender
-{
-    
-    if(isPop==NO)
-    {
-        [self.ListTbl setUserInteractionEnabled:NO];
-        self.popTbl.hidden = NO;
-        isPop = YES;
-        isList = NO;
-        
-        self.popXposition.constant = self.v1.frame.origin.x;
-        self.popWidth.constant = self.CompetBtn.frame.size.width;
-        
-        //[self.popTbl reloadData];
-        
-        
-    }
-    else
-    {
-        isPop=NO;
-        isList = YES;
-        self.popTbl.hidden = YES;
-        [self.ListTbl setUserInteractionEnabled:YES];
-    }
-}
+//-(IBAction)didClickCompetetion:(id)sender
+//{
+//
+//    if(isPop==NO)
+//    {
+//        [self.ListTbl setUserInteractionEnabled:NO];
+//        self.popTbl.hidden = NO;
+//        isPop = YES;
+//        isList = NO;
+//
+//        self.popXposition.constant = self.v1.frame.origin.x;
+//        self.popWidth.constant = self.CompetBtn.frame.size.width;
+//
+//        //[self.popTbl reloadData];
+//
+//
+//    }
+//    else
+//    {
+//        isPop=NO;
+//        isList = YES;
+//        self.popTbl.hidden = YES;
+//        [self.ListTbl setUserInteractionEnabled:YES];
+//    }
+//}
 
 //-(IBAction)didClickSeason:(id)sender
 //{
@@ -186,19 +199,9 @@
         cell.time.text = [NSString stringWithFormat:@"%@ %@",time,local];
         
         
-        NSString *key = [firstobj valueForKey:@"TeamA"];
-        
-        if([ key isEqualToString:@"India"])
-        {
-            cell.team1Img.image = [UIImage imageNamed:@"Indialogo"];
-            cell.team2Img.image = [UIImage imageNamed:@"Srilankalogo"];
-        }
-        else
-        {
-            cell.team1Img.image = [UIImage imageNamed:@"Srilankalogo"];
-            cell.team2Img.image = [UIImage imageNamed:@"Indialogo"];
-        }
-        
+        [cell.team1Img sd_setImageWithURL:[NSURL URLWithString: [self checkNull:[firstobj valueForKey:@"TeamALogo"]]] placeholderImage:[UIImage imageNamed:@"no-image"]];
+        [cell.team2Img sd_setImageWithURL:[NSURL URLWithString: [self checkNull:[firstobj valueForKey:@"TeamBLogo"]]] placeholderImage:[UIImage imageNamed:@"no-image"]];
+
         
         //        NSString *ground = [firstobj valueForKey:@"Ground"];
         //        NSString *place = [firstobj valueForKey:@"GroundCode"];
@@ -272,7 +275,7 @@
         
         
         static NSString *MyIdentifier = @"MyIdentifier";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:nil];
         
         
         
@@ -305,12 +308,20 @@
     
     
 }
+-(NSString *)checkNull:(NSString *)_value
+{
+    if ([_value isEqual:[NSNull null]] || _value == nil || [_value isEqual:@"<null>"]) {
+        _value=@"";
+    }
+    return _value;
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(isPop==YES)
     {
         self.competitionLbl.text = [[self.listCompArray valueForKey:@"COMPETITIONNAME"]objectAtIndex:indexPath.row];
         
+        CompetionCode = [[self.listCompArray valueForKey:@"COMPETITIONCODE"]objectAtIndex:indexPath.row];
         isList = NO;
         isPop =NO;
         self.popTbl.hidden =YES;
@@ -364,12 +375,10 @@
         
         manager.requestSerializer = requestSerializer;
         
-        
         //NSString *competition = [[self.listCompArray valueForKey:@""] objectAtIndex:0];
         
-        
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-        if(self.competitionLbl.text)   [dic    setObject:self.competitionLbl.text     forKey:@"Competitioncode"];
+        if(CompetionCode)   [dic    setObject:CompetionCode     forKey:@"Competitioncode"];
         
         
         NSLog(@"parameters : %@",dic);
@@ -392,6 +401,8 @@
                         
                         isList=YES;
                     }
+                    self.TotalMatchesArr = [[NSMutableArray alloc]init];
+                    self.TotalMatchesArr = self.resultArr;
                 }
                 
                 
@@ -416,12 +427,139 @@
     
 }
 
+-(void)setFilterResults
+{
+
+    self.resultArr = [[NSMutableArray alloc]init];
+
+    if(![_competitionLbl.text isEqualToString:@""])
+    {
+
+        if([Teamcode isEqualToString:@""])
+        {
+            self.resultArr = self.TotalMatchesArr;
+        }
+        else
+        {
+            NSMutableArray *ReqTeamArray = [[NSMutableArray alloc]init];
+            ReqTeamArray = self.TotalMatchesArr;
+
+            for( int i=0;i<ReqTeamArray.count;i++)
+            {
+                NSString *selectedTeamCodeA = [[ReqTeamArray valueForKey:@"TeamACode"] objectAtIndex:i];
+                NSString *selectedTeamCodeB = [[ReqTeamArray valueForKey:@"TeamBCode"] objectAtIndex:i];
+                NSString *GlobalteamCode = [AppCommon getCurrentTeamCode];
+                if([Teamcode isEqualToString:selectedTeamCodeA] || [Teamcode isEqualToString:selectedTeamCodeB])
+                {
+                    [self.resultArr addObject:[ReqTeamArray objectAtIndex:i]];
+                }
+                //                else if([Teamcode isEqualToString:selectedTeamCodeB])
+                //                {
+                //                    [self.resultArr addObject:[ReqTeamArray objectAtIndex:i]];
+                //                }
+            }
+
+
+        }
+
+        //SelectedResultsArray =[NSMutableArray new];
+        //SelectedResultsArray = self.resultArr;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.ListTbl reloadData];
+        });
+    }
+}
+
 
 -(IBAction)didClickBackBtn:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
+-(IBAction)didClickCompetetion:(id)sender
+{
+    /*
+     if(isPop==NO)
+     {
+     self.popTbl.hidden = NO;
+     isPop = YES;
+     isList = NO;
+     
+     self.popXposition.constant = self.v1.frame.origin.x;
+     self.popWidth.constant = self.CompetBtn.frame.size.width;
+     
+     [self.popTbl reloadData];
+     }
+     else
+     {
+     isPop=NO;
+     isList = YES;
+     self.popTbl.hidden = YES;
+     }
+     */
+    
+    DropDownTableViewController* dropVC = [[DropDownTableViewController alloc] init];
+    dropVC.protocol = self;
+    dropVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    dropVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [dropVC.view setBackgroundColor:[UIColor clearColor]];
+    
+    if ([sender tag] == 1) { // TEAM
+        
+        dropVC.array = [COMMON getCorrespondingTeamName:self.competitionLbl.text];
+        dropVC.key = @"TeamName";
+        if (IS_IPAD) {
+            [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(self.v2.frame), CGRectGetMaxY(self.v2.superview.frame), CGRectGetWidth(self.v2.frame), 300)];
+        } else {
+            [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(self.v2.frame), CGRectGetMaxY(self.v2.superview.frame)+20, CGRectGetWidth(self.v2.frame), 300)];
+        }
+    }
+    else // COMPETETION
+    {
+        dropVC.array = appDel.ArrayCompetition;
+        dropVC.key = @"CompetitionName";
+        if (IS_IPAD) {
+            [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(self.v1.frame), CGRectGetMaxY(self.v1.superview.frame), CGRectGetWidth(self.v1.frame), 300)];
+        } else {
+            [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(self.v1.frame), CGRectGetMaxY(self.v1.superview.frame)+20, CGRectGetWidth(self.v1.frame), 300)];
+        }
+    }
+    
+    //    [appDel.frontNavigationController presentViewController:dropVC animated:YES completion:^{
+    //        NSLog(@"DropDown loaded");
+    //    }];
+    
+    [self.navigationController presentViewController:dropVC animated:YES completion:nil];
+}
+
+-(void)selectedValue:(NSMutableArray *)array andKey:(NSString*)key andIndex:(NSIndexPath *)Index
+{
+    if ([key isEqualToString: @"CompetitionName"]) {
+        
+        NSLog(@"%@",array[Index.row]);
+        NSLog(@"selected value %@",key);
+        self.competitionLbl.text = [[array objectAtIndex:Index.row] valueForKey:key];
+        NSString* Competetioncode = [[array objectAtIndex:Index.row] valueForKey:@"CompetitionCode"];
+        CompetionCode = [[array objectAtIndex:Index.row] valueForKey:@"CompetitionCode"];
+        [[NSUserDefaults standardUserDefaults] setValue:self.competitionLbl.text forKey:@"SelectedCompetitionName"];
+        [[NSUserDefaults standardUserDefaults] setValue:Competetioncode forKey:@"SelectedCompetitionCode"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        self.Teamnamelbl.text = @"Team Name";
+        [self ResultsWebservice];
+        
+    } else {
+        self.Teamnamelbl.text = [[array objectAtIndex:Index.row] valueForKey:key];
+        Teamcode = [[array objectAtIndex:Index.row] valueForKey:@"TeamCode"];
+        
+        [[NSUserDefaults standardUserDefaults] setValue:self.Teamnamelbl.text forKey:@"SelectedTeamName"];
+        [[NSUserDefaults standardUserDefaults] setValue:Teamcode forKey:@"SelectedTeamCode"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+    }
+    [self setFilterResults];
+}
 
 
 @end

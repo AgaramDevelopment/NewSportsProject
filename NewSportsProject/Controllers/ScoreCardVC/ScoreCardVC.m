@@ -608,13 +608,13 @@
     
     NSLog(@"%@", _matchCode);
     
-    //    if([self.backkey isEqualToString:@"no"])
-    //    {
-    //    self.matchCode=Appobj.Currentmatchcode;
-    //    self.matchDetails =Appobj.Scorearray;
-    //    }
+        if(![self.backkey isEqualToString:@"yes"])
+        {
+        
+            self.matchCode= Appobj.Currentmatchcode;
+        }
     
-    self.matchCode=appDel.Currentmatchcode;
+    
     self.matchDetails =appDel.Scorearray;
     
     NSLog(@"matchCode:%@", self.matchCode);
@@ -2772,7 +2772,14 @@
     if([COMMON isInternetReachable])
     {
         
-        NSString *URLString =  [URL_FOR_RESOURCE(@"") stringByAppendingString:[NSString stringWithFormat:@"%@",ScorecardKey]];
+        //NSString *URLString =  [URL_FOR_RESOURCE(@"") stringByAppendingString:[NSString stringWithFormat:@"%@",ScorecardKey]];
+        
+       // NSString *URLString = @"http://192.168.0.152:8083/CSK.svc/FETCHSCORECARDNEW"; //postmatch
+        
+        
+        
+        NSString *URLString = @"http://192.168.0.152:8083/LiveMatch.svc/FETCHCSKARCHIVESCORECARD";//Archieve
+       // NSString *URLString = @"http://192.168.0.152:8083/LiveMatch.svc/FETCHCSKLIVESCORECARD";//LiveMatch
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         AFHTTPRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
         [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -2783,11 +2790,14 @@
         NSString *competition = @"";
         NSString *teamcode = @"";
         
+       // NSString *MC = @"DMSC116D017C2AA4FC420180302122912089";
+        
         
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-        if(competition)   [dic    setObject:competition     forKey:@"Competitioncode"];
-        if(teamcode)   [dic    setObject:teamcode     forKey:@"Teamcode"];
-        if(self.matchCode)   [dic    setObject:self.matchCode     forKey:@"MatchCode"];
+        //if(competition)   [dic    setObject:competition     forKey:@"Competitioncode"];
+        //if(teamcode)   [dic    setObject:teamcode     forKey:@"Teamcode"];
+        if(self.matchCode)   [dic    setObject:self.matchCode     forKey:@"MATCHCODE"];
+        //if(MC)   [dic    setObject:MC     forKey:@"MATCHCODE"];
         
         
         NSLog(@"parameters : %@",dic);
@@ -2855,10 +2865,10 @@
                 //                [self.Inn4 setTitle:[NSString stringWithFormat:@"Inn4-%@" ,[[self.matchDetails valueForKey:@"team2"] objectAtIndex:0]] forState:UIControlStateNormal];
                 
                 NSString * imgStr1 = ([[matchDetailsImageArray objectAtIndex:0] valueForKey:@"BattingTeamlogo"]==[NSNull null])?@"":[[matchDetailsImageArray objectAtIndex:0] valueForKey:@"BattingTeamlogo"];
-                NSString *teamAString = [NSString stringWithFormat:@"%@",imgStr1];
+                NSString *teamAString = [NSString stringWithFormat:@"http://csk.agaraminfotech.com/%@",imgStr1];
                 
                 NSString * imgStr2 = ([[matchDetailsImageArray objectAtIndex:0] valueForKey:@"BowlingTeamlogo"]==[NSNull null])?@"":[[matchDetailsImageArray objectAtIndex:0] valueForKey:@"BowlingTeamlogo"];
-                NSString *teamBString = [NSString stringWithFormat:@"%@",imgStr2];
+                NSString *teamBString = [NSString stringWithFormat:@"http://csk.agaraminfotech.com/%@",imgStr2];
                 
 //                [self downloadImageWithURL:[NSURL URLWithString:imgStr1] completionBlock:^(BOOL succeeded, UIImage *image) {
 //                    if (succeeded) {
@@ -2873,7 +2883,7 @@
 //                        self.teamAlogo.image = [UIImage imageNamed:@"no-image"];
 //                    }
 //                }];
-                [self.teamAlogo sd_setImageWithURL:[NSURL URLWithString:imgStr1] placeholderImage:[UIImage imageNamed:@"no-image"]];
+                [self.teamAlogo sd_setImageWithURL:[NSURL URLWithString:teamAString] placeholderImage:[UIImage imageNamed:@"no-image"]];
                 
 //                [self downloadImageWithURL:[NSURL URLWithString:imgStr2] completionBlock:^(BOOL succeeded, UIImage *image) {
 //                    if (succeeded) {
@@ -2888,7 +2898,7 @@
 //                        self.teamBlogo.image = [UIImage imageNamed:@"no-image"];
 //                    }
 //                }];
-                [self.teamBlogo sd_setImageWithURL:[NSURL URLWithString:imgStr2] placeholderImage:[UIImage imageNamed:@"no-image"]];
+                [self.teamBlogo sd_setImageWithURL:[NSURL URLWithString:teamBString] placeholderImage:[UIImage imageNamed:@"no-image"]];
         
                 ScoreCardHeader *header = [[ScoreCardHeader alloc]init];
                 header.matchDetailsArray = matchDetailsImageArray;
@@ -2921,61 +2931,61 @@
                 
                 //third button details
                 
-                if(![[responseObject valueForKey:@"thirdlstFallofWickets"] isEqual:[NSNull null]])
-                {
-                    NSMutableArray *array3 = [[NSMutableArray alloc]init];
-                    array3 = [responseObject valueForKey:@"thirdlstFallofWickets"];
-                    
-                    if(![[array3 valueForKey:@"lstSCBatsmanDetails"] isEqual:[NSNull null]])
-                    {
-                        
-                        BatsmanDetailsArray3 = [[NSMutableArray alloc]init];
-                        BatsmanDetailsArray3 = [[array3 valueForKey:@"lstSCBatsmanDetails"] objectAtIndex:0];
-                        
-                        
-                        ExtrasArray3 = [[NSMutableArray alloc]init];
-                        ExtrasArray3 = [[array3 valueForKey:@"SCExtras"] objectAtIndex:0];
-                        
-                        didNotbatArray3 = [[NSMutableArray alloc]init];
-                        didNotbatArray3 = [[array3 valueForKey:@"lstSCDidNotBat"] objectAtIndex:0];
-                        
-                        fallOfWicketArray3 = [[NSMutableArray alloc]init];
-                        fallOfWicketArray3 = [[array3 valueForKey:@"SCFallofWickets"] objectAtIndex:0];
-                        
-                        BowlingDetailsArray3 = [[NSMutableArray alloc]init];
-                        BowlingDetailsArray3 = [[array3 valueForKey:@"lstSEBowlerDetails"] objectAtIndex:0];
-                    }
-                }
-                
-                
-                //fourth button details
-                
-                
-                if(![[responseObject valueForKey:@"fouthlstFallofWickets"] isEqual:[NSNull null]])
-                {
-                    NSMutableArray *array4 = [[NSMutableArray alloc]init];
-                    array4 = [responseObject valueForKey:@"fouthlstFallofWickets"];
-                    
-                    if(![[array4 valueForKey:@"lstSCBatsmanDetails"] isEqual:[NSNull null]])
-                    {
-                        
-                        BatsmanDetailsArray4 = [[NSMutableArray alloc]init];
-                        BatsmanDetailsArray4 = [[array4 valueForKey:@"lstSCBatsmanDetails"] objectAtIndex:0];
-                        
-                        
-                        ExtrasArray4 = [[NSMutableArray alloc]init];
-                        ExtrasArray4 = [[array4 valueForKey:@"SCExtras"] objectAtIndex:0];
-                        
-                        didNotbatArray4 = [[NSMutableArray alloc]init];
-                        didNotbatArray4 = [[array4 valueForKey:@"lstSCDidNotBat"] objectAtIndex:0];
-                        
-                        fallOfWicketArray4 = [[NSMutableArray alloc]init];
-                        fallOfWicketArray4 = [[array4 valueForKey:@"SCFallofWickets"] objectAtIndex:0];
-                        
-                        BowlingDetailsArray4 = [[NSMutableArray alloc]init];
-                        BowlingDetailsArray4 = [[array4 valueForKey:@"lstSEBowlerDetails"] objectAtIndex:0];
-                    }
-                }
+//                if(![[responseObject valueForKey:@"thirdlstFallofWickets"] isEqual:[NSNull null]])
+//                {
+//                    NSMutableArray *array3 = [[NSMutableArray alloc]init];
+//                    array3 = [responseObject valueForKey:@"thirdlstFallofWickets"];
+//                    
+//                    if(![[array3 valueForKey:@"lstSCBatsmanDetails"] isEqual:[NSNull null]])
+//                    {
+//                        
+//                        BatsmanDetailsArray3 = [[NSMutableArray alloc]init];
+//                        BatsmanDetailsArray3 = [[array3 valueForKey:@"lstSCBatsmanDetails"] objectAtIndex:0];
+//                        
+//                        
+//                        ExtrasArray3 = [[NSMutableArray alloc]init];
+//                        ExtrasArray3 = [[array3 valueForKey:@"SCExtras"] objectAtIndex:0];
+//                        
+//                        didNotbatArray3 = [[NSMutableArray alloc]init];
+//                        didNotbatArray3 = [[array3 valueForKey:@"lstSCDidNotBat"] objectAtIndex:0];
+//                        
+//                        fallOfWicketArray3 = [[NSMutableArray alloc]init];
+//                        fallOfWicketArray3 = [[array3 valueForKey:@"SCFallofWickets"] objectAtIndex:0];
+//                        
+//                        BowlingDetailsArray3 = [[NSMutableArray alloc]init];
+//                        BowlingDetailsArray3 = [[array3 valueForKey:@"lstSEBowlerDetails"] objectAtIndex:0];
+//                    }
+//                }
+//                
+//                
+//                //fourth button details
+//                
+//                
+//                if(![[responseObject valueForKey:@"fouthlstFallofWickets"] isEqual:[NSNull null]])
+//                {
+//                    NSMutableArray *array4 = [[NSMutableArray alloc]init];
+//                    array4 = [responseObject valueForKey:@"fouthlstFallofWickets"];
+//                    
+//                    if(![[array4 valueForKey:@"lstSCBatsmanDetails"] isEqual:[NSNull null]])
+//                    {
+//                        
+//                        BatsmanDetailsArray4 = [[NSMutableArray alloc]init];
+//                        BatsmanDetailsArray4 = [[array4 valueForKey:@"lstSCBatsmanDetails"] objectAtIndex:0];
+//                        
+//                        
+//                        ExtrasArray4 = [[NSMutableArray alloc]init];
+//                        ExtrasArray4 = [[array4 valueForKey:@"SCExtras"] objectAtIndex:0];
+//                        
+//                        didNotbatArray4 = [[NSMutableArray alloc]init];
+//                        didNotbatArray4 = [[array4 valueForKey:@"lstSCDidNotBat"] objectAtIndex:0];
+//                        
+//                        fallOfWicketArray4 = [[NSMutableArray alloc]init];
+//                        fallOfWicketArray4 = [[array4 valueForKey:@"SCFallofWickets"] objectAtIndex:0];
+//                        
+//                        BowlingDetailsArray4 = [[NSMutableArray alloc]init];
+//                        BowlingDetailsArray4 = [[array4 valueForKey:@"lstSEBowlerDetails"] objectAtIndex:0];
+//                    }
+//                }
                 
                 array = [[NSMutableArray alloc]init];
                 array = [responseObject valueForKey:@"lstSCInnsDetails"];
@@ -3024,7 +3034,7 @@
                 
                 //batting KPI
                 //appDel.indexPath = 0;
-                appDel.Currentmatchcode = self.matchCode;
+                //appDel.Currentmatchcode = self.matchCode;
                 //appDel.Scorearray = self.matchDetails;
                 //appDel.BatsmanDetailsArray1 = BatsmanDetailsArray1;
                 //appDel.BatsmanDetailsArray2 = BatsmanDetailsArray2;

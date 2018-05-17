@@ -259,22 +259,23 @@
         
             //NSString *URLString =  [URL_FOR_RESOURCE(@"") stringByAppendingString:[NSString stringWithFormat:@"%@",ResultsKey]];
         
-            //    NSString *URLString = @"http://192.168.0.152:8083/CSK.svc/FETCHPOSTMATCHCOMMENTRY";
+              //  NSString *URLString = @"http://192.168.0.152:8083/CSK.svc/FETCHPOSTMATCHCOMMENTRY";
             //        NSString *URLString = @"https://csk.agaraminfotech.com/CSK.svc/MOBILE_FETCHLIVESCORE";
-        NSString *URLString = @"http://192.168.0.152:8083/CSK.svc/MOBILE_FETCHLIVESCORE"; //Live URL
+         //NSString *URLString = @"http://192.168.0.152:8083/CSK.svc/MOBILE_FETCHLIVESCORE"; //Live URL
+        NSString *URLString = @"http://192.168.0.152:8083/LiveMatch.svc/MOBILE_FETCHLIVESCORE";
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         AFHTTPRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
         [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         
-        manager.requestSerializer = requestSerializer;
+        ;        manager.requestSerializer = requestSerializer;
         
         
             //        NSString *competition = @"UCC0000274";
-            //        NSString *matchCode = @"DMSC116D017C2AA4FC420180302122412087";
+                   // NSString *matchCode = @"DMSC116D017C2AA4FC420180302122412087";
         
         NSString *competition = @"UCC0000274";
         NSString *matchCode = appDel.LiveMatchCode; // Live Match Code
-//        NSString *matchCode = @"DMSC116D017C2AA4FC420180302122412087"; //Post Match Code
+        //NSString *matchCode = @"DMSC116D017C2AA4FC420180302122912089"; //Post Match Code
         //DMSC116D017C2AA4FC420180302122412087
         
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
@@ -553,9 +554,12 @@
     
         else if([cell.Ball.text isEqualToString:@"W"])
         {
-            cell.backgroundColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
-            cell.Ball.textColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
-            cell.overs.textColor = [UIColor whiteColor];
+           // cell.backgroundColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
+            //cell.Ball.textColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
+            cell.backgroundColor = [UIColor whiteColor];
+            cell.Ball.textColor = [UIColor whiteColor];
+            cell.Ball.backgroundColor = [UIColor redColor];
+            cell.overs.textColor = [UIColor redColor];
             cell.cmtText.textColor = [UIColor redColor];
         }
         else if([cell.Ball.text isEqualToString:@""])
@@ -568,6 +572,8 @@
             cell.Ball.textColor = [UIColor whiteColor];
         }
     
+    //cell.cmtText.autoresizingMask;
+
     [self setUpCell:cell atIndexPath:indexPath];
     
     return cell;
@@ -576,12 +582,25 @@
 {
     
     //static NSString *MyIdentifier = @"MyIdentifier";
-    //CommentaryVCCell *cell = [self.commentTbl dequeueReusableCellWithIdentifier:MyIdentifier];
+   // CommentaryVCCell *cell = [self.commentTbl dequeueReusableCellWithIdentifier:nil];
+  //  [self setUpCell:cell atIndexPath:indexPath];
+    
     return tableRowHeight;
 }
 
 - (void)setUpCell:(CommentaryVCCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     
+    CGRect frame = cell.cmtText.frame;
+    frame.size.height = cell.cmtText.contentSize.height;
+    cell.cmtText.frame = frame;
+    
+    CGFloat fixedWidth = cell.cmtText.frame.size.width;
+    //CGFloat fixedHeight = cell.cmtText.frame.size.height;
+    CGSize newSize = [cell.cmtText sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
+    CGRect newFrame = cell.cmtText.frame;
+    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+    cell.cmtText.frame = newFrame;
+
     tableRowHeight = cell.contentView.frame.size.height;
 }
 

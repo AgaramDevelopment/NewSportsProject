@@ -29,6 +29,8 @@
 @property (nonatomic,strong)  NSMutableArray * resultArr;
 
 @property (nonatomic,strong)IBOutlet  UILabel * competitionLbl;
+@property (nonatomic,strong)IBOutlet  UILabel * Teamnamelbl;
 @property (nonatomic,strong)  NSMutableArray * listCompArray;
+@property (nonatomic,strong)  NSMutableArray * TotalMatchesArr;
 
 @end

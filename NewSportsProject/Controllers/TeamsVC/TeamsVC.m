@@ -20,7 +20,9 @@
 {
     BOOL isPop;
     BOOL isList;
+    NSString *teamcode;
     
+    NSString *CompetitionCode;
     WebService *objWebservice;
 }
 @property (nonatomic,strong) IBOutlet NSLayoutConstraint * popXposition;
@@ -82,6 +84,13 @@
     [self.gridBtn setImage:btnImage2 forState:UIControlStateNormal];
     
     [self.listBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
+    
+    self.Competitionlbl.text = [AppCommon getCurrentCompetitionName];
+    self.Teamnamelbl.text = [AppCommon getCurrentTeamName];
+    
+    CompetitionCode = [AppCommon getCurrentCompetitionCode];
+    teamcode = [AppCommon getCurrentTeamCode];
+    [self TeamWebservice];
     
 }
 
@@ -208,9 +217,9 @@
 //    [COMMON loadingIcon:self.view];
         //    [AppCommon showLoading ];
     
-    NSString *teamcode = [AppCommon getCurrentTeamCode];
+    teamcode = [AppCommon getCurrentTeamCode];
     
-    NSString *CompetitionCode = [AppCommon getCurrentCompetitionCode];
+    CompetitionCode = [AppCommon getCurrentCompetitionCode];
     
     [objWebservice TeamComposition :TeamCompoKey :CompetitionCode :teamcode success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject=%@",responseObject);
