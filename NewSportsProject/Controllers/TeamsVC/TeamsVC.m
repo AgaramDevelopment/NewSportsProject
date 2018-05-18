@@ -221,7 +221,7 @@
     
     CompetitionCode = [AppCommon getCurrentCompetitionCode];
     
-    [objWebservice TeamComposition :TeamCompoKey :CompetitionCode :teamcode success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [objWebservice TeamComposition :@"FETCH_TEAMCOMPOSITION" :CompetitionCode :teamcode success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject=%@",responseObject);
         
         if(responseObject >0)

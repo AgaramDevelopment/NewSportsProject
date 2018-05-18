@@ -77,6 +77,8 @@
     
     NSMutableArray *sendDetailsArray;
     
+    NSMutableArray *clearArray;;
+    
     NSIndexPath *seletedPath;
     
     bool isSelected ;
@@ -1365,13 +1367,13 @@
     
                 lastIndex = NULL;
     
-                isOnes = YES;
-                isTwos = YES;
-                isThrees = YES;
-                isFours = YES;
-                isSixes = YES;
-                isWkt = YES;
-                isDotBall = YES;
+//                isOnes = YES;
+//                isTwos = YES;
+//                isThrees = YES;
+//                isFours = YES;
+//                isSixes = YES;
+//                isWkt = YES;
+//                isDotBall = YES;
     
             }
             else
@@ -2777,8 +2779,8 @@
        // NSString *URLString = @"http://192.168.0.152:8083/CSK.svc/FETCHSCORECARDNEW"; //postmatch
         
         
-        
-        NSString *URLString = @"http://192.168.0.152:8083/LiveMatch.svc/FETCHCSKARCHIVESCORECARD";//Archieve
+         NSString *URLString =  [URL_FOR_RESOURCE2(@"") stringByAppendingString:[NSString stringWithFormat:@"FETCHCSKARCHIVESCORECARD"]];
+       // NSString *URLString = @"http://192.168.0.152:8083/LiveMatch.svc/FETCHCSKARCHIVESCORECARD";//Archieve
        // NSString *URLString = @"http://192.168.0.152:8083/LiveMatch.svc/FETCHCSKLIVESCORECARD";//LiveMatch
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         AFHTTPRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
@@ -3619,17 +3621,36 @@
     
     if(isList == YES)
     {
+        
         ScoreCardCell *cell = [self.listTbl cellForRowAtIndexPath:seletedPath];
        // cell=(ScorecardBowlCell *)cell;
         if(self.wagonWheelDrawData.count>0)
         {
             //for(int i=0;i<self.wagonWheelDrawData.count;i++)
             
+//            for(int i=0;clearArray.count>i;i++)
+//            {
+//            for (CALayer *layer in cell.WagonImg.layer.sublayers) {
+//                if ([layer.name isEqualToString:@"DrawLine"]) {
+//                    [layer removeFromSuperlayer];
+//                    break;
+//                }
+//            }
+//            }
+            
             NSMutableArray *sepArray = [[NSMutableArray alloc]init];
+            clearArray = [[NSMutableArray alloc]init];
+            
             sepArray= [[self.wagonWheelDrawData valueForKey:@"Value"]objectAtIndex:0];
+            
+            clearArray = sepArray;
             
             if(![sepArray isEqual:[NSNull null]])
             {
+                
+                
+                //CALayer *layer = cell.WagonImg.layer.sublayers;
+               // [layer removeFromSuperlayer];
                 
                 for(int i=0;sepArray.count>i;i++)
                 {
@@ -3707,7 +3728,6 @@
                     
                     
                     //NSString *color = [[sepArray valueForKey:@"Colour"] objectAtIndex:i];
-                    
                     
                     if ([self.selectRuns isEqualToString: @"1"]) {
                         

@@ -277,7 +277,7 @@
     if([COMMON isInternetReachable])
     {
         
-        NSString *URLString =  [URL_FOR_RESOURCE(@"") stringByAppendingString:[NSString stringWithFormat:@"%@",FixturesKey]];
+        NSString *URLString =  [URL_FOR_RESOURCE2(@"") stringByAppendingString:[NSString stringWithFormat:@"%@",FixturesKey]];
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         AFHTTPRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
         [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];

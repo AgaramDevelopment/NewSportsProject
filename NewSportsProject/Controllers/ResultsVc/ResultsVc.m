@@ -368,7 +368,7 @@
     {
         
         
-        NSString *URLString =  [URL_FOR_RESOURCE(@"") stringByAppendingString:[NSString stringWithFormat:@"%@",ResultsKey]];
+        NSString *URLString =  [URL_FOR_RESOURCE2(@"") stringByAppendingString:[NSString stringWithFormat:@"%@",ResultsKey]];
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         AFHTTPRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
         [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];

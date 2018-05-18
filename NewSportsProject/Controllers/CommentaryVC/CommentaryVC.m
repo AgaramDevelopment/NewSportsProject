@@ -262,7 +262,10 @@
               //  NSString *URLString = @"http://192.168.0.152:8083/CSK.svc/FETCHPOSTMATCHCOMMENTRY";
             //        NSString *URLString = @"https://csk.agaraminfotech.com/CSK.svc/MOBILE_FETCHLIVESCORE";
          //NSString *URLString = @"http://192.168.0.152:8083/CSK.svc/MOBILE_FETCHLIVESCORE"; //Live URL
-        NSString *URLString = @"http://192.168.0.152:8083/LiveMatch.svc/MOBILE_FETCHLIVESCORE";
+        //NSString *URLString = @"http://192.168.0.152:8083/LiveMatch.svc/MOBILE_FETCHLIVESCORE";
+        
+        
+        NSString *URLString =[URL_FOR_RESOURCE2(@"") stringByAppendingString:[NSString stringWithFormat:@"MOBILE_FETCHLIVESCORE"]];
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         AFHTTPRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
         [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -275,7 +278,7 @@
         
         NSString *competition = @"UCC0000274";
         NSString *matchCode = appDel.LiveMatchCode; // Live Match Code
-        //NSString *matchCode = @"DMSC116D017C2AA4FC420180302122912089"; //Post Match Code
+       // NSString *matchCode = @"DMSC116D017C2AA4FC420180302124112090"; //Post Match Code
         //DMSC116D017C2AA4FC420180302122412087
         
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];

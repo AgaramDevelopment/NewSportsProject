@@ -43,7 +43,10 @@ static NSString       *ServiceMimeType    = @"image/jpeg";
 -(void)BattingWagonWheel :(NSString *)list :(NSString *)playercode :(NSString *)matchcode:(NSString *)innno success:(WebserviceRequestSuccessHandler)success
            failure:(WebserviceRequestFailureHandler)failure
 {
-    urlString = [URL_FOR_RESOURCE(@"") stringByAppendingString:[NSString stringWithFormat:@"%@/%@/%@/%@",list,playercode,matchcode,innno]];
+     urlString = [URL_FOR_RESOURCE2(@"") stringByAppendingString:[NSString stringWithFormat:@"%@/%@/%@/%@",list,playercode,matchcode,innno]];
+    
+    //urlString = [NSString stringWithFormat:@"http://192.168.0.152:8083/LiveMatch.svc/%@/%@/%@/%@",list,playercode,matchcode,innno];
+    
     NSLog(@"urlString = %@",urlString);
     
     
@@ -57,7 +60,8 @@ static NSString       *ServiceMimeType    = @"image/jpeg";
 -(void)Battingpitchmap :(NSString *)list :(NSString *)playercode :(NSString *)matchcode:(NSString *)innno success:(WebserviceRequestSuccessHandler)success
                   failure:(WebserviceRequestFailureHandler)failure
 {
-    urlString = [URL_FOR_RESOURCE(@"") stringByAppendingString:[NSString stringWithFormat:@"%@/%@/%@/%@",list,playercode,matchcode,innno]];
+    urlString = [URL_FOR_RESOURCE2(@"") stringByAppendingString:[NSString stringWithFormat:@"%@/%@/%@/%@",list,playercode,matchcode,innno]];
+    //urlString = [NSString stringWithFormat:@"http://192.168.0.152:8083/LiveMatch.svc/%@/%@/%@/%@",list,playercode,matchcode,innno];
     NSLog(@"urlString = %@",urlString);
     
     
@@ -70,7 +74,7 @@ static NSString       *ServiceMimeType    = @"image/jpeg";
 -(void)Bowlingpitchmap :(NSString *)list :(NSString *)playercode :(NSString *)matchcode:(NSString *)innno success:(WebserviceRequestSuccessHandler)success
                 failure:(WebserviceRequestFailureHandler)failure
 {
-    urlString = [URL_FOR_RESOURCE(@"") stringByAppendingString:[NSString stringWithFormat:@"%@/%@/%@/%@",list,playercode,matchcode,innno]];
+    urlString = [URL_FOR_RESOURCE2(@"") stringByAppendingString:[NSString stringWithFormat:@"%@/%@/%@/%@",list,playercode,matchcode,innno]];
     NSLog(@"urlString = %@",urlString);
     
     
@@ -159,7 +163,7 @@ static NSString       *ServiceMimeType    = @"image/jpeg";
 -(void)TeamComposition :(NSString *)list :(NSString *)Competitioncode :(NSString *)teamcode success:(WebserviceRequestSuccessHandler)success
                 failure:(WebserviceRequestFailureHandler)failure
 {
-    urlString = [URL_FOR_RESOURCE(@"") stringByAppendingString:[NSString stringWithFormat:@"%@/%@/%@",list,Competitioncode,teamcode]];
+    urlString = [URL_FOR_RESOURCE2(@"") stringByAppendingString:[NSString stringWithFormat:@"%@/%@/%@",list,Competitioncode,teamcode]];
     NSLog(@"urlString = %@",urlString);
     
     
@@ -172,7 +176,7 @@ static NSString       *ServiceMimeType    = @"image/jpeg";
 
 -(void)getIPLCompeteionCodesuccess:(WebserviceRequestSuccessHandler)success failure:(WebserviceRequestFailureHandler)failure
 {
-    NSString* URL = URL_FOR_RESOURCE(@"FETCH_IPLCOMPETITIONS");
+    NSString* URL = URL_FOR_RESOURCE2(@"FETCH_IPLCOMPETITIONS");
     [self GET:URL parameters:nil
       success:^(AFHTTPRequestOperation *operation, id responseDict)
      {
@@ -191,7 +195,7 @@ static NSString       *ServiceMimeType    = @"image/jpeg";
 
 -(void)getIPLTeamCodessuccess:(WebserviceRequestSuccessHandler)success failure:(WebserviceRequestFailureHandler)failure
 {
-    NSString* URL = URL_FOR_RESOURCE(@"FETCH_IPLTEAMS");
+    NSString* URL = URL_FOR_RESOURCE2(@"FETCH_IPLTEAMS");
     
         //    NSString* URL = URL_FOR_RESOURCE(@"FETCH_IPLTEAMSTEMP");
     [self GET:URL parameters:nil

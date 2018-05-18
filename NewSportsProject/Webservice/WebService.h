@@ -33,6 +33,10 @@ typedef void (^WebserviceRequestXMLFailureHandler)(AFHTTPRequestOperation  *oper
 
 //LIVE2
 #define BASE_URL  @"http://service.alphaprotracker.com/AGAPTSERVICE.svc/"
+//#define BASE_Image_URL @"http://13.126.151.253:9000/bcciapp/"
+
+//csklive
+#define BASE_URL2  @"http://192.168.0.152:8083/LiveMatch.svc/"
 #define BASE_Image_URL @"http://13.126.151.253:9000/bcciapp/"
 
 //#ifdef DEBUG
@@ -42,6 +46,7 @@ typedef void (^WebserviceRequestXMLFailureHandler)(AFHTTPRequestOperation  *oper
 //#endif
 
 #define URL_FOR_RESOURCE(RESOURCE) [NSString stringWithFormat:@"%@%@",BASE_URL,RESOURCE]
+#define URL_FOR_RESOURCE2(RESOURCE) [NSString stringWithFormat:@"%@%@",BASE_URL2,RESOURCE]
 
 
 
