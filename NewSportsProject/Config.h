@@ -4,6 +4,7 @@
 //
 //  Created by Mac on 21/08/17.
 //  Copyright © 2017 agaraminfotech. All rights reserved.
+
 #define APP_NAME [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"]
 
 #define screen_width                    [[UIScreen mainScreen] bounds].size.width

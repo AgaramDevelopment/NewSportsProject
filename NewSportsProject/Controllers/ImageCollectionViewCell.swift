@@ -13,7 +13,8 @@ final class ImageCollectionViewCell: GeminiCell {
 
     @IBOutlet weak var blackShadowView: UIView!
     @IBOutlet weak var sampleImageView: UIImageView!
-
+    @IBOutlet weak var lblCompetetionName: UILabel!
+    
     override var shadowView: UIView? {
         return blackShadowView
     }

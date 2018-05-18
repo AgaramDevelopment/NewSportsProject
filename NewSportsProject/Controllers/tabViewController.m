@@ -113,7 +113,6 @@
     tabFrame.origin.y = self.view.frame.size.height-55;
     [self.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -50)];
     self.objTabbar.frame = tabFrame;
-    
    
 }
 
@@ -132,4 +131,48 @@
     [self.tabBarController setSelectedIndex:selectedIndex - 1];
 }
 
+#pragma mark UITABBAR DELEGATES
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController NS_AVAILABLE_IOS(3_0)
+{
+    return YES;
+}
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    NSLog(@"Selected tabbar %@ ",viewController.description);
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController willBeginCustomizingViewControllers:(NSArray<__kindof UIViewController *> *)viewControllers NS_AVAILABLE_IOS(3_0) __TVOS_PROHIBITED
+{
+    NSLog(@"willBeginCustomizingViewControllers");
+}
+- (void)tabBarController:(UITabBarController *)tabBarController willEndCustomizingViewControllers:(NSArray<__kindof UIViewController *> *)viewControllers changed:(BOOL)changed NS_AVAILABLE_IOS(3_0) __TVOS_PROHIBITED
+{
+    NSLog(@"willEndCustomizingViewControllers");
+}
+- (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray<__kindof UIViewController *> *)viewControllers changed:(BOOL)changed __TVOS_PROHIBITED
+{
+    NSLog(@"didEndCustomizingViewControllers");
+}
+
+//- (UIInterfaceOrientationMask)tabBarControllerSupportedInterfaceOrientations:(UITabBarController *)tabBarController NS_AVAILABLE_IOS(7_0) __TVOS_PROHIBITED
+//{
+//
+//}
+//- (UIInterfaceOrientation)tabBarControllerPreferredInterfaceOrientationForPresentation:(UITabBarController *)tabBarController NS_AVAILABLE_IOS(7_0) __TVOS_PROHIBITED
+//{
+//
+//}
+
+//- (nullable id <UIViewControllerInteractiveTransitioning>)tabBarController:(UITabBarController *)tabBarController
+//                               interactionControllerForAnimationController: (id <UIViewControllerAnimatedTransitioning>)animationController NS_AVAILABLE_IOS(7_0)
+//{
+//
+//}
+//
+//- (nullable id <UIViewControllerAnimatedTransitioning>)tabBarController:(UITabBarController *)tabBarController
+//                     animationControllerForTransitionFromViewController:(UIViewController *)fromVC
+//                                                       toViewController:(UIViewController *)toVC  NS_AVAILABLE_IOS(7_0)
+//{
+//
+//}
 @end

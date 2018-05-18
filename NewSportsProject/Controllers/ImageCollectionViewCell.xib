@@ -25,21 +25,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="230" height="197"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuF-Gb-d7n">
+                        <rect key="frame" x="0.0" y="197" width="230" height="20"/>
+                        <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="16"/>
+                        <color key="textColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="VFv-Wl-ill" secondAttribute="bottom" constant="20" id="6uk-KV-S0e"/>
                 <constraint firstItem="VFv-Wl-ill" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="K9d-3d-UdZ"/>
+                <constraint firstAttribute="bottom" secondItem="BuF-Gb-d7n" secondAttribute="bottom" id="O7e-ee-miO"/>
                 <constraint firstAttribute="trailing" secondItem="VFv-Wl-ill" secondAttribute="trailing" id="RdL-A2-XUi"/>
                 <constraint firstAttribute="trailing" secondItem="mrf-ZQ-YPU" secondAttribute="trailing" id="SUi-hD-rH2"/>
+                <constraint firstItem="BuF-Gb-d7n" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="bof-uj-CUr"/>
+                <constraint firstAttribute="trailing" secondItem="BuF-Gb-d7n" secondAttribute="trailing" id="f00-N2-ZcX"/>
                 <constraint firstAttribute="bottom" secondItem="mrf-ZQ-YPU" secondAttribute="bottom" constant="20" id="fa0-jY-gHF"/>
                 <constraint firstItem="mrf-ZQ-YPU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ixj-DL-1Fl"/>
                 <constraint firstItem="mrf-ZQ-YPU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="oXh-Y6-OWR"/>
                 <constraint firstItem="VFv-Wl-ill" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ods-2C-sjI"/>
+                <constraint firstItem="BuF-Gb-d7n" firstAttribute="top" secondItem="mrf-ZQ-YPU" secondAttribute="bottom" id="v9M-32-LCG"/>
             </constraints>
             <size key="customSize" width="230" height="217"/>
             <connections>
                 <outlet property="blackShadowView" destination="VFv-Wl-ill" id="EIW-wS-zL1"/>
+                <outlet property="lblCompetetionName" destination="BuF-Gb-d7n" id="dlf-Ng-wdM"/>
                 <outlet property="sampleImageView" destination="mrf-ZQ-YPU" id="fXb-I9-r2g"/>
             </connections>
             <point key="canvasLocation" x="-13" y="119"/>

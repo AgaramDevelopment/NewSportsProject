@@ -10,94 +10,6 @@ import UIKit
 import Gemini
 import SDWebImage
 
-//@objc class GemViewController1: UIViewController {
-//
-//        @IBOutlet weak var collectionView: GeminiCollectionView! {
-//            didSet {
-//                let nib = UINib(nibName: cellIdentifier, bundle: nil)
-//                collectionView.register(nib, forCellWithReuseIdentifier: cellIdentifier)
-//                collectionView.delegate   = self
-//                collectionView.dataSource = self
-////                collectionView.backgroundColor = UIColor(red: 255 / 255, green: 212 / 255, blue: 100 / 255, alpha: 1)
-//                collectionView.gemini
-//                    .yawRotationAnimation()
-//                    .scale(0.7)
-//                    .yawEffect(rotationEffect)
-//            }
-//        }
-//
-//        fileprivate let cellIdentifier = "ImageCollectionViewCell"
-//        private(set) var rotationEffect: YawRotationEffect = .yawUp
-//        private(set) var scrollDirection: UICollectionViewScrollDirection = .horizontal
-//
-//        fileprivate let images = ["building", "food", "japan", "minions", "nature", "people"]
-//
-//
-//        public class func make(scrollDirection: UICollectionViewScrollDirection, effect: YawRotationEffect) -> GemViewController1 {
-//            let storyboard = UIStoryboard(name: "main", bundle: nil)
-//            let viewController = storyboard.instantiateViewController(withIdentifier: "YawRotationViewController") as! GemViewController1
-//            viewController.rotationEffect  = effect
-//            viewController.scrollDirection = scrollDirection
-//
-//            return viewController
-//        }
-//
-//        override func viewDidLoad() {
-//            super.viewDidLoad()
-//
-//            //    let viewController = YawRotationViewController.make(scrollDirection: .vertical, effect: .yawDown)
-//            //    navigationController?.pushViewController(viewController, animated: true)
-//
-//            self.rotationEffect = .yawDown
-//            self.scrollDirection = .vertical
-//            let layout = UICollectionViewPagingFlowLayout()
-//            layout.scrollDirection = scrollDirection
-//            layout.itemSize = CGSize(width: view.bounds.width/2, height: view.bounds.width/2)
-//            let cellHeight: CGFloat = view.bounds.width - 70
-//            layout.sectionInset = UIEdgeInsets(top: (view.bounds.height - cellHeight) / 2, left: 150, bottom: (view.bounds.height - cellHeight) / 2, right: 25)
-//            layout.minimumLineSpacing = 40
-//            layout.minimumInteritemSpacing = 40
-//            collectionView.collectionViewLayout = layout
-//            collectionView.decelerationRate = UIScrollViewDecelerationRateFast
-//
-//        }
-//
-//    }
-//
-//    // MARK: - UIScrollViewDelegate
-//    extension GemViewController1 {
-//        func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//            collectionView.animateVisibleCells()
-//        }
-//    }
-//
-//    // MARK: - UICollectionViewDelegate
-//    extension GemViewController1: UICollectionViewDelegate {
-//        func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//            if let cell = cell as? GeminiCell {
-//                self.collectionView.animateCell(cell)
-//            }
-//        }
-//    }
-//
-//    // MARK: - UICollectionViewDataSource
-//    extension GemViewController1: UICollectionViewDataSource {
-//        @objc func numberOfSections(in collectionView: UICollectionView) -> Int {
-//            return 1
-//        }
-//
-//        @objc  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//            return images.count
-//        }
-//
-//        @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! ImageCollectionViewCell
-//            cell.configure(with: UIImage(named: images[indexPath.row])!)
-//            self.collectionView.animateCell(cell)
-//            return cell
-//        }
-//}
-//
 enum CustomAnimationType {
     case custom1
     case custom2
@@ -203,7 +115,10 @@ extension GemViewController1: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         NSLog("indexpath \(indexPath.item)")
-        
+        UserDefaults.standard.set(self.responseArray[indexPath.item], forKey: "selectedCompetetionArray")
+        let appdel = UIApplication.shared.delegate as! AppDelegate
+        let story = appdel.storyBoard.instantiateViewController(withIdentifier: "tabViewController")
+        appdel.navigationController.pushViewController(story, animated: true)
         
     }
     
@@ -217,8 +132,8 @@ extension GemViewController1: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return self.responseArray.count > 0 ? images.count : 0
-//        return self.responseArray.count
+//        return self.responseArray.count > 0 ? images.count : 0
+        return self.responseArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -227,10 +142,12 @@ extension GemViewController1: UICollectionViewDataSource {
         // Set image only when animation type is custom1
         if animationType == .custom1 {
             
-            cell.configure(with: UIImage(named: images[indexPath.row])!)
+//            cell.configure(with: UIImage(named: images[indexPath.row])!)
             
-            let data : NSDictionary = self.responseArray[0] as! NSDictionary
+            let data : NSDictionary = self.responseArray[indexPath.item] as! NSDictionary
             let url = URL(string: data["IMAGEURL"] as! String)
+            let name = data["COMPETITIONNAME"] as! String
+            cell.lblCompetetionName.text = name
             cell.sampleImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "building"),options: SDWebImageOptions(rawValue: 0), completed: { (image, error, cacheType, imageURL) in
                 // Perform operation.
             })

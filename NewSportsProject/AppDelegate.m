@@ -20,14 +20,17 @@
 
 @implementation AppDelegate
 
+@synthesize storyBoard,window;
+
+@synthesize navigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
 //    tabViewController *initViewController;
     GemViewController1 *initViewController;
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
 //    initViewController = (tabViewController*)[storyBoard instantiateViewControllerWithIdentifier:@"tabViewController"];
     
@@ -36,12 +39,12 @@
 //    let viewController = YawRotationViewController.make(scrollDirection: .vertical, effect: .yawDown)
 //    navigationController?.pushViewController(viewController, animated: true)
 
-    UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:initViewController];
+    navigationController = [[UINavigationController alloc] initWithRootViewController:initViewController];
     
     navigationController.navigationBarHidden = YES;
     
-    _window.rootViewController = navigationController;
-    [self.window makeKeyAndVisible];
+    window.rootViewController = navigationController;
+    [window makeKeyAndVisible];
     
 //    [initViewController setupSwipeGestureRecognizersAllowCyclingThroughTabs:YES];
     

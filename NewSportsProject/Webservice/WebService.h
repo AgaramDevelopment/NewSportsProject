@@ -35,6 +35,8 @@ typedef void (^WebserviceRequestXMLFailureHandler)(AFHTTPRequestOperation  *oper
 #define BASE_URL  @"http://service.alphaprotracker.com/AGAPTSERVICE.svc/"
 #define BASE_Image_URL @"http://13.126.151.253:9000/bcciapp/"
 
+
+
 //#ifdef DEBUG
 //#define push_type   @"dev"
 //#else

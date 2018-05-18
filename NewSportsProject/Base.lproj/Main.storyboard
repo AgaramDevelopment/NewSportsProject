@@ -855,7 +855,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9Hd-MK-HGZ" customClass="GeminiCollectionView" customModule="Gemini">
                                 <rect key="frame" x="20" y="512" width="728" height="512"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lBu-nC-LO0">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -873,7 +873,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nature" translatesAutoresizingMaskIntoConstraints="NO" id="Myr-nV-wwH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="agaraimg3" translatesAutoresizingMaskIntoConstraints="NO" id="Myr-nV-wwH">
                                 <rect key="frame" x="284" y="212" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="8Bb-TP-0Gp"/>
@@ -881,7 +881,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.59999999999999998" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Myr-nV-wwH" firstAttribute="centerX" secondItem="ZOW-bT-md0" secondAttribute="centerX" id="Nik-I1-hol"/>
                             <constraint firstItem="9Hd-MK-HGZ" firstAttribute="trailing" secondItem="ZOW-bT-md0" secondAttribute="trailingMargin" id="VNt-b7-k5z"/>
@@ -14021,9 +14021,9 @@
         <image name="VenueImg" width="150" height="150"/>
         <image name="Vs" width="130" height="130"/>
         <image name="WagonWheel" width="284" height="284"/>
+        <image name="agaraimg3" width="100" height="29"/>
         <image name="fast_forward" width="32" height="32"/>
         <image name="full_screen" width="32" height="32"/>
-        <image name="nature" width="3680" height="2456"/>
         <image name="next" width="32" height="32"/>
         <image name="next_frame" width="32" height="32"/>
         <image name="no-image" width="300" height="300"/>
