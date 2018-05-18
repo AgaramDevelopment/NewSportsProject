@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Config.h"
+#import "NewSportsProject-Bridging-Header.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -21,5 +22,8 @@
 @property (strong, nonatomic) NSMutableArray *ArrayCompetition;
 @property (strong, nonatomic) NSMutableArray *ArrayTeam;
 @property (strong, nonatomic) NSMutableArray *MainArray;
+@property (strong, nonatomic) UIStoryboard *storyBoard;
+@property (strong, nonatomic) UINavigationController* navigationController;
+
 @end
 

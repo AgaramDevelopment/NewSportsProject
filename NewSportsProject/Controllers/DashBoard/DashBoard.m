@@ -22,9 +22,7 @@
 #import "ScoreCardVC.h"
 #import "AppDelegate.h"
 @import SDWebImage;
-
-
-
+#import "NewSportsProject-Swift.h"
 
 
 @interface DashBoard () <SwipeViewDataSource, SwipeViewDelegate>
@@ -168,6 +166,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    
+    
     if (!appDel.MainArray.count) {
         [COMMON getIPLteams];
     }
@@ -242,7 +242,11 @@
 
     [self.view addSubview:objCustomNavigation.view];
     
-    objCustomNavigation.tittle_lbl.text=@"";
+    NSArray* arr = [[NSUserDefaults standardUserDefaults] valueForKey:@"selectedCompetetionArray"];
+//    NSLog(@"arr %@",arr);
+
+    objCustomNavigation.tittle_lbl.text = [arr valueForKey:@"COMPETITIONNAME"];
+    
     if([objCustomNavigation.tittle_lbl.text isEqualToString: @""])
     {
         objCustomNavigation.nav_header_img.image = [UIImage imageNamed:@"withoutText"];
@@ -253,12 +257,21 @@
     }
     
     
-    objCustomNavigation.btn_back.hidden = YES;
+    objCustomNavigation.btn_back.hidden = NO;
+    [objCustomNavigation.btn_back addTarget:self action:@selector(BackNavigation) forControlEvents:UIControlEventTouchUpInside];
     objCustomNavigation.filter_btn.hidden = YES;
     objCustomNavigation.Cancelbtn.hidden = YES;
     objCustomNavigation.summarybtn.hidden=YES;
     
 }
+-(void)BackNavigation{
+    
+//    GemViewController1* VC = (GemViewController1 *)[appDel.storyBoard instantiateViewControllerWithIdentifier:@"YawRotationViewController"];
+//    appDel.window.rootViewController = VC;
+    [appDel.navigationController popToRootViewControllerAnimated:YES];
+    
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     //return self.pointsTableArray.count;
@@ -470,41 +483,10 @@
                 Fix.team2img.image = [UIImage imageNamed:@"KXIP-left"];
                 
             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            //NSString *key2 = [[objarray valueForKey:@"team2"] objectAtIndex:index];
 
-            //if([ key2 isEqualToString:@"MI"])
-            //{
-            //   Fix.team2img.image = [UIImage imageNamed:@"MI-left"];
+    [Fix.btn addTarget:self action:@selector(didClickBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:Fix.view];
 
-           // }
-
-
-                
-                //[self.header_scroll addSubview:Fix.view];
-                [Fix.btn addTarget:self action:@selector(didClickBtn:) forControlEvents:UIControlEventTouchUpInside];
-                //[view addSubview:Fix.view];
-           // }
-            
-       // }
-        
-        [view addSubview:Fix.view];
-//    }
-//    else
-//    {
-//        //get a reference to the label in the recycled view
-//        label = (UILabel *)[view viewWithTag:1];
-//    }
-     //   }
-    
     return view;
 }
 
@@ -545,9 +527,11 @@
         
         manager.requestSerializer = requestSerializer;
         
-        
-        NSString *competition = @"UCC0000274";
-        
+        NSArray* arr = [[NSUserDefaults standardUserDefaults] valueForKey:@"selectedCompetetionArray"];
+        NSLog(@"arr %@",arr);
+
+//        NSString *competition = @"UCC0000274";
+        NSString *competition = [arr valueForKey:@"COMPETITIONCODE"];
         
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         if(competition)   [dic    setObject:competition     forKey:@"Competitioncode"];

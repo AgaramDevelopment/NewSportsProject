@@ -39,6 +39,8 @@ typedef void (^WebserviceRequestXMLFailureHandler)(AFHTTPRequestOperation  *oper
 #define BASE_URL2  @"http://192.168.0.152:8083/LiveMatch.svc/"
 #define BASE_Image_URL @"http://13.126.151.253:9000/bcciapp/"
 
+
+
 //#ifdef DEBUG
 //#define push_type   @"dev"
 //#else

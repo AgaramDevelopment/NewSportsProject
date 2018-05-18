@@ -130,7 +130,6 @@
 		CE91AC7020A1D1F400DBA042 /* AdvanceFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABAF20A1D1F300DBA042 /* AdvanceFilter.m */; };
 		CE91AC7120A1D1F400DBA042 /* BattingKPIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABB220A1D1F300DBA042 /* BattingKPIViewController.m */; };
 		CE91AC7220A1D1F400DBA042 /* BowlingKPIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABB520A1D1F300DBA042 /* BowlingKPIViewController.m */; };
-		CE91AC7420A1D1F400DBA042 /* DashBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABBB20A1D1F300DBA042 /* DashBoard.m */; };
 		CE91AC7520A1D1F400DBA042 /* BallsInVideosCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABBE20A1D1F300DBA042 /* BallsInVideosCVC.m */; };
 		CE91AC7620A1D1F400DBA042 /* FieldSummaryTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABC020A1D1F300DBA042 /* FieldSummaryTVC.m */; };
 		CE91AC7720A1D1F400DBA042 /* FieldSummaryTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE91ABC120A1D1F300DBA042 /* FieldSummaryTVC.xib */; };
@@ -153,6 +152,11 @@
 		CE91AC8920A1D1F400DBA042 /* TeamMemDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABED20A1D1F400DBA042 /* TeamMemDetails.m */; };
 		CE91AC8A20A1D1F400DBA042 /* TeamsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABF020A1D1F400DBA042 /* TeamsVC.m */; };
 		CE91AC8B20A1D1F400DBA042 /* VideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91ABF320A1D1F400DBA042 /* VideoPlayerViewController.m */; };
+		CEB3EA3820AC0D98006CF42D /* DashBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB3EA3720AC0D97006CF42D /* DashBoard.m */; };
+		CEB3EA3F20AC3B7C006CF42D /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3EA3C20AC3B74006CF42D /* ImageCollectionViewCell.swift */; };
+		CEB3EA4020AC3B7C006CF42D /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEB3EA3D20AC3B76006CF42D /* ImageCollectionViewCell.xib */; };
+		CEB3EA4120AC3B7C006CF42D /* UICollectionViewPagingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3EA3E20AC3B79006CF42D /* UICollectionViewPagingFlowLayout.swift */; };
+		CEB3EA4920AC684B006CF42D /* GemViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB3EA4820AC684A006CF42D /* GemViewController1.swift */; };
 		D8A8BC8F98953E7EE9D4DDAF /* Pods_NewSportsProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F832D5A2810D0DB098D1230 /* Pods_NewSportsProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -341,8 +345,6 @@
 		CE91ABB220A1D1F300DBA042 /* BattingKPIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattingKPIViewController.m; sourceTree = "<group>"; };
 		CE91ABB420A1D1F300DBA042 /* BowlingKPIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BowlingKPIViewController.h; sourceTree = "<group>"; };
 		CE91ABB520A1D1F300DBA042 /* BowlingKPIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BowlingKPIViewController.m; sourceTree = "<group>"; };
-		CE91ABBA20A1D1F300DBA042 /* DashBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashBoard.h; sourceTree = "<group>"; };
-		CE91ABBB20A1D1F300DBA042 /* DashBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashBoard.m; sourceTree = "<group>"; };
 		CE91ABBD20A1D1F300DBA042 /* BallsInVideosCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallsInVideosCVC.h; sourceTree = "<group>"; };
 		CE91ABBE20A1D1F300DBA042 /* BallsInVideosCVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BallsInVideosCVC.m; sourceTree = "<group>"; };
 		CE91ABBF20A1D1F300DBA042 /* FieldSummaryTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldSummaryTVC.h; sourceTree = "<group>"; };
@@ -382,6 +384,13 @@
 		CE91ABF020A1D1F400DBA042 /* TeamsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeamsVC.m; sourceTree = "<group>"; };
 		CE91ABF220A1D1F400DBA042 /* VideoPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayerViewController.h; sourceTree = "<group>"; };
 		CE91ABF320A1D1F400DBA042 /* VideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayerViewController.m; sourceTree = "<group>"; };
+		CEB3EA3620AC0D97006CF42D /* DashBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashBoard.h; sourceTree = "<group>"; };
+		CEB3EA3720AC0D97006CF42D /* DashBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashBoard.m; sourceTree = "<group>"; };
+		CEB3EA3920AC323C006CF42D /* NewSportsProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NewSportsProject-Bridging-Header.h"; sourceTree = "<group>"; };
+		CEB3EA3C20AC3B74006CF42D /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		CEB3EA3D20AC3B76006CF42D /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		CEB3EA3E20AC3B79006CF42D /* UICollectionViewPagingFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewPagingFlowLayout.swift; sourceTree = "<group>"; };
+		CEB3EA4820AC684A006CF42D /* GemViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GemViewController1.swift; sourceTree = "<group>"; };
 		E80A63DBFBB583E57E004ABB /* Pods-NewSportsProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewSportsProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewSportsProject/Pods-NewSportsProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -886,14 +895,12 @@
 		CE91ABAC20A1D1F300DBA042 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CEB3EA3520AC0D97006CF42D /* DashBoard */,
 				04A9E65C20A9549500471F70 /* DropDownVC */,
 				CE91ABAD20A1D1F300DBA042 /* AdvanceFilter */,
 				CE91ABB020A1D1F300DBA042 /* BattingKPIVC */,
 				CE91ABB320A1D1F300DBA042 /* BowlingKPIVC */,
 				CE91ABB620A1D1F300DBA042 /* CommentaryVC */,
-				CE91ABB920A1D1F300DBA042 /* DashBoard */,
-				CE91ABBA20A1D1F300DBA042 /* DashBoard.h */,
-				CE91ABBB20A1D1F300DBA042 /* DashBoard.m */,
 				CE91ABBC20A1D1F300DBA042 /* FieldSumary */,
 				CE91ABC420A1D1F300DBA042 /* Fixtures */,
 				CE91ABC720A1D1F300DBA042 /* HeadToHeadVC */,
@@ -913,6 +920,11 @@
 				CE91ABEB20A1D1F400DBA042 /* TeamMemDetails */,
 				CE91ABEE20A1D1F400DBA042 /* TeamsVC */,
 				CE91ABF120A1D1F400DBA042 /* VideoPlayerVC */,
+				CEB3EA4820AC684A006CF42D /* GemViewController1.swift */,
+				CEB3EA3C20AC3B74006CF42D /* ImageCollectionViewCell.swift */,
+				CEB3EA3D20AC3B76006CF42D /* ImageCollectionViewCell.xib */,
+				CEB3EA3E20AC3B79006CF42D /* UICollectionViewPagingFlowLayout.swift */,
+				CEB3EA3920AC323C006CF42D /* NewSportsProject-Bridging-Header.h */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -951,13 +963,6 @@
 				04A9E66220A9B89200471F70 /* CommentaryVC.m */,
 			);
 			path = CommentaryVC;
-			sourceTree = "<group>";
-		};
-		CE91ABB920A1D1F300DBA042 /* DashBoard */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DashBoard;
 			sourceTree = "<group>";
 		};
 		CE91ABBC20A1D1F300DBA042 /* FieldSumary */ = {
@@ -1109,6 +1114,15 @@
 			path = VideoPlayerVC;
 			sourceTree = "<group>";
 		};
+		CEB3EA3520AC0D97006CF42D /* DashBoard */ = {
+			isa = PBXGroup;
+			children = (
+				CEB3EA3620AC0D97006CF42D /* DashBoard.h */,
+				CEB3EA3720AC0D97006CF42D /* DashBoard.m */,
+			);
+			path = DashBoard;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1143,6 +1157,7 @@
 					04C8517E1FB992A100AE18C9 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = LZ7UNGW43T;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1204,6 +1219,7 @@
 				CE91AC1320A1D1F400DBA042 /* MontserratAlternates-BlackItalic.otf in Resources */,
 				CE91AC0D20A1D1F400DBA042 /* Montserrat-Regular.otf in Resources */,
 				CE91AC2120A1D1F400DBA042 /* MontserratAlternates-SemiBoldItalic.otf in Resources */,
+				CEB3EA4020AC3B7C006CF42D /* ImageCollectionViewCell.xib in Resources */,
 				CE91AC0B20A1D1F400DBA042 /* Montserrat-Medium.otf in Resources */,
 				CE91AC6E20A1D1F400DBA042 /* FilterNavigation_iPhone.xib in Resources */,
 				CE91AC7E20A1D1F400DBA042 /* OverviewPlayer_iPhone.xib in Resources */,
@@ -1258,11 +1274,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NewSportsProject/Pods-NewSportsProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Gemini/Gemini.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gemini.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1316,12 +1334,12 @@
 				CE91AC2720A1D1F400DBA042 /* BowlingTableViewCell.m in Sources */,
 				CE91AC6C20A1D1F400DBA042 /* FilterNavigation.m in Sources */,
 				CE91AC8A20A1D1F400DBA042 /* TeamsVC.m in Sources */,
+				CEB3EA3F20AC3B7C006CF42D /* ImageCollectionViewCell.swift in Sources */,
 				CE91AC5A20A1D1F400DBA042 /* ALView+PureLayout.m in Sources */,
 				CE91ABFD20A1D1F400DBA042 /* FixtureView.m in Sources */,
 				CE91AC2C20A1D1F400DBA042 /* PlayerStatsCell.m in Sources */,
 				CE91AC3820A1D1F400DBA042 /* PointsTableCell.m in Sources */,
 				18266FC820A4717E004877A3 /* ScoreCardCell.m in Sources */,
-				CE91AC7420A1D1F400DBA042 /* DashBoard.m in Sources */,
 				CE91AC7F20A1D1F400DBA042 /* PlayersVC.m in Sources */,
 				CE91AC7920A1D1F400DBA042 /* Fixtures.m in Sources */,
 				CE91ABF420A1D1F400DBA042 /* CommentaryVCCell.m in Sources */,
@@ -1338,6 +1356,7 @@
 				CE91AC7520A1D1F400DBA042 /* BallsInVideosCVC.m in Sources */,
 				CE91AC8520A1D1F400DBA042 /* StatsPlayer.m in Sources */,
 				CE91AC3220A1D1F400DBA042 /* PlayerStatsListViewCell.m in Sources */,
+				CEB3EA4120AC3B7C006CF42D /* UICollectionViewPagingFlowLayout.swift in Sources */,
 				04C851841FB992A100AE18C9 /* main.m in Sources */,
 				CE91AC5320A1D1F400DBA042 /* TYPagerView.m in Sources */,
 				CE91AC7C20A1D1F400DBA042 /* OverviewPlayer.m in Sources */,
@@ -1365,7 +1384,9 @@
 				CE91AC5E20A1D1F400DBA042 /* UIScrollView+VGParallaxHeader.m in Sources */,
 				CE91AC2920A1D1F400DBA042 /* LiveSummaryCell.m in Sources */,
 				CE91ABF720A1D1F400DBA042 /* CustomLabel.m in Sources */,
+				CEB3EA4920AC684B006CF42D /* GemViewController1.swift in Sources */,
 				CE91AC7820A1D1F400DBA042 /* FieldSummaryVC.m in Sources */,
+				CEB3EA3820AC0D98006CF42D /* DashBoard.m in Sources */,
 				CE91AC4120A1D1F400DBA042 /* SessionPartCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1489,8 +1510,10 @@
 			baseConfigurationReference = E80A63DBFBB583E57E004ABB /* Pods-NewSportsProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = LZ7UNGW43T;
 				INFOPLIST_FILE = NewSportsProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
@@ -1498,6 +1521,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.agaram.NewSportsProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "NewSportsProject/Controllers/NewSportsProject-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1506,8 +1532,10 @@
 			baseConfigurationReference = 25AD96EF9C20F56F008DEF5B /* Pods-NewSportsProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = LZ7UNGW43T;
 				INFOPLIST_FILE = NewSportsProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
@@ -1515,6 +1543,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.agaram.NewSportsProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "NewSportsProject/Controllers/NewSportsProject-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

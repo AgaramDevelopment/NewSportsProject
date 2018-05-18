@@ -3,13 +3,9 @@
 
 use_frameworks!
 target 'NewSportsProject' do
-  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
 
-  # Pods for NewSportsProject
-use_frameworks!
-pod 'SDWebImage', '~> 4.0'
-pod 'AFNetworking', '~> 2.5.4'
-
+    pod 'SDWebImage', '~> 4.0'
+    pod 'AFNetworking', '~> 2.5.4'
+    pod 'Gemini'
 
 end

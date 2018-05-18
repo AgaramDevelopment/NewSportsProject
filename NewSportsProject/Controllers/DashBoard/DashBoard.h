@@ -51,6 +51,7 @@
 
 @property (nonatomic,strong) IBOutlet UILabel * resultDetails;
 
+@property (nonatomic,strong) NSArray* selectedComptetionArray;
 //Season Table Properties
 
 @property (strong, nonatomic) IBOutlet UILabel *teamLbl;
