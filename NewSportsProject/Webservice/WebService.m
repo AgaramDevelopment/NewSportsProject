@@ -40,10 +40,10 @@ static NSString       *ServiceMimeType    = @"image/jpeg";
     return [[WebService alloc] init];
 }
 
--(void)BattingWagonWheel :(NSString *)list :(NSString *)playercode :(NSString *)matchcode:(NSString *)innno success:(WebserviceRequestSuccessHandler)success
+-(void)BattingWagonWheel :(NSString *)list :(NSString *)playercode :(NSString *)matchcode:(NSString *)innno :(NSString *)Type success:(WebserviceRequestSuccessHandler)success
            failure:(WebserviceRequestFailureHandler)failure
 {
-     urlString = [URL_FOR_RESOURCE2(@"") stringByAppendingString:[NSString stringWithFormat:@"%@/%@/%@/%@",list,playercode,matchcode,innno]];
+     urlString = [URL_FOR_RESOURCE2(@"") stringByAppendingString:[NSString stringWithFormat:@"%@/%@/%@/%@/%@",list,playercode,matchcode,innno,Type]];
     
     //urlString = [NSString stringWithFormat:@"http://192.168.0.152:8083/LiveMatch.svc/%@/%@/%@/%@",list,playercode,matchcode,innno];
     
@@ -57,10 +57,10 @@ static NSString       *ServiceMimeType    = @"image/jpeg";
           completionFailureHandler:failure];
 }
 
--(void)Battingpitchmap :(NSString *)list :(NSString *)playercode :(NSString *)matchcode:(NSString *)innno success:(WebserviceRequestSuccessHandler)success
-                  failure:(WebserviceRequestFailureHandler)failure
+-(void)Battingpitchmap :(NSString *)list :(NSString *)playercode :(NSString *)matchcode:(NSString *)innno :(NSString *)type success:(WebserviceRequestSuccessHandler)success
+                failure:(WebserviceRequestFailureHandler)failure
 {
-    urlString = [URL_FOR_RESOURCE2(@"") stringByAppendingString:[NSString stringWithFormat:@"%@/%@/%@/%@",list,playercode,matchcode,innno]];
+    urlString = [URL_FOR_RESOURCE2(@"") stringByAppendingString:[NSString stringWithFormat:@"%@/%@/%@/%@/%@",list,playercode,matchcode,innno,type]];
     //urlString = [NSString stringWithFormat:@"http://192.168.0.152:8083/LiveMatch.svc/%@/%@/%@/%@",list,playercode,matchcode,innno];
     NSLog(@"urlString = %@",urlString);
     
@@ -71,10 +71,10 @@ static NSString       *ServiceMimeType    = @"image/jpeg";
            completionSucessHandler:success
           completionFailureHandler:failure];
 }
--(void)Bowlingpitchmap :(NSString *)list :(NSString *)playercode :(NSString *)matchcode:(NSString *)innno success:(WebserviceRequestSuccessHandler)success
+-(void)Bowlingpitchmap :(NSString *)list :(NSString *)playercode :(NSString *)matchcode:(NSString *)innno :(NSString *)type success:(WebserviceRequestSuccessHandler)success
                 failure:(WebserviceRequestFailureHandler)failure
 {
-    urlString = [URL_FOR_RESOURCE2(@"") stringByAppendingString:[NSString stringWithFormat:@"%@/%@/%@/%@",list,playercode,matchcode,innno]];
+    urlString = [URL_FOR_RESOURCE2(@"") stringByAppendingString:[NSString stringWithFormat:@"%@/%@/%@/%@/%@",list,playercode,matchcode,innno,type]];
     NSLog(@"urlString = %@",urlString);
     
     

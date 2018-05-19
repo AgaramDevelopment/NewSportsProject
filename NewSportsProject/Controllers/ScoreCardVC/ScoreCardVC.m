@@ -610,11 +610,11 @@
     
     NSLog(@"%@", _matchCode);
     
-        if(![self.backkey isEqualToString:@"yes"])
-        {
-        
-            self.matchCode= Appobj.Currentmatchcode;
-        }
+//        if(![self.backkey isEqualToString:@"yes"])
+//        {
+//        
+//            self.matchCode= Appobj.Currentmatchcode;
+//        }
     
     
     self.matchDetails =appDel.Scorearray;
@@ -628,11 +628,22 @@
     
    // [self toggle:nil];
     
+    innno = @"1";
     
     [self ScoreWebservice];
     
+    if([self.LiveorOFFType isEqualToString:@"LIVE"])
+    {
+    [NSTimer scheduledTimerWithTimeInterval:5
+                                     target:self
+                                   selector:@selector(pageRefresh:)
+                                   userInfo:nil
+                                    repeats:YES];
+    }
     
-    
+
+
+
     
     // [self.Team1 sendActionsForControlEvents:UIControlEventTouchUpInside];
     
@@ -641,6 +652,11 @@
     
     
     
+}
+-(IBAction)pageRefresh:(id)sender
+{
+    NSLog(@"Commentry Refreshed");
+    [self ScoreWebservice];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -911,9 +927,9 @@
     {
         objCustomNavigation=[[CustomNavigation alloc] initWithNibName:@"CustomNavigation_iPad" bundle:nil];
     }
+    objCustomNavigation.view.frame = CGRectMake(0,0, self.navi_View.bounds.size.width, self.navi_View.bounds.size.height);
     
-    
-    [self.view addSubview:objCustomNavigation.view];
+    [self.navi_View addSubview:objCustomNavigation.view];
     
     objCustomNavigation.tittle_lbl.text=@"";
     if([objCustomNavigation.tittle_lbl.text isEqualToString: @""])
@@ -2776,30 +2792,29 @@
         
         //NSString *URLString =  [URL_FOR_RESOURCE(@"") stringByAppendingString:[NSString stringWithFormat:@"%@",ScorecardKey]];
         
-       // NSString *URLString = @"http://192.168.0.152:8083/CSK.svc/FETCHSCORECARDNEW"; //postmatch
-        
-        
-         NSString *URLString =  [URL_FOR_RESOURCE2(@"") stringByAppendingString:[NSString stringWithFormat:@"FETCHCSKARCHIVESCORECARD"]];
-       // NSString *URLString = @"http://192.168.0.152:8083/LiveMatch.svc/FETCHCSKARCHIVESCORECARD";//Archieve
-       // NSString *URLString = @"http://192.168.0.152:8083/LiveMatch.svc/FETCHCSKLIVESCORECARD";//LiveMatch
+       
+        NSString *URLString = [URL_FOR_RESOURCE2(@"") stringByAppendingString:[NSString stringWithFormat:@"FETCHSCORECARD"]];
+       
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         AFHTTPRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
         [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         
         manager.requestSerializer = requestSerializer;
         
+        NSArray* arr = [[NSUserDefaults standardUserDefaults] valueForKey:@"selectedCompetetionArray"];
+        NSLog(@"arr %@",arr);
+        NSString *competition = [arr valueForKey:@"COMPETITIONCODE"];
         
-        NSString *competition = @"";
-        NSString *teamcode = @"";
-        
-       // NSString *MC = @"DMSC116D017C2AA4FC420180302122912089";
+        //NSString *competition = @"UCC0000274";
+        //NSString *teamcode = @"";
+        NSString *matchtype = @"LIVE";
         
         
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-        //if(competition)   [dic    setObject:competition     forKey:@"Competitioncode"];
-        //if(teamcode)   [dic    setObject:teamcode     forKey:@"Teamcode"];
+        if(competition)   [dic    setObject:competition     forKey:@"CompetitionCode"];
         if(self.matchCode)   [dic    setObject:self.matchCode     forKey:@"MATCHCODE"];
-        //if(MC)   [dic    setObject:MC     forKey:@"MATCHCODE"];
+        if(self.LiveorOFFType)   [dic    setObject:self.LiveorOFFType    forKey:@"MATCHTYPE"];
+        
         
         
         NSLog(@"parameters : %@",dic);
@@ -2997,9 +3012,27 @@
                     self.headerUIViewTestmatch.hidden = YES;
                     //self.teamAScorelbl.text = [[self.matchDetails valueForKey:@"Inn1Score"] objectAtIndex:0];
                     // self.teamBScorelbl.text = [[self.matchDetails valueForKey:@"Inn2Score"] objectAtIndex:0];
+                    [self.Team2 setUserInteractionEnabled:YES];
+                    isTestmatch=NO;
+                    if([innno isEqualToString:@"1"])
+                    {
+                    [self.Team1 sendActionsForControlEvents:UIControlEventTouchUpInside];
+                    }
+                    else if([innno isEqualToString:@"1"])
+                    {
+                        [self.Team2 sendActionsForControlEvents:UIControlEventTouchUpInside];
+                    }
+                    
+                }
+                if(array.count==1)
+                {
+                    self.headerUIView.hidden = NO;
+                    self.headerUIViewTestmatch.hidden = YES;
+                    //self.teamAScorelbl.text = [[self.matchDetails valueForKey:@"Inn1Score"] objectAtIndex:0];
+                    // self.teamBScorelbl.text = [[self.matchDetails valueForKey:@"Inn2Score"] objectAtIndex:0];
+                    [self.Team2 setUserInteractionEnabled:NO];
                     isTestmatch=NO;
                     [self.Team1 sendActionsForControlEvents:UIControlEventTouchUpInside];
-                    
                 }
                 if(array.count==3)
                 {
@@ -3012,7 +3045,10 @@
                     //self.teamAinn2Scorelbl.text = [[self.matchDetails valueForKey:@"Inn3Score"] objectAtIndex:0];
                     //self.teamBinn2Scorelbl.text = [[self.matchDetails valueForKey:@"Inn4Score"] objectAtIndex:0];
                     isTestmatch=YES;
+                    
+                    
                     [self.Inn1 sendActionsForControlEvents:UIControlEventTouchUpInside];
+                    
                 }
                 
                 if(array.count==4)
@@ -3063,7 +3099,7 @@
                 //appDel.isTest = isTestmatch;
                 
                 
-                [self.ExtrasBtn addTarget:self action:@selector(myExtras:) forControlEvents:UIControlEventTouchUpInside];
+               // [self.ExtrasBtn addTarget:self action:@selector(myExtras:) forControlEvents:UIControlEventTouchUpInside];
                 
             }
             
@@ -3083,7 +3119,7 @@
 {
     NSMutableDictionary *dic1 = [[NSMutableDictionary alloc]init];
     
-    [objWebservice BattingWagonWheel:ScorecardWagonKey  :playercode :self.matchCode :innno success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [objWebservice BattingWagonWheel:ScorecardWagonKey  :playercode :self.matchCode :innno : self.LiveorOFFType success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject=%@",responseObject);
         
         
@@ -3131,7 +3167,7 @@
 {
     NSMutableDictionary *dic1 = [[NSMutableDictionary alloc]init];
     
-    [objWebservice BattingWagonWheel:ScorecardWagonKey  :playercode :self.matchCode :innno success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [objWebservice BattingWagonWheel:ScorecardWagonKey  :playercode :self.matchCode :innno : self.LiveorOFFType success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject=%@",responseObject);
         if(responseObject >0)
         {
@@ -3160,7 +3196,7 @@
 {
     NSMutableDictionary *dic1 = [[NSMutableDictionary alloc]init];
     
-    [objWebservice Battingpitchmap :ScorecardPitchmapKey  :playercode :self.matchCode :innno success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [objWebservice Battingpitchmap :ScorecardPitchmapKey  :playercode :self.matchCode :innno :self.LiveorOFFType success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject=%@",responseObject);
         if(responseObject >0)
         {
@@ -3201,7 +3237,7 @@
 {
     objWebservice = [[WebService alloc]init];
     NSMutableDictionary *dic1 = [[NSMutableDictionary alloc]init];
-    [objWebservice Bowlingpitchmap :@"FETCH_SCORECARD_PITCHMAP_BOWLING"  :playercode :self.matchCode :innno success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [objWebservice Bowlingpitchmap :@"FETCH_SCORECARD_PITCHMAP_BOWLING"  :playercode :self.matchCode :innno :self.LiveorOFFType success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject=%@",responseObject);
         if(responseObject >0)
         {

@@ -76,4 +76,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *bowlingNonStrikerNameLbl;
 @property (strong, nonatomic) IBOutlet UILabel *bowlingNonStrikerOversLbl;
 
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *naviHeight;
+@property (strong, nonatomic)  NSString *livetype;
+@property (strong, nonatomic)  NSString *matchCode;
+
 @end

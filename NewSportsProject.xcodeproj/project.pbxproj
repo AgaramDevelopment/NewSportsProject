@@ -23,6 +23,7 @@
 		18266FC020A4713B004877A3 /* UIScrollView+APParallaxHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18266FBC20A4713A004877A3 /* UIScrollView+APParallaxHeader.m */; };
 		18266FC720A4717E004877A3 /* ScorecardBowlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18266FC320A4717C004877A3 /* ScorecardBowlCell.m */; };
 		18266FC820A4717E004877A3 /* ScoreCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18266FC620A4717D004877A3 /* ScoreCardCell.m */; };
+		18B295FA20B0080B00E58FFC /* MixedControllerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B295F920B0080B00E58FFC /* MixedControllerVC.m */; };
 		CE91ABF420A1D1F400DBA042 /* CommentaryVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91AACD20A1D1F200DBA042 /* CommentaryVCCell.m */; };
 		CE91ABF520A1D1F400DBA042 /* CommentaryVCCell_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE91AACE20A1D1F200DBA042 /* CommentaryVCCell_iPad.xib */; };
 		CE91ABF620A1D1F400DBA042 /* CommentaryVCCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE91AACF20A1D1F200DBA042 /* CommentaryVCCell_iPhone.xib */; };
@@ -189,6 +190,8 @@
 		18266FC320A4717C004877A3 /* ScorecardBowlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScorecardBowlCell.m; sourceTree = "<group>"; };
 		18266FC520A4717D004877A3 /* ScoreCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreCardCell.h; sourceTree = "<group>"; };
 		18266FC620A4717D004877A3 /* ScoreCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreCardCell.m; sourceTree = "<group>"; };
+		18B295F820B0080B00E58FFC /* MixedControllerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MixedControllerVC.h; sourceTree = "<group>"; };
+		18B295F920B0080B00E58FFC /* MixedControllerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MixedControllerVC.m; sourceTree = "<group>"; };
 		25AD96EF9C20F56F008DEF5B /* Pods-NewSportsProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewSportsProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewSportsProject/Pods-NewSportsProject.release.xcconfig"; sourceTree = "<group>"; };
 		8F832D5A2810D0DB098D1230 /* Pods_NewSportsProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewSportsProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE91AACC20A1D1F200DBA042 /* CommentaryVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentaryVCCell.h; sourceTree = "<group>"; };
@@ -479,6 +482,15 @@
 				18266FC620A4717D004877A3 /* ScoreCardCell.m */,
 			);
 			path = ScoreCardCell;
+			sourceTree = "<group>";
+		};
+		18B295F720B007B600E58FFC /* MixedControllerVC */ = {
+			isa = PBXGroup;
+			children = (
+				18B295F820B0080B00E58FFC /* MixedControllerVC.h */,
+				18B295F920B0080B00E58FFC /* MixedControllerVC.m */,
+			);
+			path = MixedControllerVC;
 			sourceTree = "<group>";
 		};
 		226FA33F973B9FE94B785F6C /* Pods */ = {
@@ -895,6 +907,7 @@
 		CE91ABAC20A1D1F300DBA042 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				18B295F720B007B600E58FFC /* MixedControllerVC */,
 				CEB3EA3520AC0D97006CF42D /* DashBoard */,
 				04A9E65C20A9549500471F70 /* DropDownVC */,
 				CE91ABAD20A1D1F300DBA042 /* AdvanceFilter */,
@@ -1387,6 +1400,7 @@
 				CEB3EA4920AC684B006CF42D /* GemViewController1.swift in Sources */,
 				CE91AC7820A1D1F400DBA042 /* FieldSummaryVC.m in Sources */,
 				CEB3EA3820AC0D98006CF42D /* DashBoard.m in Sources */,
+				18B295FA20B0080B00E58FFC /* MixedControllerVC.m in Sources */,
 				CE91AC4120A1D1F400DBA042 /* SessionPartCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -259,13 +259,13 @@
         
             //NSString *URLString =  [URL_FOR_RESOURCE(@"") stringByAppendingString:[NSString stringWithFormat:@"%@",ResultsKey]];
         
-              //  NSString *URLString = @"http://192.168.0.152:8083/CSK.svc/FETCHPOSTMATCHCOMMENTRY";
+               // NSString *URLString = @"http://192.168.0.152:8083/LiveMatch.svc/FETCHPOSTMATCHCOMMENTRY";
             //        NSString *URLString = @"https://csk.agaraminfotech.com/CSK.svc/MOBILE_FETCHLIVESCORE";
          //NSString *URLString = @"http://192.168.0.152:8083/CSK.svc/MOBILE_FETCHLIVESCORE"; //Live URL
         //NSString *URLString = @"http://192.168.0.152:8083/LiveMatch.svc/MOBILE_FETCHLIVESCORE";
         
         
-        NSString *URLString =[URL_FOR_RESOURCE2(@"") stringByAppendingString:[NSString stringWithFormat:@"MOBILE_FETCHLIVESCORE"]];
+        NSString *URLString =[URL_FOR_RESOURCE2(@"") stringByAppendingString:[NSString stringWithFormat:@"FETCHSCORECOMMENTRY"]];
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         AFHTTPRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
         [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -273,17 +273,19 @@
         ;        manager.requestSerializer = requestSerializer;
         
         
-            //        NSString *competition = @"UCC0000274";
-                   // NSString *matchCode = @"DMSC116D017C2AA4FC420180302122412087";
+        NSArray* arr = [[NSUserDefaults standardUserDefaults] valueForKey:@"selectedCompetetionArray"];
+        NSLog(@"arr %@",arr);
+        NSString *competition = [arr valueForKey:@"COMPETITIONCODE"];
         
-        NSString *competition = @"UCC0000274";
-        NSString *matchCode = appDel.LiveMatchCode; // Live Match Code
-       // NSString *matchCode = @"DMSC116D017C2AA4FC420180302124112090"; //Post Match Code
-        //DMSC116D017C2AA4FC420180302122412087
+        //NSString *competition = @"UCC0000274";
+       // NSString *matchCode = appDel.LiveMatchCode; // Live Match Code
+        //NSString *matchCode = @"DMSC116D017C2AA4FC420180302124212091"; //Post Match Code
+        
         
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         if(competition)   [dic    setObject:competition     forKey:@"COMPETITIONCODE"];
-        if(matchCode)   [dic    setObject:matchCode     forKey:@"MATCHCODE"];
+        if(self.matchCode)   [dic    setObject:self.matchCode     forKey:@"MATCHCODE"];
+        if(self.livetype)   [dic    setObject:self.livetype     forKey:@"MATCHTYPE"];
         
         
         NSLog(@"parameters : %@",dic);
@@ -365,6 +367,7 @@
 }
 
 - (void)liveScoreDetails:(id)liveScore {
+    
     
     NSMutableArray *matchDetailsArray = [liveScore valueForKey:@"lstMatchDetails"];
     if (matchDetailsArray.count) {

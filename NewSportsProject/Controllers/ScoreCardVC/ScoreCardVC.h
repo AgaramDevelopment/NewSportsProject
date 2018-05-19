@@ -135,4 +135,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnLB;
 @property (weak, nonatomic) IBOutlet UIButton *btnWD;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationHeight;
+
+@property (weak, nonatomic)  NSString *LiveorOFFType;
+
+
 @end

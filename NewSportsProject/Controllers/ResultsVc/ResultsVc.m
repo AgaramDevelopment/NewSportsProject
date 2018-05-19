@@ -15,6 +15,7 @@
 #import "ScoreCardVC.h"
 #import "DropDownTableViewController.h"
 @import SDWebImage;
+#import "MixedControllerVC.h"
 
 @interface ResultsVc ()
 {
@@ -351,12 +352,22 @@
         
         [scoreArray addObject:dic];
         
-        ScoreCardVC * objFix = [[ScoreCardVC alloc]init];
-        objFix = (ScoreCardVC *)[self.storyboard instantiateViewControllerWithIdentifier:@"ScoreCardVC"];
-        objFix.matchCode = displayMatchCode;
-        objFix.matchDetails = scoreArray;
-        objFix.backkey = @"yes";
-        [self.navigationController pushViewController:objFix animated:YES];
+//        ScoreCardVC * objFix = [[ScoreCardVC alloc]init];
+//        objFix = (ScoreCardVC *)[self.storyboard instantiateViewControllerWithIdentifier:@"ScoreCardVC"];
+//        objFix.matchCode = displayMatchCode;
+//        objFix.matchDetails = scoreArray;
+//        objFix.backkey = @"yes";
+//        objFix.LiveorOFFType = @"ARCHIVE";
+//        [self.navigationController pushViewController:objFix animated:YES];
+        
+        
+        MixedControllerVC * objFix1 = [[MixedControllerVC alloc]init];
+        objFix1 = (MixedControllerVC *)[self.storyboard instantiateViewControllerWithIdentifier:@"MixedControllerVC"];
+        objFix1.livetype = @"ARCHIVE";
+        objFix1.matchCode = displayMatchCode;
+        objFix1.scoreArray = scoreArray;
+        // objFix.backkey = @"yes";
+        [self.navigationController pushViewController:objFix1 animated:YES];
         
     }
 }
