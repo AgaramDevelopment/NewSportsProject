@@ -1397,7 +1397,7 @@
     
                 if(lastIndex != nil){
     
-                    [self.listTbl reloadRowsAtIndexPaths:@[lastIndex] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    [self.listTbl reloadRowsAtIndexPaths:@[lastIndex] withRowAnimation:UITableViewRowAnimationRight];
                     isSelected =YES;
     
                     isOnes = YES;
@@ -1431,7 +1431,7 @@
             
             
             
-            [self.listTbl reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.listTbl reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
     
            // self.tableYposition.constant = 0;
             [self.listTbl endUpdates];
@@ -1481,7 +1481,7 @@
     
     
     
-                    [self.bowlingTbl reloadRowsAtIndexPaths:@[lastIndex] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    [self.bowlingTbl reloadRowsAtIndexPaths:@[lastIndex] withRowAnimation:UITableViewRowAnimationRight];
 //                    isSelected =YES;
     
     
@@ -1507,7 +1507,7 @@
             [self WagonWheelWebservice];
             [self PitchmapbowlWebservice];
     
-            [self.bowlingTbl reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.bowlingTbl reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
     
     
     

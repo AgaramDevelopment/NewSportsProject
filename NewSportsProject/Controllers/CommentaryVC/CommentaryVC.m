@@ -288,14 +288,14 @@ static NSString* const CellIdentifier = @"DynamicTableViewCell";
         NSString *competition = [arr valueForKey:@"COMPETITIONCODE"];
         
         //NSString *competition = @"UCC0000274";
-//        NSString *matchCode = appDel.LiveMatchCode; // Live Match Code
-        NSString *matchCode = @"DMSC116D017C2AA4FC420180302124212091"; //Post Match Code
+       // NSString *matchCode = appDel.LiveMatchCode; // Live Match Code
+        //NSString *matchCode = @"DMSC116D017C2AA4FC420180302124212091"; //Post Match Code
     
         
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         if(competition)   [dic    setObject:competition     forKey:@"COMPETITIONCODE"];
-//        if(self.matchCode)   [dic    setObject:self.matchCode     forKey:@"MATCHCODE"];
-        [dic    setObject:matchCode     forKey:@"MATCHCODE"];
+        if(self.matchCode)   [dic    setObject:self.matchCode     forKey:@"MATCHCODE"];
+        //[dic    setObject:matchCode     forKey:@"MATCHCODE"];
         if(self.livetype)   [dic    setObject:self.livetype     forKey:@"MATCHTYPE"];
         
         

@@ -2610,7 +2610,7 @@
                                                 <rect key="frame" x="0.0" y="30" width="365" height="205"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO LIVE MATCHES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3z-0k-9AS">
-                                                        <rect key="frame" x="121" y="95" width="123" height="16"/>
+                                                        <rect key="frame" x="121.5" y="95" width="123" height="16"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                         <color key="textColor" red="0.32549019610000002" green="0.69803921570000005" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -14160,6 +14160,7 @@
                         <outlet property="commentTbl" destination="hlR-qC-7f6" id="v8a-rZ-jnB"/>
                         <outlet property="competitionTypeLbl" destination="Iob-Nt-E8V" id="m4X-MN-DWc"/>
                         <outlet property="groundLbl" destination="2kg-pP-kmz" id="MFx-BD-wyq"/>
+                        <outlet property="naviHeight" destination="mK1-pP-Jyu" id="AaI-1I-8uC"/>
                         <outlet property="navigationView" destination="0HE-BM-Rel" id="syb-Ak-n0V"/>
                         <outlet property="next" destination="fzP-JO-15X" id="sOz-K3-k9C"/>
                         <outlet property="partnershipRunsLbl" destination="rMZ-32-Y2O" id="40w-H8-P1O"/>
