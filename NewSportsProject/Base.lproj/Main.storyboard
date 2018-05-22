@@ -2606,6 +2606,25 @@
                                                     <constraint firstAttribute="bottom" secondItem="vTV-vD-OTq" secondAttribute="bottom" id="zuD-Zl-eTH"/>
                                                 </constraints>
                                             </view>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i4y-Eu-PSS">
+                                                <rect key="frame" x="0.0" y="30" width="365" height="205"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO LIVE MATCHES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3z-0k-9AS">
+                                                        <rect key="frame" x="122" y="95" width="123" height="16"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
+                                                        <color key="textColor" red="0.32549019610000002" green="0.69803921570000005" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <variation key="heightClass=regular-widthClass=regular">
+                                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                                                        </variation>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="W3z-0k-9AS" firstAttribute="centerX" secondItem="i4y-Eu-PSS" secondAttribute="centerX" id="VNs-ys-x4f"/>
+                                                    <constraint firstItem="W3z-0k-9AS" firstAttribute="centerY" secondItem="i4y-Eu-PSS" secondAttribute="centerY" id="qqR-p1-mxf"/>
+                                                </constraints>
+                                            </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3RE-JX-iNo">
                                                 <rect key="frame" x="15" y="235" width="335" height="40"/>
                                                 <color key="backgroundColor" red="0.17254901959999999" green="0.65490196079999996" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -2636,7 +2655,11 @@
                                             <constraint firstAttribute="bottom" secondItem="3RE-JX-iNo" secondAttribute="bottom" constant="5" id="bal-kf-wZO"/>
                                             <constraint firstItem="4qD-ys-uka" firstAttribute="leading" secondItem="phw-SH-h46" secondAttribute="leading" id="cZd-wP-b9Q"/>
                                             <constraint firstItem="4Dx-HZ-FMG" firstAttribute="top" secondItem="phw-SH-h46" secondAttribute="top" id="eHE-ug-asn"/>
+                                            <constraint firstItem="i4y-Eu-PSS" firstAttribute="leading" secondItem="phw-SH-h46" secondAttribute="leading" id="hlk-7d-K4t"/>
                                             <constraint firstAttribute="trailing" secondItem="4Dx-HZ-FMG" secondAttribute="trailing" id="jeC-nz-LW7"/>
+                                            <constraint firstItem="i4y-Eu-PSS" firstAttribute="top" secondItem="4Dx-HZ-FMG" secondAttribute="bottom" id="mNL-gC-Jwj"/>
+                                            <constraint firstItem="3RE-JX-iNo" firstAttribute="top" secondItem="i4y-Eu-PSS" secondAttribute="bottom" id="oEK-bq-h9S"/>
+                                            <constraint firstAttribute="trailing" secondItem="i4y-Eu-PSS" secondAttribute="trailing" id="pml-J0-M4h"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZgI-vB-Bz6">
@@ -2984,6 +3007,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1100"/>
                     <connections>
+                        <outlet property="NoliveView" destination="i4y-Eu-PSS" id="dgs-RF-Osc"/>
                         <outlet property="PointsTable" destination="WLS-28-ZWZ" id="bcg-OS-2oK"/>
                         <outlet property="ResultView" destination="4qD-ys-uka" id="cR7-6i-nxi"/>
                         <outlet property="firstInn" destination="YJC-H4-2dK" id="Ysv-BU-kpz"/>
@@ -3014,7 +3038,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sMz-Xz-Hpd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-510" y="777"/>
+            <point key="canvasLocation" x="-510.546875" y="776.953125"/>
         </scene>
         <!--TeamsVC-->
         <scene sceneID="H7j-0j-w4K">

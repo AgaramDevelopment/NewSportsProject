@@ -85,10 +85,17 @@
     
     [self.listBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
     
-    self.Competitionlbl.text = [AppCommon getCurrentCompetitionName];
+    
+    NSArray* arr = [[NSUserDefaults standardUserDefaults] valueForKey:@"selectedCompetetionArray"];
+    NSLog(@"arr %@",arr);
+    NSMutableArray *reqComp = [[NSMutableArray alloc]init];
+    [reqComp addObject:arr];
+    NSString *competition = [arr valueForKey:@"COMPETITIONCODE"];
+    
+    self.Competitionlbl.text = [arr valueForKey:@"COMPETITIONNAME"];
     self.Teamnamelbl.text = [AppCommon getCurrentTeamName];
     
-    CompetitionCode = [AppCommon getCurrentCompetitionCode];
+    CompetitionCode = competition;
     teamcode = [AppCommon getCurrentTeamCode];
     [self TeamWebservice];
     
@@ -157,8 +164,18 @@
     }
     else // COMPETETION
     {
-        dropVC.array = appDel.ArrayCompetition;
-        dropVC.key = @"CompetitionName";
+        //dropVC.array = appDel.ArrayCompetition;
+        
+        NSArray* arr = [[NSUserDefaults standardUserDefaults] valueForKey:@"selectedCompetetionArray"];
+        NSLog(@"arr %@",arr);
+//        NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+//        [dic setObject:arr forKey:@""];
+        NSMutableArray *reqComp = [[NSMutableArray alloc]init];
+        [reqComp addObject:arr];
+        NSString *competition = [arr valueForKey:@"COMPETITIONCODE"];
+        
+        dropVC.array = reqComp;
+        dropVC.key = @"COMPETITIONNAME";
     if (IS_IPAD) {
         [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(dropviewComp1.frame), CGRectGetMaxY(dropviewComp1.superview.frame), CGRectGetWidth(dropviewComp1.frame), 300)];
     } else {
@@ -175,18 +192,19 @@
 
 -(void)selectedValue:(NSMutableArray *)array andKey:(NSString*)key andIndex:(NSIndexPath *)Index
 {
-    if ([key isEqualToString: @"CompetitionName"]) {
+    if ([key isEqualToString: @"COMPETITIONNAME"]) {
         
         NSLog(@"%@",array[Index.row]);
         NSLog(@"selected value %@",key);
         Competitionlbl.text = [[array objectAtIndex:Index.row] valueForKey:key];
-        NSString* Competetioncode = [[array objectAtIndex:Index.row] valueForKey:@"CompetitionCode"];
+       // NSString* Competetioncode = [[array objectAtIndex:Index.row] valueForKey:@"CompetitionCode"];
+        NSString* Competetioncode = [[array objectAtIndex:Index.row] valueForKey:@"COMPETITIONCODE"];
         
         [[NSUserDefaults standardUserDefaults] setValue:Competitionlbl.text forKey:@"SelectedCompetitionName"];
         [[NSUserDefaults standardUserDefaults] setValue:Competetioncode forKey:@"SelectedCompetitionCode"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-        Teamnamelbl.text = @"Team Name";
+        Teamnamelbl.text = [AppCommon getCurrentTeamName];
         
     } else {
         Teamnamelbl.text = [[array objectAtIndex:Index.row] valueForKey:key];
@@ -219,7 +237,7 @@
     
     teamcode = [AppCommon getCurrentTeamCode];
     
-    CompetitionCode = [AppCommon getCurrentCompetitionCode];
+   // CompetitionCode = [AppCommon getCurrentCompetitionCode];
     
     [objWebservice TeamComposition :@"FETCH_TEAMCOMPOSITION" :CompetitionCode :teamcode success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"responseObject=%@",responseObject);
@@ -487,10 +505,20 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        TeamMemDetails * objFix = [[TeamMemDetails alloc]init];
-        objFix = (TeamMemDetails *)[self.storyboard instantiateViewControllerWithIdentifier:@"TeamMemDetails"];
-        [self.navigationController pushViewController:objFix animated:YES];
+//        TeamMemDetails * objFix = [[TeamMemDetails alloc]init];
+//        objFix = (TeamMemDetails *)[self.storyboard instantiateViewControllerWithIdentifier:@"TeamMemDetails"];
+//        [self.navigationController pushViewController:objFix animated:YES];
 }
+-(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGRect frame = cell.frame;
+    [cell setFrame:CGRectMake(0, self.ListTbl.frame.size.height, frame.size.width, frame.size.height)];
+    [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionTransitionCrossDissolve  animations:^{
+        [cell setFrame:frame];
+    } completion:^(BOOL finished) {
+    }];
+}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -593,12 +621,21 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    TeamMemDetails * objFix = [[TeamMemDetails alloc]init];
-    objFix = (TeamMemDetails *)[self.storyboard instantiateViewControllerWithIdentifier:@"TeamMemDetails"];
-    [self.navigationController pushViewController:objFix animated:YES];
+//    TeamMemDetails * objFix = [[TeamMemDetails alloc]init];
+//    objFix = (TeamMemDetails *)[self.storyboard instantiateViewControllerWithIdentifier:@"TeamMemDetails"];
+//    [self.navigationController pushViewController:objFix animated:YES];
 
 }
 
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(8_0)
+{
+    CGRect frame = cell.frame;
+    [cell setFrame:CGRectMake(0, self.GridTbl.frame.size.height, frame.size.width, frame.size.height)];
+    [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionTransitionCrossDissolve  animations:^{
+        [cell setFrame:frame];
+    } completion:^(BOOL finished) {
+    }];
+}
 
 
 @end

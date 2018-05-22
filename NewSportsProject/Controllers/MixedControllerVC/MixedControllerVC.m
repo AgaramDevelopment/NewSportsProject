@@ -13,7 +13,6 @@
 #import "AppCommon.h"
 #import "Config.h"
 
-
 @interface MixedControllerVC ()
 {
     ScoreCardVC * objFix ;
@@ -29,14 +28,14 @@
     // Do any additional setup after loading the view.
     
     
-    if(IS_IPHONE_DEVICE) {
+    if(IS_IPAD) {
         
         UIBezierPath *path = [UIBezierPath new];
         
-        [path moveToPoint:(CGPoint){self.ScoreCardBtn.frame.size.width+50,0 }];//w0
+        [path moveToPoint:(CGPoint){self.ScoreCardBtn.frame.size.width,0 }];//w0
         [path addLineToPoint:(CGPoint){0, 0}];//00
         [path addLineToPoint:(CGPoint){0,self.ScoreCardBtn.frame.size.height }];//0h
-        [path addLineToPoint:(CGPoint){self.ScoreCardBtn.frame.size.width+50, self.ScoreCardBtn.frame.size.height}];//wh20
+        [path addLineToPoint:(CGPoint){self.ScoreCardBtn.frame.size.width-30, self.ScoreCardBtn.frame.size.height}];//wh20
         
         CAShapeLayer *mask = [CAShapeLayer new];
         mask.frame = self.ScoreCardBtn.bounds;
@@ -91,7 +90,6 @@
    
     [self.ScoreCardBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
     
-
 }
 
 -(void)customnavigationmethod
@@ -112,7 +110,14 @@
     NSArray* arr = [[NSUserDefaults standardUserDefaults] valueForKey:@"selectedCompetetionArray"];
     //    NSLog(@"arr %@",arr);
     
+    if([self.livetype isEqualToString:@"LIVE"])
+    {
     objCustomNavigation.tittle_lbl.text = @"LIVE";
+    }
+    else
+    {
+        objCustomNavigation.tittle_lbl.text = @"";
+    }
     
     if([objCustomNavigation.tittle_lbl.text isEqualToString: @""])
     {

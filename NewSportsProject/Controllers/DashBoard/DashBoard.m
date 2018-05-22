@@ -770,6 +770,9 @@
                 self.resultsArray = [responseObject valueForKey:@"lstMatchDetails"];
                 if(self.resultsArray.count>0)
                 {
+                    self.NoliveView.hidden = YES;
+                    self.ResultView.hidden = NO;
+                    
                     NSMutableArray *firstobj = [[NSMutableArray alloc]init];
                     
                     firstobj = [self.resultsArray objectAtIndex:0];
@@ -948,11 +951,16 @@
                     //Appobj.Scorearray = scoreArray;
                     Appobj.backkey = @"no";
                     //[self.navigationController pushViewController:objFix animated:YES];
-                    [self PointsTableWebservice];
                     [COMMON RemoveLoadingIcon];
                     [self.view setUserInteractionEnabled:YES];
 
                 }
+                else
+                {
+                    self.NoliveView.hidden = NO;
+                    self.ResultView.hidden = YES;
+                }
+                [self PointsTableWebservice];
             }
             
             [COMMON RemoveLoadingIcon];

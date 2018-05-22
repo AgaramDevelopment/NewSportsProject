@@ -84,6 +84,7 @@
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.text = [[array objectAtIndex:indexPath.row] valueForKey:key];
+   // cell.textLabel.text = [array  valueForKey:key];
     
 //    if (indexPath.row % 2 == 0) {
 //        cell.backgroundColor = [UIColor whiteColor];

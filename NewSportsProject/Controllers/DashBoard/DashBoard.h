@@ -20,6 +20,7 @@
 @property (nonatomic,strong) IBOutlet UIView * CommonView;
 
 @property (nonatomic,strong) IBOutlet UIView * ResultView;
+@property (nonatomic,strong) IBOutlet UIView * NoliveView;
 
 @property (nonatomic,strong) IBOutlet UIImageView * img1;
 @property (nonatomic,strong) IBOutlet UIImageView * img2;
