@@ -6,6 +6,7 @@
 //  Copyright © 2017 agaraminfotech. All rights reserved.
 //
 
+#import "DynamicTableViewCell.h"
 #import "CommentaryVC.h"
 #import "CustomNavigation.h"
 #import "Config.h"
@@ -27,6 +28,8 @@
 
 @property (nonatomic,strong)  NSMutableArray * commonArray;
 @end
+
+static NSString* const CellIdentifier = @"DynamicTableViewCell";
 
 @implementation CommentaryVC
 
@@ -53,7 +56,8 @@
     self.img4.clipsToBounds = true;
     self.img4.layer.cornerRadius = self.img4.frame.size.width/2;
     
-    
+    self.commentTbl.estimatedRowHeight = 90.0;
+    self.commentTbl.rowHeight = UITableViewAutomaticDimension;
     
     
     
@@ -75,6 +79,12 @@
     
     
 }
+
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//    [self.commentTbl reloadData];
+//}
 
 -(IBAction)pageRefresh:(id)sender
 {
@@ -278,13 +288,14 @@
         NSString *competition = [arr valueForKey:@"COMPETITIONCODE"];
         
         //NSString *competition = @"UCC0000274";
-       // NSString *matchCode = appDel.LiveMatchCode; // Live Match Code
-        //NSString *matchCode = @"DMSC116D017C2AA4FC420180302124212091"; //Post Match Code
-        
+//        NSString *matchCode = appDel.LiveMatchCode; // Live Match Code
+        NSString *matchCode = @"DMSC116D017C2AA4FC420180302124212091"; //Post Match Code
+    
         
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         if(competition)   [dic    setObject:competition     forKey:@"COMPETITIONCODE"];
-        if(self.matchCode)   [dic    setObject:self.matchCode     forKey:@"MATCHCODE"];
+//        if(self.matchCode)   [dic    setObject:self.matchCode     forKey:@"MATCHCODE"];
+        [dic    setObject:matchCode     forKey:@"MATCHCODE"];
         if(self.livetype)   [dic    setObject:self.livetype     forKey:@"MATCHTYPE"];
         
         
@@ -475,140 +486,170 @@
 {
     
     
-    
+    /*
     static NSString *MyIdentifier = @"MyIdentifier";
-    
-    
     CommentaryVCCell *cell = [self.commentTbl dequeueReusableCellWithIdentifier:MyIdentifier];
-//    if(IS_IPHONE_DEVICE)
-//    {
-//        [[NSBundle mainBundle] loadNibNamed:@"CommentaryVCCell_iPhone" owner:self options:nil];
-//    }
-//    else
-//    {
+
         [[NSBundle mainBundle] loadNibNamed:@"CommentaryVCCell_iPad" owner:self options:nil];
-        
-   // }
-    
-    
     
     cell = self.objlistCell;
+    */
     
-    NSString *www = [self checkNull:[[self.commonArray valueForKey:@"RUNS"] objectAtIndex:indexPath.row]];
-    NSLog(@"Wickets:%@", www);
+    DynamicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    if([[self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPE"] objectAtIndex:indexPath.row]] isEqualToString:@"1"])
-    {
-            cell.overs.text = [self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPEDESC"] objectAtIndex:indexPath.row]];
+    [self setUpCell:cell atIndexPath:indexPath];
     
-            cell.cmtText.text = [self checkNull:[[self.commonArray valueForKey:@"COMMENTRY"] objectAtIndex:indexPath.row]];
-            CGSize sizeThatFitsTextView = [cell.cmtText sizeThatFits:CGSizeMake(cell.cmtText.frame.size.width, MAXFLOAT)];
-            cell.constraintTextViewHeight.constant = sizeThatFitsTextView.height;
-    }
-    else if([[self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPE"] objectAtIndex:indexPath.row]] isEqualToString:@"3"])
-    {
-            cell.overs.text = @"";
-        
-//        //NSString *myString = [self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPEDESC"] objectAtIndex:indexPath.row]];
-//        //NSAttributedString *myBoldString = [[NSAttributedString alloc] initWithString:myString
-//                                                                           attributes:@{ NSFontAttributeName: [UIFont boldSystemFontOfSize:35.0] }];
-        
-        if([[self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPEDESC"] objectAtIndex:indexPath.row]] isEqualToString:@""])
-        {
-            NSString *reqCommentry = [NSString stringWithFormat:@"\n%@",[self checkNull:[[self.commonArray valueForKey:@"COMMENTRY"] objectAtIndex:indexPath.row]]];
-        
-            cell.cmtText.text = reqCommentry;
-            CGSize sizeThatFitsTextView = [cell.cmtText sizeThatFits:CGSizeMake(cell.cmtText.frame.size.width, MAXFLOAT)];
-            cell.constraintTextViewHeight.constant = sizeThatFitsTextView.height;
-        
-        }else
-        {
-            
-            
-            NSString *myString = [NSString stringWithFormat:@"%@:",[self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPEDESC"] objectAtIndex:indexPath.row]]] ;
-            
-            NSMutableAttributedString *myBoldString = [[NSMutableAttributedString alloc] initWithString:myString
-                                                                               attributes:@{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Bold" size:15.0] }];
-            
-            
-            NSString *myString1 = [NSString stringWithFormat:@"\n%@",[self checkNull:[[self.commonArray valueForKey:@"COMMENTRY"] objectAtIndex:indexPath.row]]];
-            
-            ;
-            NSMutableAttributedString *myBoldString1 = [[NSMutableAttributedString alloc] initWithString:myString1
-                                                                                             attributes:@{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Regular" size:14.0] }];
-            
-//        NSString *reqCommentry = [NSString stringWithFormat:@"%@:\n%@",[self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPEDESC"] objectAtIndex:indexPath.row]],[self checkNull:[[self.commonArray valueForKey:@"COMMENTRY"] objectAtIndex:indexPath.row]]];
-            
-            [myBoldString appendAttributedString:myBoldString1];
-        
-            cell.cmtText.attributedText = myBoldString;
-            CGSize sizeThatFitsTextView = [cell.cmtText sizeThatFits:CGSizeMake(cell.cmtText.frame.size.width, MAXFLOAT)];
-            cell.constraintTextViewHeight.constant = sizeThatFitsTextView.height;
-        }
-    }
-    
-    cell.Ball.text = [self checkNull:[[self.commonArray valueForKey:@"RUNS"] objectAtIndex:indexPath.row]];
-    
-        if([cell.Ball.text isEqualToString:@"4"] || [cell.Ball.text isEqualToString:@"6"] )
-        {
-            cell.Ball.backgroundColor = [UIColor colorWithRed:(44/255.0f) green:(167/255.0f) blue:(219/255.0f) alpha:1.0f];
-        }
-        else if([cell.Ball.text isEqualToString:@"0"] || [cell.Ball.text isEqualToString:@"1"] || [cell.Ball.text isEqualToString:@"2"] || [cell.Ball.text isEqualToString:@"3"])
-        {
-            cell.Ball.backgroundColor = [UIColor colorWithRed:(93/255.0f) green:(93/255.0f) blue:(93/255.0f) alpha:1.0f];
-        }
-    
-        else if([cell.Ball.text isEqualToString:@"W"])
-        {
-           // cell.backgroundColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
-            //cell.Ball.textColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
-            cell.backgroundColor = [UIColor whiteColor];
-            cell.Ball.textColor = [UIColor whiteColor];
-            cell.Ball.backgroundColor = [UIColor redColor];
-            cell.overs.textColor = [UIColor redColor];
-            cell.cmtText.textColor = [UIColor redColor];
-        }
-        else if([cell.Ball.text isEqualToString:@""])
-        {
-            cell.Ball.hidden = YES;
-        }
-        else
-        {
-            cell.Ball.backgroundColor = [UIColor blackColor];
-            cell.Ball.textColor = [UIColor whiteColor];
-        }
-    
-    //cell.cmtText.autoresizingMask;
-
     [self setUpCell:cell atIndexPath:indexPath];
     
     return cell;
 }
+
+- (void)setUpCell:(DynamicTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    
+    NSString *www = [self checkNull:[[self.commonArray valueForKey:@"RUNS"] objectAtIndex:indexPath.row]];
+    NSLog(@"Wickets:%@", www);
+    cell.Ball.hidden = NO;
+    cell.Ball.backgroundColor = [UIColor blackColor];
+    cell.Ball.textColor = [UIColor whiteColor];
+    cell.cmtText.textColor= [UIColor blackColor];
+    cell.overs.textColor = [UIColor blackColor];
+    
+    if([[self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPE"] objectAtIndex:indexPath.row]] isEqualToString:@"1"])
+        {
+        cell.overs.text = [self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPEDESC"] objectAtIndex:indexPath.row]];
+        cell.cmtText.text = [self checkNull:[[self.commonArray valueForKey:@"COMMENTRY"] objectAtIndex:indexPath.row]];
+        }
+    else if([[self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPE"] objectAtIndex:indexPath.row]] isEqualToString:@"3"])
+        {
+        cell.overs.text = @"";
+        
+        if([[self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPEDESC"] objectAtIndex:indexPath.row]] isEqualToString:@""])
+            {
+            NSString *reqCommentry = [NSString stringWithFormat:@"\n%@",[self checkNull:[[self.commonArray valueForKey:@"COMMENTRY"] objectAtIndex:indexPath.row]]];
+            
+            cell.cmtText.text = reqCommentry;
+            }else
+                {
+                
+                
+                NSString *myString = [NSString stringWithFormat:@"%@:",[self checkNull:[[self.commonArray valueForKey:@"COMMENTRYTYPEDESC"] objectAtIndex:indexPath.row]]];
+                
+                NSMutableAttributedString *myBoldString;
+                if (IS_IPAD) {
+                 myBoldString   = [[NSMutableAttributedString alloc] initWithString:myString
+                                    attributes:@{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Bold" size:15.0] }];
+                } else {
+                    myBoldString   = [[NSMutableAttributedString alloc] initWithString:myString
+                                    attributes:@{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Bold" size:12.0] }];
+                }
+                
+                NSString *myString1 = [NSString stringWithFormat:@"\n%@",[self checkNull:[[self.commonArray valueForKey:@"COMMENTRY"] objectAtIndex:indexPath.row]]];
+            
+                NSMutableAttributedString *myBoldString1;
+                
+                if (IS_IPAD) {
+                    myBoldString1 = [[NSMutableAttributedString alloc] initWithString:myString1
+                                    attributes:@{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Regular" size:14.0] }];
+                } else {
+                    myBoldString1 = [[NSMutableAttributedString alloc] initWithString:myString1
+                                                                           attributes:@{ NSFontAttributeName: [UIFont fontWithName:@"Montserrat-Regular" size:11.0] }];
+                }
+                [myBoldString appendAttributedString:myBoldString1];
+                
+                cell.cmtText.attributedText = myBoldString;
+                }
+        }
+    
+    cell.Ball.text = [self checkNull:[[self.commonArray valueForKey:@"RUNS"] objectAtIndex:indexPath.row]];
+    
+    if([cell.Ball.text isEqualToString:@"4"] || [cell.Ball.text isEqualToString:@"6"] )
+        {
+        cell.Ball.backgroundColor = [UIColor colorWithRed:(44/255.0f) green:(167/255.0f) blue:(219/255.0f) alpha:1.0f];
+        }
+    else if([cell.Ball.text isEqualToString:@"0"] || [cell.Ball.text isEqualToString:@"1"] || [cell.Ball.text isEqualToString:@"2"] || [cell.Ball.text isEqualToString:@"3"])
+        {
+        cell.Ball.backgroundColor = [UIColor blackColor];
+        }
+    
+    else if([cell.Ball.text isEqualToString:@"W"])
+        {
+            // cell.backgroundColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
+            //cell.Ball.textColor = [UIColor colorWithRed:(214/255.0f) green:(31/255.0f) blue:(38/255.0f) alpha:1.0f];
+//        cell.backgroundColor = [UIColor whiteColor];
+        cell.Ball.textColor = [UIColor whiteColor];
+        cell.Ball.backgroundColor = [UIColor redColor];
+        cell.overs.textColor = [UIColor redColor];
+        cell.cmtText.textColor = [UIColor redColor];
+        }
+    else if([cell.Ball.text isEqualToString:@""])
+        {
+        cell.Ball.hidden = YES;
+        }
+    else
+        {
+        cell.Ball.backgroundColor = [UIColor blackColor];
+        cell.Ball.textColor = [UIColor whiteColor];
+        cell.cmtText.textColor= [UIColor blackColor];
+        cell.overs.textColor = [UIColor blackColor];
+        }
+    
+}
+
+
+- (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
+    [sizingCell layoutIfNeeded];
+    sizingCell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    //attributedText
+    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+        //    static CommentaryVCCell *cell = nil;
+    static DynamicTableViewCell *cell = nil;
+    static dispatch_once_t onceToken;
     
-    //static NSString *MyIdentifier = @"MyIdentifier";
-   // CommentaryVCCell *cell = [self.commentTbl dequeueReusableCellWithIdentifier:nil];
-  //  [self setUpCell:cell atIndexPath:indexPath];
+    dispatch_once(&onceToken, ^{
+        cell = [self.commentTbl dequeueReusableCellWithIdentifier:CellIdentifier];
+        NSLog(@"%@", cell);
+    });
     
-    return tableRowHeight;
+    [self setUpCell:cell atIndexPath:indexPath];
+    
+        //    return [self calculateHeightForConfiguredSizingCell:cell];
+    CGFloat cellHeight = [self calculateHeightForConfiguredSizingCell:cell];
+    NSLog(@"cellHeight:%f", cellHeight);
+        //    return (cellHeight > 80)?cellHeight:80;
+    
+    if (IS_IPAD) {
+        if (cellHeight > 400) {
+            NSLog(@"cellHeight1:%f",cellHeight);
+            return (cellHeight+200);
+        } else if (cellHeight > 80) {
+            NSLog(@"cellHeight2:%f",cellHeight);
+            return (cellHeight+50);
+        } else {
+            return 90;
+        }
+    } else {
+        if (cellHeight > 300) {
+            NSLog(@"cellHeight3:%f",cellHeight);
+            return (cellHeight+550);
+        } else if (cellHeight > 50) {
+            NSLog(@"cellHeight4:%f",cellHeight);
+            return (cellHeight+120);
+        } else {
+            return 90;
+        }
+    }
+   
 }
 
-- (void)setUpCell:(CommentaryVCCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    
-    CGRect frame = cell.cmtText.frame;
-    frame.size.height = cell.cmtText.contentSize.height;
-    cell.cmtText.frame = frame;
-    
-    CGFloat fixedWidth = cell.cmtText.frame.size.width;
-    //CGFloat fixedHeight = cell.cmtText.frame.size.height;
-    CGSize newSize = [cell.cmtText sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
-    CGRect newFrame = cell.cmtText.frame;
-    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
-    cell.cmtText.frame = newFrame;
-
-    tableRowHeight = cell.contentView.frame.size.height;
-}
+//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return UITableViewAutomaticDimension;
+//}
 
 -(IBAction)nextBtn:(id)sender
 {

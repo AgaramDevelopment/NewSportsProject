@@ -10,8 +10,9 @@
 		045999DD20A413CF00F37F06 /* LiveScoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 045999DC20A413CF00F37F06 /* LiveScoreCell.m */; };
 		04A9E66020A954C500471F70 /* DropDownTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9E65E20A954C500471F70 /* DropDownTableViewController.m */; };
 		04A9E66120A954C500471F70 /* DropDownTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A9E65F20A954C500471F70 /* DropDownTableViewController.xib */; };
-		04A9E66420A9B89300471F70 /* CommentaryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9E66220A9B89200471F70 /* CommentaryVC.m */; };
 		04A9E66720AADD3100471F70 /* TeamsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A9E66620AADD3100471F70 /* TeamsCollectionViewCell.m */; };
+		04C04E9920B3FC2F00BDB056 /* DynamicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C04E9820B3FC2E00BDB056 /* DynamicTableViewCell.m */; };
+		04C04E9C20B3FCD300BDB056 /* CommentaryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C04E9A20B3FCD300BDB056 /* CommentaryVC.m */; };
 		04C851841FB992A100AE18C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C851831FB992A100AE18C9 /* main.m */; };
 		04C851871FB992A100AE18C9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C851861FB992A100AE18C9 /* AppDelegate.m */; };
 		04C8518D1FB992A100AE18C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C8518B1FB992A100AE18C9 /* Main.storyboard */; };
@@ -167,10 +168,12 @@
 		04A9E65D20A954C400471F70 /* DropDownTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownTableViewController.h; sourceTree = "<group>"; };
 		04A9E65E20A954C500471F70 /* DropDownTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownTableViewController.m; sourceTree = "<group>"; };
 		04A9E65F20A954C500471F70 /* DropDownTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownTableViewController.xib; sourceTree = "<group>"; };
-		04A9E66220A9B89200471F70 /* CommentaryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentaryVC.m; sourceTree = "<group>"; };
-		04A9E66320A9B89200471F70 /* CommentaryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentaryVC.h; sourceTree = "<group>"; };
 		04A9E66520AADD3100471F70 /* TeamsCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamsCollectionViewCell.h; sourceTree = "<group>"; };
 		04A9E66620AADD3100471F70 /* TeamsCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamsCollectionViewCell.m; sourceTree = "<group>"; };
+		04C04E9720B3FC2C00BDB056 /* DynamicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicTableViewCell.h; sourceTree = "<group>"; };
+		04C04E9820B3FC2E00BDB056 /* DynamicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicTableViewCell.m; sourceTree = "<group>"; };
+		04C04E9A20B3FCD300BDB056 /* CommentaryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentaryVC.m; sourceTree = "<group>"; };
+		04C04E9B20B3FCD300BDB056 /* CommentaryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentaryVC.h; sourceTree = "<group>"; };
 		04C8517F1FB992A100AE18C9 /* NewSportsProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewSportsProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C851831FB992A100AE18C9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04C851851FB992A100AE18C9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -540,6 +543,8 @@
 		CE91AACB20A1D1F200DBA042 /* CommentaryVCCell */ = {
 			isa = PBXGroup;
 			children = (
+				04C04E9720B3FC2C00BDB056 /* DynamicTableViewCell.h */,
+				04C04E9820B3FC2E00BDB056 /* DynamicTableViewCell.m */,
 				CE91AACC20A1D1F200DBA042 /* CommentaryVCCell.h */,
 				CE91AACD20A1D1F200DBA042 /* CommentaryVCCell.m */,
 				CE91AACE20A1D1F200DBA042 /* CommentaryVCCell_iPad.xib */,
@@ -972,8 +977,8 @@
 		CE91ABB620A1D1F300DBA042 /* CommentaryVC */ = {
 			isa = PBXGroup;
 			children = (
-				04A9E66320A9B89200471F70 /* CommentaryVC.h */,
-				04A9E66220A9B89200471F70 /* CommentaryVC.m */,
+				04C04E9B20B3FCD300BDB056 /* CommentaryVC.h */,
+				04C04E9A20B3FCD300BDB056 /* CommentaryVC.m */,
 			);
 			path = CommentaryVC;
 			sourceTree = "<group>";
@@ -1328,6 +1333,7 @@
 			files = (
 				CE91AC8020A1D1F400DBA042 /* PlayingIXVC.m in Sources */,
 				CE91AC7020A1D1F400DBA042 /* AdvanceFilter.m in Sources */,
+				04C04E9920B3FC2F00BDB056 /* DynamicTableViewCell.m in Sources */,
 				045999DD20A413CF00F37F06 /* LiveScoreCell.m in Sources */,
 				CE91AC4220A1D1F400DBA042 /* TeamsCell.m in Sources */,
 				04A9E66020A954C500471F70 /* DropDownTableViewController.m in Sources */,
@@ -1341,7 +1347,6 @@
 				CE91AC5D20A1D1F400DBA042 /* NSLayoutConstraint+PureLayout.m in Sources */,
 				CE91AC5620A1D1F400DBA042 /* TYTabPagerBarCell.m in Sources */,
 				CE91ABFA20A1D1F400DBA042 /* FixturesCell.m in Sources */,
-				04A9E66420A9B89300471F70 /* CommentaryVC.m in Sources */,
 				CE91AC5120A1D1F400DBA042 /* CRTableViewCell.m in Sources */,
 				CE91AC8120A1D1F400DBA042 /* PointsTableVC.m in Sources */,
 				CE91AC2720A1D1F400DBA042 /* BowlingTableViewCell.m in Sources */,
@@ -1400,6 +1405,7 @@
 				CEB3EA4920AC684B006CF42D /* GemViewController1.swift in Sources */,
 				CE91AC7820A1D1F400DBA042 /* FieldSummaryVC.m in Sources */,
 				CEB3EA3820AC0D98006CF42D /* DashBoard.m in Sources */,
+				04C04E9C20B3FCD300BDB056 /* CommentaryVC.m in Sources */,
 				18B295FA20B0080B00E58FFC /* MixedControllerVC.m in Sources */,
 				CE91AC4120A1D1F400DBA042 /* SessionPartCell.m in Sources */,
 			);
