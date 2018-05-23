@@ -44,8 +44,6 @@
                         <outlet property="objTabbar" destination="G7h-Nn-Wnb" id="vub-8l-2xS"/>
                         <segue destination="yPC-Md-76G" kind="relationship" relationship="viewControllers" id="JDH-zk-gin"/>
                         <segue destination="o8S-kA-j79" kind="relationship" relationship="viewControllers" id="5FM-1k-i2d"/>
-                        <segue destination="wSU-hk-AdI" kind="relationship" relationship="viewControllers" id="JpF-Sd-oOx"/>
-                        <segue destination="ndd-VE-SF2" kind="relationship" relationship="viewControllers" id="pTR-Fy-NqM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xqG-nx-Aeq" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -49,10 +49,10 @@
 //    tabItem4.image = [[UIImage imageNamed:@"LiveBlue"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
 //    tabItem4.title = @"LIVE";
     
-    UITabBarItem *tabItem5 = [tabBar.items objectAtIndex:2];
-    tabItem5.selectedImage = [[UIImage imageNamed:@"ScorecardWhite"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
-    tabItem5.image = [[UIImage imageNamed:@"ScorecardBlue"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
-    tabItem5.title = @"SCORE CARD";
+//    UITabBarItem *tabItem5 = [tabBar.items objectAtIndex:2];
+//    tabItem5.selectedImage = [[UIImage imageNamed:@"ScorecardWhite"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+//    tabItem5.image = [[UIImage imageNamed:@"ScorecardBlue"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+//    tabItem5.title = @"SCORE CARD";
     
 //    UITabBarItem *tabItem6 = [tabBar.items objectAtIndex:5];
 //    tabItem6.selectedImage = [[UIImage imageNamed:@"PlayingIXWhite"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
@@ -64,10 +64,10 @@
 //    tabItem7.image = [[UIImage imageNamed:@"HeadBlue"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
 //    tabItem7.title = @"HEAD2HEAD";
     
-    UITabBarItem *tabItem8 = [tabBar.items objectAtIndex:3];
-    tabItem8.selectedImage = [[UIImage imageNamed:@"CommentaryWhite"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
-    tabItem8.image = [[UIImage imageNamed:@"CommentaryBlue"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
-    tabItem8.title = @"LIVE COMMENTARY";
+//    UITabBarItem *tabItem8 = [tabBar.items objectAtIndex:3];
+//    tabItem8.selectedImage = [[UIImage imageNamed:@"CommentaryWhite"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+//    tabItem8.image = [[UIImage imageNamed:@"CommentaryBlue"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal ];
+//    tabItem8.title = @"LIVE COMMENTARY";
 
 
     

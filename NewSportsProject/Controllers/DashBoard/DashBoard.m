@@ -205,7 +205,20 @@
     objFix = (ResultsVc *)[self.storyboard instantiateViewControllerWithIdentifier:@"ResultsVc"];
     objFix.listCompArray = sendkeyArray;
     objFix.backKey = @"yes";
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.5;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
     [self.navigationController pushViewController:objFix animated:YES];
+    
+    
+    
+//    CATransition* transition = [CATransition animation];
+//    transition.duration = 1;
+//    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+//    transition.type = kCATransitionPush; //kCATransitionMoveIn; //, kCATransitionPush, kCATransitionReveal, kCATransitionFade
+//    //transition.subtype = kCATransitionFromRight; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
+//    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+//    [[self navigationController] pushViewController:objFix animated:NO];
 }
 
 -(IBAction)didClickViewTable:(id)sender

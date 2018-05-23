@@ -295,6 +295,15 @@
     return nil;
     
 }
+-(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGRect frame = cell.frame;
+    [cell setFrame:CGRectMake(0, self.ListTbl.frame.size.height, frame.size.width, frame.size.height)];
+    [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionTransitionCrossDissolve  animations:^{
+        [cell setFrame:frame];
+    } completion:^(BOOL finished) {
+    }];
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -306,7 +315,6 @@
     {
         return 140;
     }
-    
     
 }
 -(NSString *)checkNull:(NSString *)_value
@@ -484,7 +492,18 @@
 
 -(IBAction)didClickBackBtn:(id)sender
 {
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.5;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
     [self.navigationController popViewControllerAnimated:YES];
+    
+//    CATransition* transition = [CATransition animation];
+//    transition.duration = 1;
+//    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+//    transition.type = kCATransitionPush; //kCATransitionMoveIn; //, kCATransitionPush, kCATransitionReveal, kCATransitionFade
+//    //transition.subtype = kCATransitionFromLeft; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
+//    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+//    [[self navigationController] popViewControllerAnimated:NO];
 }
 
 
@@ -528,8 +547,17 @@
     }
     else // COMPETETION
     {
-        dropVC.array = appDel.ArrayCompetition;
-        dropVC.key = @"CompetitionName";
+        NSArray* arr = [[NSUserDefaults standardUserDefaults] valueForKey:@"selectedCompetetionArray"];
+        NSLog(@"arr %@",arr);
+        //        NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+        //        [dic setObject:arr forKey:@""];
+        NSMutableArray *reqComp = [[NSMutableArray alloc]init];
+        [reqComp addObject:arr];
+        NSString *competition = [arr valueForKey:@"COMPETITIONCODE"];
+        
+        dropVC.array = reqComp;
+        dropVC.key = @"COMPETITIONNAME";
+
         if (IS_IPAD) {
             [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(self.v1.frame), CGRectGetMaxY(self.v1.superview.frame), CGRectGetWidth(self.v1.frame), 300)];
         } else {
@@ -550,9 +578,9 @@
         
         NSLog(@"%@",array[Index.row]);
         NSLog(@"selected value %@",key);
-        self.competitionLbl.text = [[array objectAtIndex:Index.row] valueForKey:key];
-        NSString* Competetioncode = [[array objectAtIndex:Index.row] valueForKey:@"CompetitionCode"];
-        CompetionCode = [[array objectAtIndex:Index.row] valueForKey:@"CompetitionCode"];
+        _competitionLbl.text = [[array objectAtIndex:Index.row] valueForKey:key];
+        // NSString* Competetioncode = [[array objectAtIndex:Index.row] valueForKey:@"CompetitionCode"];
+        NSString* Competetioncode = [[array objectAtIndex:Index.row] valueForKey:@"COMPETITIONCODE"];
         [[NSUserDefaults standardUserDefaults] setValue:self.competitionLbl.text forKey:@"SelectedCompetitionName"];
         [[NSUserDefaults standardUserDefaults] setValue:Competetioncode forKey:@"SelectedCompetitionCode"];
         [[NSUserDefaults standardUserDefaults] synchronize];
