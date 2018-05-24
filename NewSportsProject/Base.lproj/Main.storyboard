@@ -2608,7 +2608,7 @@
                                                 <rect key="frame" x="0.0" y="30" width="365" height="205"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO LIVE MATCHES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3z-0k-9AS">
-                                                        <rect key="frame" x="121.5" y="95" width="123" height="16"/>
+                                                        <rect key="frame" x="122" y="95" width="123" height="16"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                         <color key="textColor" red="0.32549019610000002" green="0.69803921570000005" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>

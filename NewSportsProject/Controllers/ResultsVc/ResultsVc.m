@@ -539,11 +539,15 @@
         
         dropVC.array = [COMMON getCorrespondingTeamName:self.competitionLbl.text];
         dropVC.key = @"TeamName";
+        CGFloat height = 50;
+        height *= dropVC.array.count;
+        
         if (IS_IPAD) {
-            [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(self.v2.frame), CGRectGetMaxY(self.v2.superview.frame), CGRectGetWidth(self.v2.frame), 300)];
+            [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(self.v2.frame), CGRectGetMaxY(self.v2.superview.frame), CGRectGetWidth(self.v2.frame), height)];
         } else {
-            [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(self.v2.frame), CGRectGetMaxY(self.v2.superview.frame)+20, CGRectGetWidth(self.v2.frame), 300)];
+            [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(self.v2.frame), CGRectGetMaxY(self.v2.superview.frame)+20, CGRectGetWidth(self.v2.frame), height)];
         }
+        [self.view layoutIfNeeded];
     }
     else // COMPETETION
     {
@@ -557,12 +561,17 @@
         
         dropVC.array = reqComp;
         dropVC.key = @"COMPETITIONNAME";
+        CGFloat height = 50;
+        height *= dropVC.array.count;
+        
+        //CGFloat height = MIN(self.view.bounds.size.height, self.popTbl.contentSize.height);
 
         if (IS_IPAD) {
-            [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(self.v1.frame), CGRectGetMaxY(self.v1.superview.frame), CGRectGetWidth(self.v1.frame), 300)];
+            [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(self.v1.frame), CGRectGetMaxY(self.v1.superview.frame), CGRectGetWidth(self.v1.frame), height)];
         } else {
-            [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(self.v1.frame), CGRectGetMaxY(self.v1.superview.frame)+20, CGRectGetWidth(self.v1.frame), 300)];
+            [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(self.v1.frame), CGRectGetMaxY(self.v1.superview.frame)+20, CGRectGetWidth(self.v1.frame), height)];
         }
+        [self.view layoutIfNeeded];
     }
     
     //    [appDel.frontNavigationController presentViewController:dropVC animated:YES completion:^{

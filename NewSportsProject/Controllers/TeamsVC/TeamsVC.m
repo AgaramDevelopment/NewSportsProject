@@ -156,10 +156,12 @@
         
         dropVC.array = [COMMON getCorrespondingTeamName:Competitionlbl.text];
         dropVC.key = @"TeamName";
+        CGFloat height = 50;
+        height *= dropVC.array.count;
         if (IS_IPAD) {
-            [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(dropviewComp2.frame), CGRectGetMaxY(dropviewComp2.superview.frame), CGRectGetWidth(dropviewComp2.frame), 300)];
+            [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(dropviewComp2.frame), CGRectGetMaxY(dropviewComp2.superview.frame), CGRectGetWidth(dropviewComp2.frame), height)];
         } else {
-            [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(dropviewComp2.frame), CGRectGetMaxY(dropviewComp2.superview.frame)+20, CGRectGetWidth(dropviewComp2.frame), 300)];
+            [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(dropviewComp2.frame), CGRectGetMaxY(dropviewComp2.superview.frame)+20, CGRectGetWidth(dropviewComp2.frame), height)];
         }
     }
     else // COMPETETION
@@ -172,14 +174,23 @@
 //        [dic setObject:arr forKey:@""];
         NSMutableArray *reqComp = [[NSMutableArray alloc]init];
         [reqComp addObject:arr];
-        NSString *competition = [arr valueForKey:@"COMPETITIONCODE"];
+        //NSString *competition = [arr valueForKey:@"COMPETITIONCODE"];
+        
+        
+        
+        
+//        CGRect tableFrame = dropVC.tblDropDown.frame;
+//        tableFrame.size.height = height;
+//        dropVC.tblDropDown.frame = tableFrame;
         
         dropVC.array = reqComp;
         dropVC.key = @"COMPETITIONNAME";
+        CGFloat height = 50;
+        height *= dropVC.array.count;
     if (IS_IPAD) {
-        [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(dropviewComp1.frame), CGRectGetMaxY(dropviewComp1.superview.frame), CGRectGetWidth(dropviewComp1.frame), 300)];
+        [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(dropviewComp1.frame), CGRectGetMaxY(dropviewComp1.superview.frame), CGRectGetWidth(dropviewComp1.frame), height)];
     } else {
-        [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(dropviewComp1.frame), CGRectGetMaxY(dropviewComp1.superview.frame)+20, CGRectGetWidth(dropviewComp1.frame), 300)];
+        [dropVC.tblDropDown setFrame:CGRectMake(CGRectGetMinX(dropviewComp1.frame), CGRectGetMaxY(dropviewComp1.superview.frame)+20, CGRectGetWidth(dropviewComp1.frame), height)];
     }
     }
     
