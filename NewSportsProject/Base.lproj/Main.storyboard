@@ -2608,7 +2608,7 @@
                                                 <rect key="frame" x="0.0" y="30" width="365" height="205"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO LIVE MATCHES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3z-0k-9AS">
-                                                        <rect key="frame" x="122" y="95" width="123" height="16"/>
+                                                        <rect key="frame" x="121" y="95" width="123" height="16"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="11"/>
                                                         <color key="textColor" red="0.32549019610000002" green="0.69803921570000005" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -13045,76 +13045,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AyL-AU-W4E">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AyL-AU-W4E" customClass="EHHorizontalSelectionView">
                                 <rect key="frame" x="0.0" y="60" width="768" height="50"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0e-aq-mSr">
-                                        <rect key="frame" x="384" y="0.0" width="1" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="I0z-Jw-HgQ"/>
-                                            <constraint firstAttribute="width" constant="1" id="q03-ka-JMk"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pc1-BG-OJ8">
-                                        <rect key="frame" x="0.0" y="0.0" width="405" height="50"/>
-                                        <color key="backgroundColor" red="0.17254901959999999" green="0.65490196079999996" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
-                                        <state key="normal" title="ScoreCard">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="didClickScoreCard:" destination="wga-LG-M7u" eventType="touchUpInside" id="Lyb-U7-Chu"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZ3-wK-X3b">
-                                        <rect key="frame" x="363" y="0.0" width="406" height="50"/>
-                                        <color key="backgroundColor" red="0.17254901959999999" green="0.17254901959999999" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
-                                        <state key="normal" title="Commentary">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="didClickCommentary:" destination="wga-LG-M7u" eventType="touchUpInside" id="TdV-RU-tsM"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Pc1-BG-OJ8" firstAttribute="baseline" secondItem="SZ3-wK-X3b" secondAttribute="firstBaseline" id="4KS-JZ-OaS"/>
-                                    <constraint firstItem="SZ3-wK-X3b" firstAttribute="leading" secondItem="I0e-aq-mSr" secondAttribute="trailing" constant="-22" id="IUH-IU-bai"/>
-                                    <constraint firstItem="SZ3-wK-X3b" firstAttribute="top" secondItem="I0e-aq-mSr" secondAttribute="top" id="PUm-z6-FGQ"/>
-                                    <constraint firstItem="Pc1-BG-OJ8" firstAttribute="leading" secondItem="AyL-AU-W4E" secondAttribute="leading" id="TJd-mf-w7o"/>
-                                    <constraint firstItem="Pc1-BG-OJ8" firstAttribute="top" secondItem="I0e-aq-mSr" secondAttribute="top" id="UZ0-r5-cdC"/>
-                                    <constraint firstItem="I0e-aq-mSr" firstAttribute="centerX" secondItem="AyL-AU-W4E" secondAttribute="centerX" id="V8b-LB-axh"/>
-                                    <constraint firstItem="I0e-aq-mSr" firstAttribute="leading" secondItem="Pc1-BG-OJ8" secondAttribute="trailing" constant="-21" id="Vph-gb-ouO"/>
-                                    <constraint firstAttribute="trailing" secondItem="SZ3-wK-X3b" secondAttribute="trailing" constant="-1" id="Ybm-C5-GGg"/>
-                                    <constraint firstItem="Pc1-BG-OJ8" firstAttribute="top" secondItem="AyL-AU-W4E" secondAttribute="top" id="akD-r7-hZ5"/>
                                     <constraint firstAttribute="height" constant="50" id="gW1-8F-JFj"/>
-                                    <constraint firstItem="Pc1-BG-OJ8" firstAttribute="bottom" secondItem="I0e-aq-mSr" secondAttribute="bottom" id="iTd-pz-xka"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="type">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="altTextColor">
+                                        <color key="value" red="0.792156862745098" green="0.87450980392156863" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                        <color key="value" red="0.17254901960784313" green="0.65490196078431373" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="needCentered">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aX6-N2-TrC">
-                                <rect key="frame" x="0.0" y="120" width="768" height="904"/>
+                                <rect key="frame" x="0.0" y="110" width="768" height="914"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="aX6-N2-TrC" firstAttribute="top" secondItem="AyL-AU-W4E" secondAttribute="bottom" constant="10" id="6zn-zP-R9G"/>
-                            <constraint firstItem="aX6-N2-TrC" firstAttribute="leading" secondItem="VDq-y6-7as" secondAttribute="leading" id="ALW-Ub-8yv"/>
-                            <constraint firstAttribute="trailing" secondItem="aX6-N2-TrC" secondAttribute="trailing" id="DsW-bp-kE7"/>
+                            <constraint firstItem="aX6-N2-TrC" firstAttribute="top" secondItem="AyL-AU-W4E" secondAttribute="bottom" id="3OM-Ig-qsO"/>
                             <constraint firstItem="AyL-AU-W4E" firstAttribute="top" secondItem="4Vh-v7-YkI" secondAttribute="bottom" constant="40" id="Fzm-XE-CQf"/>
-                            <constraint firstItem="GHT-Pk-hgx" firstAttribute="top" secondItem="aX6-N2-TrC" secondAttribute="bottom" id="RzT-Q0-EEp"/>
+                            <constraint firstItem="GHT-Pk-hgx" firstAttribute="top" secondItem="aX6-N2-TrC" secondAttribute="bottom" id="Mez-v4-F95"/>
+                            <constraint firstAttribute="trailing" secondItem="aX6-N2-TrC" secondAttribute="trailing" id="akL-Rm-8iP"/>
                             <constraint firstAttribute="trailing" secondItem="AyL-AU-W4E" secondAttribute="trailing" id="lFk-7R-xRQ"/>
+                            <constraint firstItem="aX6-N2-TrC" firstAttribute="leading" secondItem="VDq-y6-7as" secondAttribute="leading" id="prU-Md-V3l"/>
                             <constraint firstItem="AyL-AU-W4E" firstAttribute="leading" secondItem="VDq-y6-7as" secondAttribute="leading" id="qWJ-Fd-VbJ"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="CommentaryBtn" destination="SZ3-wK-X3b" id="QPf-nq-BaX"/>
-                        <outlet property="ScoreCardBtn" destination="Pc1-BG-OJ8" id="xJZ-VZ-LrB"/>
+                        <outlet property="hSelView1" destination="AyL-AU-W4E" id="sB7-8A-MYq"/>
                         <outlet property="mainView" destination="aX6-N2-TrC" id="f4v-0m-JUp"/>
                     </connections>
                 </viewController>

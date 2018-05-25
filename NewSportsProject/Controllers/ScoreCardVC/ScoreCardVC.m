@@ -2786,7 +2786,7 @@
 
 -(void)ScoreWebservice
 {
-    
+//    [COMMON loadingIcon:self.view];
     if([COMMON isInternetReachable])
     {
         
@@ -3103,13 +3103,12 @@
                 
             }
             
-            
-            
+            [self.view setUserInteractionEnabled:YES];
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"failed");
             [COMMON webServiceFailureError];
-            
+            [self.view setUserInteractionEnabled:YES];
             
         }];
     }

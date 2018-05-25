@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'F0DC111BC0C5057567E04CDA65DB561E'
-               BlueprintName = 'SDWebImage'
+               BlueprintIdentifier = '20D44BAF665323BF1525226A9ACD5FF2'
+               BlueprintName = 'EHHorizontalSelectionView'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SDWebImage.framework'>
+               BuildableName = 'EHHorizontalSelectionView.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

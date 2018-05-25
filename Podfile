@@ -7,5 +7,6 @@ target 'NewSportsProject' do
     pod 'SDWebImage', '~> 4.0'
     pod 'AFNetworking', '~> 2.5.4'
     pod 'Gemini'
+    pod 'EHHorizontalSelectionView'
 
 end

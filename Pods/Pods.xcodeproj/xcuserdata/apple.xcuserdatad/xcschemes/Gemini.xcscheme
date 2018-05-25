@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'F0DC111BC0C5057567E04CDA65DB561E'
-               BlueprintName = 'SDWebImage'
+               BlueprintIdentifier = 'FCD5AA9DE71943D0A20424568E1AAB6C'
+               BlueprintName = 'Gemini'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SDWebImage.framework'>
+               BuildableName = 'Gemini.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

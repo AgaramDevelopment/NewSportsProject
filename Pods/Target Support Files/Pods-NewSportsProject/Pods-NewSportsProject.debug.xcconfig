@@ -1,11 +1,11 @@
-EMBEDDED_CONTENT_CONTAINS_SWIFT = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking" "${PODS_CONFIGURATION_BUILD_DIR}/Gemini" "${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage"
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/AFNetworking" "$PODS_CONFIGURATION_BUILD_DIR/EHHorizontalSelectionView" "$PODS_CONFIGURATION_BUILD_DIR/Gemini" "$PODS_CONFIGURATION_BUILD_DIR/SDWebImage"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking/AFNetworking.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Gemini/Gemini.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "AFNetworking" -framework "Gemini" -framework "SDWebImage"
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/AFNetworking/AFNetworking.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/EHHorizontalSelectionView/EHHorizontalSelectionView.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Gemini/Gemini.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/SDWebImage/SDWebImage.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "AFNetworking" -framework "EHHorizontalSelectionView" -framework "Gemini" -framework "SDWebImage"
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
-PODS_BUILD_DIR = ${BUILD_DIR}
-PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
 PODS_ROOT = ${SRCROOT}/Pods

@@ -24,6 +24,9 @@
 		18266FC020A4713B004877A3 /* UIScrollView+APParallaxHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 18266FBC20A4713A004877A3 /* UIScrollView+APParallaxHeader.m */; };
 		18266FC720A4717E004877A3 /* ScorecardBowlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18266FC320A4717C004877A3 /* ScorecardBowlCell.m */; };
 		18266FC820A4717E004877A3 /* ScoreCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18266FC620A4717D004877A3 /* ScoreCardCell.m */; };
+		18B10E4320B7F8ED0052360F /* CCARadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B10E3E20B7F8EC0052360F /* CCARadialGradientLayer.m */; };
+		18B10E4420B7F8ED0052360F /* UIColor+UIColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B10E4020B7F8EC0052360F /* UIColor+UIColorAdditions.m */; };
+		18B10E4520B7F8ED0052360F /* UIImage+UIImageAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B10E4220B7F8EC0052360F /* UIImage+UIImageAdditions.m */; };
 		18B295FA20B0080B00E58FFC /* MixedControllerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B295F920B0080B00E58FFC /* MixedControllerVC.m */; };
 		CE91ABF420A1D1F400DBA042 /* CommentaryVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91AACD20A1D1F200DBA042 /* CommentaryVCCell.m */; };
 		CE91ABF520A1D1F400DBA042 /* CommentaryVCCell_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE91AACE20A1D1F200DBA042 /* CommentaryVCCell_iPad.xib */; };
@@ -193,6 +196,12 @@
 		18266FC320A4717C004877A3 /* ScorecardBowlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScorecardBowlCell.m; sourceTree = "<group>"; };
 		18266FC520A4717D004877A3 /* ScoreCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreCardCell.h; sourceTree = "<group>"; };
 		18266FC620A4717D004877A3 /* ScoreCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreCardCell.m; sourceTree = "<group>"; };
+		18B10E3D20B7F8EC0052360F /* CCARadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCARadialGradientLayer.h; sourceTree = "<group>"; };
+		18B10E3E20B7F8EC0052360F /* CCARadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCARadialGradientLayer.m; sourceTree = "<group>"; };
+		18B10E3F20B7F8EC0052360F /* UIColor+UIColorAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+UIColorAdditions.h"; sourceTree = "<group>"; };
+		18B10E4020B7F8EC0052360F /* UIColor+UIColorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+UIColorAdditions.m"; sourceTree = "<group>"; };
+		18B10E4120B7F8EC0052360F /* UIImage+UIImageAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+UIImageAdditions.h"; sourceTree = "<group>"; };
+		18B10E4220B7F8EC0052360F /* UIImage+UIImageAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIImageAdditions.m"; sourceTree = "<group>"; };
 		18B295F820B0080B00E58FFC /* MixedControllerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MixedControllerVC.h; sourceTree = "<group>"; };
 		18B295F920B0080B00E58FFC /* MixedControllerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MixedControllerVC.m; sourceTree = "<group>"; };
 		25AD96EF9C20F56F008DEF5B /* Pods-NewSportsProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewSportsProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewSportsProject/Pods-NewSportsProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -487,9 +496,23 @@
 			path = ScoreCardCell;
 			sourceTree = "<group>";
 		};
+		18B10E3C20B7F8EC0052360F /* ColorFiles */ = {
+			isa = PBXGroup;
+			children = (
+				18B10E3D20B7F8EC0052360F /* CCARadialGradientLayer.h */,
+				18B10E3E20B7F8EC0052360F /* CCARadialGradientLayer.m */,
+				18B10E3F20B7F8EC0052360F /* UIColor+UIColorAdditions.h */,
+				18B10E4020B7F8EC0052360F /* UIColor+UIColorAdditions.m */,
+				18B10E4120B7F8EC0052360F /* UIImage+UIImageAdditions.h */,
+				18B10E4220B7F8EC0052360F /* UIImage+UIImageAdditions.m */,
+			);
+			path = ColorFiles;
+			sourceTree = "<group>";
+		};
 		18B295F720B007B600E58FFC /* MixedControllerVC */ = {
 			isa = PBXGroup;
 			children = (
+				18B10E3C20B7F8EC0052360F /* ColorFiles */,
 				18B295F820B0080B00E58FFC /* MixedControllerVC.h */,
 				18B295F920B0080B00E58FFC /* MixedControllerVC.m */,
 			);
@@ -1153,6 +1176,7 @@
 				04C8517C1FB992A100AE18C9 /* Frameworks */,
 				04C8517D1FB992A100AE18C9 /* Resources */,
 				4AD53A3AC50809311DE79F6B /* [CP] Embed Pods Frameworks */,
+				B47BF355B68F01972E7A65D9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1292,18 +1316,35 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NewSportsProject/Pods-NewSportsProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/EHHorizontalSelectionView/EHHorizontalSelectionView.framework",
 				"${BUILT_PRODUCTS_DIR}/Gemini/Gemini.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EHHorizontalSelectionView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gemini.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewSportsProject/Pods-NewSportsProject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B47BF355B68F01972E7A65D9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewSportsProject/Pods-NewSportsProject-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B5A8D2802F9124D41F0BB1EA /* [CP] Check Pods Manifest.lock */ = {
@@ -1331,6 +1372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B10E4420B7F8ED0052360F /* UIColor+UIColorAdditions.m in Sources */,
 				CE91AC8020A1D1F400DBA042 /* PlayingIXVC.m in Sources */,
 				CE91AC7020A1D1F400DBA042 /* AdvanceFilter.m in Sources */,
 				04C04E9920B3FC2F00BDB056 /* DynamicTableViewCell.m in Sources */,
@@ -1347,6 +1389,7 @@
 				CE91AC5D20A1D1F400DBA042 /* NSLayoutConstraint+PureLayout.m in Sources */,
 				CE91AC5620A1D1F400DBA042 /* TYTabPagerBarCell.m in Sources */,
 				CE91ABFA20A1D1F400DBA042 /* FixturesCell.m in Sources */,
+				18B10E4520B7F8ED0052360F /* UIImage+UIImageAdditions.m in Sources */,
 				CE91AC5120A1D1F400DBA042 /* CRTableViewCell.m in Sources */,
 				CE91AC8120A1D1F400DBA042 /* PointsTableVC.m in Sources */,
 				CE91AC2720A1D1F400DBA042 /* BowlingTableViewCell.m in Sources */,
@@ -1391,6 +1434,7 @@
 				CE91AC2B20A1D1F400DBA042 /* PlayersCell.m in Sources */,
 				CE91AC5720A1D1F400DBA042 /* TYTabPagerBarLayout.m in Sources */,
 				CE91AC6F20A1D1F400DBA042 /* Reachability.m in Sources */,
+				18B10E4320B7F8ED0052360F /* CCARadialGradientLayer.m in Sources */,
 				CE91AC8220A1D1F400DBA042 /* ResultsVc.m in Sources */,
 				CE91AC5820A1D1F400DBA042 /* TYTabPagerController.m in Sources */,
 				CE91AC5520A1D1F400DBA042 /* TYTabPagerBar.m in Sources */,

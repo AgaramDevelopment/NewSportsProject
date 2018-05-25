@@ -70,11 +70,15 @@ static NSString* const CellIdentifier = @"DynamicTableViewCell";
     
     [self ResultsWebservice];
     
+    if([self.livetype isEqualToString:@"LIVE"])
+    {
+    
     [NSTimer scheduledTimerWithTimeInterval:5
                                      target:self
                                    selector:@selector(pageRefresh:)
                                    userInfo:nil
                                     repeats:YES];
+    }
     
     
     
@@ -262,10 +266,10 @@ static NSString* const CellIdentifier = @"DynamicTableViewCell";
 
 -(void)ResultsWebservice
 {
-        //[COMMON loadingIcon:self.view];
+    
     if([COMMON isInternetReachable])
     {
-        
+//        [COMMON loadingIcon:self.view];
         
             //NSString *URLString =  [URL_FOR_RESOURCE(@"") stringByAppendingString:[NSString stringWithFormat:@"%@",ResultsKey]];
         

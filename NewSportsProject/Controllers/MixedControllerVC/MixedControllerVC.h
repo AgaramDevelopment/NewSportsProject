@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@import EHHorizontalSelectionView;
 
 @interface MixedControllerVC : UIViewController
 
@@ -17,5 +18,8 @@
 @property (weak, nonatomic)  NSString *matchCode;
 @property (weak, nonatomic)  NSString *livetype;
 @property (weak, nonatomic)  NSMutableArray *scoreArray;
+
+
+@property (nonatomic, weak) IBOutlet EHHorizontalSelectionView * hSelView1;
 
 @end
