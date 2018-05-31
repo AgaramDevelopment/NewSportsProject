@@ -16,6 +16,7 @@
 #import "DropDownTableViewController.h"
 @import SDWebImage;
 #import "MixedControllerVC.h"
+@import ANLoader;
 
 @interface ResultsVc ()
 {
@@ -26,10 +27,13 @@
     
     NSString *CompetionCode;
     NSString* Teamcode;
+
+    
 }
 @property (nonatomic,strong) IBOutlet NSLayoutConstraint * popXposition;
-
 @property (nonatomic,strong) IBOutlet NSLayoutConstraint * popWidth;
+
+
 @end
 
 @implementation ResultsVc
@@ -39,6 +43,7 @@
     // Do any additional setup after loading the view.
     
     [self customnavigationmethod];
+    
     
     self.ShawdowView.clipsToBounds = NO;
     self.ShawdowView.layer.shadowColor = [[UIColor blackColor] CGColor];
@@ -382,7 +387,8 @@
 
 -(void)ResultsWebservice
 {
-    [COMMON loadingIcon:self.view];
+    //[COMMON loadingIcon:self.view];
+    
     if([COMMON isInternetReachable])
     {
         

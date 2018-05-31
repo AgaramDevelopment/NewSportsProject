@@ -8,5 +8,6 @@ target 'NewSportsProject' do
     pod 'AFNetworking', '~> 2.5.4'
     pod 'Gemini'
     pod 'EHHorizontalSelectionView'
+    pod 'ANLoader', :git => 'https://github.com/ANSCoder/ANLoader.git'
 
 end

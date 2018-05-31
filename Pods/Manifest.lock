@@ -20,24 +20,36 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - ANLoader (1.1.1)
   - EHHorizontalSelectionView (1.3.0)
-  - Gemini (1.2.0)
+  - Gemini (1.3.0)
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.4)
+  - ANLoader (from `https://github.com/ANSCoder/ANLoader.git`)
   - EHHorizontalSelectionView
   - Gemini
   - SDWebImage (~> 4.0)
 
+EXTERNAL SOURCES:
+  ANLoader:
+    :git: https://github.com/ANSCoder/ANLoader.git
+
+CHECKOUT OPTIONS:
+  ANLoader:
+    :commit: 8813fb34960973bd9b7199b6461442bfe7ec4c36
+    :git: https://github.com/ANSCoder/ANLoader.git
+
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  ANLoader: a77cf1634bd0f021647d385b1dfce51531b47d87
   EHHorizontalSelectionView: 75699e0023d0265b3a6fc3d993d05100a4bf657f
-  Gemini: acff98012273066f1b83c887731260abfaf18ec5
+  Gemini: 1a932868fa70579457162c3a93cd844ad5df3455
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
 
-PODFILE CHECKSUM: 4eb6b1e231762dee2b23ea5359db8660fc25391f
+PODFILE CHECKSUM: e2c3d40fa4318544bde425513916f58f4a5c802e
 
 COCOAPODS: 1.3.1

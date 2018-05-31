@@ -28,6 +28,9 @@
 		18B10E4420B7F8ED0052360F /* UIColor+UIColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B10E4020B7F8EC0052360F /* UIColor+UIColorAdditions.m */; };
 		18B10E4520B7F8ED0052360F /* UIImage+UIImageAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B10E4220B7F8EC0052360F /* UIImage+UIImageAdditions.m */; };
 		18B295FA20B0080B00E58FFC /* MixedControllerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B295F920B0080B00E58FFC /* MixedControllerVC.m */; };
+		18B89C1920BD4EEF0063C344 /* KYPopInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B89C1420BD4EEF0063C344 /* KYPopInteractiveTransition.m */; };
+		18B89C1A20BD4EEF0063C344 /* KYPopTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B89C1620BD4EEF0063C344 /* KYPopTransition.m */; };
+		18B89C1B20BD4EEF0063C344 /* KYPushTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B89C1820BD4EEF0063C344 /* KYPushTransition.m */; };
 		CE91ABF420A1D1F400DBA042 /* CommentaryVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE91AACD20A1D1F200DBA042 /* CommentaryVCCell.m */; };
 		CE91ABF520A1D1F400DBA042 /* CommentaryVCCell_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE91AACE20A1D1F200DBA042 /* CommentaryVCCell_iPad.xib */; };
 		CE91ABF620A1D1F400DBA042 /* CommentaryVCCell_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE91AACF20A1D1F200DBA042 /* CommentaryVCCell_iPhone.xib */; };
@@ -204,6 +207,12 @@
 		18B10E4220B7F8EC0052360F /* UIImage+UIImageAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+UIImageAdditions.m"; sourceTree = "<group>"; };
 		18B295F820B0080B00E58FFC /* MixedControllerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MixedControllerVC.h; sourceTree = "<group>"; };
 		18B295F920B0080B00E58FFC /* MixedControllerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MixedControllerVC.m; sourceTree = "<group>"; };
+		18B89C1320BD4EEF0063C344 /* KYPopInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYPopInteractiveTransition.h; sourceTree = "<group>"; };
+		18B89C1420BD4EEF0063C344 /* KYPopInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYPopInteractiveTransition.m; sourceTree = "<group>"; };
+		18B89C1520BD4EEF0063C344 /* KYPopTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYPopTransition.h; sourceTree = "<group>"; };
+		18B89C1620BD4EEF0063C344 /* KYPopTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYPopTransition.m; sourceTree = "<group>"; };
+		18B89C1720BD4EEF0063C344 /* KYPushTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYPushTransition.h; sourceTree = "<group>"; };
+		18B89C1820BD4EEF0063C344 /* KYPushTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYPushTransition.m; sourceTree = "<group>"; };
 		25AD96EF9C20F56F008DEF5B /* Pods-NewSportsProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewSportsProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewSportsProject/Pods-NewSportsProject.release.xcconfig"; sourceTree = "<group>"; };
 		8F832D5A2810D0DB098D1230 /* Pods_NewSportsProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewSportsProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE91AACC20A1D1F200DBA042 /* CommentaryVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentaryVCCell.h; sourceTree = "<group>"; };
@@ -519,6 +528,19 @@
 			path = MixedControllerVC;
 			sourceTree = "<group>";
 		};
+		18B89C1220BD4EEF0063C344 /* Animate */ = {
+			isa = PBXGroup;
+			children = (
+				18B89C1320BD4EEF0063C344 /* KYPopInteractiveTransition.h */,
+				18B89C1420BD4EEF0063C344 /* KYPopInteractiveTransition.m */,
+				18B89C1520BD4EEF0063C344 /* KYPopTransition.h */,
+				18B89C1620BD4EEF0063C344 /* KYPopTransition.m */,
+				18B89C1720BD4EEF0063C344 /* KYPushTransition.h */,
+				18B89C1820BD4EEF0063C344 /* KYPushTransition.m */,
+			);
+			path = Animate;
+			sourceTree = "<group>";
+		};
 		226FA33F973B9FE94B785F6C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -812,6 +834,7 @@
 		CE91AB4C20A1D1F300DBA042 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				18B89C1220BD4EEF0063C344 /* Animate */,
 				CE91AB6420A1D1F300DBA042 /* MultiRow */,
 				CE91AB6720A1D1F300DBA042 /* Pageview */,
 				CE91AB7820A1D1F300DBA042 /* parallax */,
@@ -1316,6 +1339,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NewSportsProject/Pods-NewSportsProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/ANLoader/ANLoader.framework",
 				"${BUILT_PRODUCTS_DIR}/EHHorizontalSelectionView/EHHorizontalSelectionView.framework",
 				"${BUILT_PRODUCTS_DIR}/Gemini/Gemini.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -1323,6 +1347,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ANLoader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EHHorizontalSelectionView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gemini.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -1406,6 +1431,7 @@
 				CE91ABF420A1D1F400DBA042 /* CommentaryVCCell.m in Sources */,
 				CE91AC7220A1D1F400DBA042 /* BowlingKPIViewController.m in Sources */,
 				18266FC720A4717E004877A3 /* ScorecardBowlCell.m in Sources */,
+				18B89C1B20BD4EEF0063C344 /* KYPushTransition.m in Sources */,
 				04C851871FB992A100AE18C9 /* AppDelegate.m in Sources */,
 				CE91AC4020A1D1F400DBA042 /* SessionDayCell.m in Sources */,
 				18266FBF20A4713B004877A3 /* ScoreCardVC.m in Sources */,
@@ -1421,6 +1447,7 @@
 				04C851841FB992A100AE18C9 /* main.m in Sources */,
 				CE91AC5320A1D1F400DBA042 /* TYPagerView.m in Sources */,
 				CE91AC7C20A1D1F400DBA042 /* OverviewPlayer.m in Sources */,
+				18B89C1920BD4EEF0063C344 /* KYPopInteractiveTransition.m in Sources */,
 				CE91AC2A20A1D1F400DBA042 /* PagerViewDmeoController.m in Sources */,
 				CE91AC5F20A1D1F400DBA042 /* SwipeView.m in Sources */,
 				CE91AC4620A1D1F400DBA042 /* AppCommon.m in Sources */,
@@ -1449,6 +1476,7 @@
 				CEB3EA4920AC684B006CF42D /* GemViewController1.swift in Sources */,
 				CE91AC7820A1D1F400DBA042 /* FieldSummaryVC.m in Sources */,
 				CEB3EA3820AC0D98006CF42D /* DashBoard.m in Sources */,
+				18B89C1A20BD4EEF0063C344 /* KYPopTransition.m in Sources */,
 				04C04E9C20B3FCD300BDB056 /* CommentaryVC.m in Sources */,
 				18B295FA20B0080B00E58FFC /* MixedControllerVC.m in Sources */,
 				CE91AC4120A1D1F400DBA042 /* SessionPartCell.m in Sources */,

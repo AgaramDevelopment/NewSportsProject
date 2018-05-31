@@ -415,22 +415,40 @@
     UIImage *btnImage = [UIImage imageNamed:@"ListimgBlue"];
     [self.listBtn setImage:btnImage forState:UIControlStateNormal];
     
-    UIImage *btnImage1 = [UIImage imageNamed:@"GridimgGray"];
+    UIImage *btnImage1 = [UIImage imageNamed:@"GridimgBlue"];
     [self.gridBtn setImage:btnImage1 forState:UIControlStateNormal];
 }
 
 -(IBAction)didClickGridview:(id)sender
 {
-    self.ListTbl.hidden = YES;
-    self.GridTbl.hidden = NO;
+    
     
     //self.gridBtn.imageView.image = [UIImage imageNamed:@"GridimgBlue"];
     
+    if(isList)
+    {
     UIImage *btnImage = [UIImage imageNamed:@"GridimgBlue"];
     [self.gridBtn setImage:btnImage forState:UIControlStateNormal];
+        self.ListTbl.hidden = NO;
+        self.GridTbl.hidden = YES;
+        [self.ListTbl reloadData];
+        isList=NO;
+        
+        
+    }
+    else
+    {
+        UIImage *btnImage = [UIImage imageNamed:@"ListimgBlue"];
+        [self.gridBtn setImage:btnImage forState:UIControlStateNormal];
+        self.ListTbl.hidden = YES;
+        self.GridTbl.hidden = NO;
+        [self.GridTbl reloadData];
+        isList=YES;
+        
+    }
     
-    UIImage *btnImage1 = [UIImage imageNamed:@"ListimgGray"];
-    [self.listBtn setImage:btnImage1 forState:UIControlStateNormal];
+//    UIImage *btnImage1 = [UIImage imageNamed:@"ListimgGray"];
+//    [self.listBtn setImage:btnImage1 forState:UIControlStateNormal];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

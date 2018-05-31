@@ -12,8 +12,15 @@
 #import "AppCommon.h"
 #import "NewSportsProject-Swift.h"
 
+#import "KYPopTransition.h"
+#import "KYPushTransition.h"
+#import "KYPopInteractiveTransition.h"
+
 @class GemViewController1;
 @interface AppDelegate ()
+{
+    KYPopInteractiveTransition *popInteractive;
+}
 
 
 @end
@@ -80,6 +87,32 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                   animationControllerForOperation:(UINavigationControllerOperation)operation
+                                                fromViewController:(UIViewController *)fromVC
+                                                  toViewController:(UIViewController *)toVC{
+    if (operation == UINavigationControllerOperationPush) {
+        
+        KYPushTransition *flip = [KYPushTransition new];
+        return flip;
+        
+    }else if (operation == UINavigationControllerOperationPop){
+        
+        KYPopTransition *flip = [KYPopTransition new];
+        return flip;
+        
+    }else{
+        return nil;
+    }
+}
+
+
+- (id <UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController
+                          interactionControllerForAnimationController:(id <UIViewControllerAnimatedTransitioning>) animationController{
+    return popInteractive.interacting ? popInteractive : nil;
+}
+
 
 
 @end

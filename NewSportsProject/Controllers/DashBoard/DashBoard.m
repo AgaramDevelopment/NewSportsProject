@@ -24,6 +24,9 @@
 @import SDWebImage;
 #import "NewSportsProject-Swift.h"
 #import "MixedControllerVC.h"
+#import "KYPopTransition.h"
+#import "KYPushTransition.h"
+#import "KYPopInteractiveTransition.h"
 
 
 @interface DashBoard () <SwipeViewDataSource, SwipeViewDelegate>
@@ -52,6 +55,8 @@
     NSMutableArray *scoreArray;
     
     AppDelegate* Appobj;
+    
+    KYPopInteractiveTransition *popInteractive;
     
 }
 
@@ -108,6 +113,8 @@
     self.resultsArray = [[NSMutableArray alloc]init];
     self.pointsTableArray = [[NSMutableArray alloc]init];
     [self customnavigationmethod];
+    
+    self.navigationController.delegate = self;
     
     //[self FixturesWebservice];
     [self ResultsWebservice];
@@ -201,14 +208,25 @@
 
 -(IBAction)didClickViewResults:(id)sender
 {
+    
+    
+//    SecondViewController *secVC = (SecondViewController *)segue.destinationViewController;
+//    secVC.transitioningDelegate = self;
+//    popInteractive = [KYPopInteractiveTransition new];
+//    [popInteractive addPopGesture:secVC];
+    
     ResultsVc * objFix = [[ResultsVc alloc]init];
     objFix = (ResultsVc *)[self.storyboard instantiateViewControllerWithIdentifier:@"ResultsVc"];
     objFix.listCompArray = sendkeyArray;
     objFix.backKey = @"yes";
-    CATransition* transition = [CATransition animation];
-    transition.duration = 0.5;
-    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    objFix.transitioningDelegate = self;
+    popInteractive = [KYPopInteractiveTransition new];
+    [popInteractive addPopGesture:objFix];
+    //CATransition* transition = [CATransition animation];
+   // transition.duration = 0.5;
+   // [self.navigationController.view.layer addAnimation:transition forKey:nil];
     [self.navigationController pushViewController:objFix animated:YES];
+   
     
     
     
@@ -1228,6 +1246,7 @@
 //    objFix.backkey = @"yes";
     //[self.navigationController pushViewController:objFix animated:YES];
     
+    
     MixedControllerVC * objFix1 = [[MixedControllerVC alloc]init];
     objFix1 = (MixedControllerVC *)[self.storyboard instantiateViewControllerWithIdentifier:@"MixedControllerVC"];
     objFix1.matchCode = displayMatchCode;
@@ -1236,6 +1255,32 @@
    // objFix.backkey = @"yes";
     [self.navigationController pushViewController:objFix1 animated:YES];
 }
+
+- (id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                   animationControllerForOperation:(UINavigationControllerOperation)operation
+                                                fromViewController:(UIViewController *)fromVC
+                                                  toViewController:(UIViewController *)toVC{
+    if (operation == UINavigationControllerOperationPush) {
+        
+        KYPushTransition *flip = [KYPushTransition new];
+        return flip;
+        
+    }else if (operation == UINavigationControllerOperationPop){
+        
+        KYPopTransition *flip = [KYPopTransition new];
+        return flip;
+        
+    }else{
+        return nil;
+    }
+}
+
+
+- (id <UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController
+                          interactionControllerForAnimationController:(id <UIViewControllerAnimatedTransitioning>) animationController{
+    return popInteractive.interacting ? popInteractive : nil;
+}
+
 
 
 
